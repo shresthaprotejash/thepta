@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
- 
-pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+  <title>THEPTA - Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery.min.js" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" />
 </head>
 <body>
- 
-	<center>
-		<h2>THE PTA</h2>
-		<h3>
-			<a href="login">Login</a>
-		</h3>
-	</center>
+  
+<div class="container">
+  <h1>My First Bootstrap Page</h1>
+  <p>This part is inside a .container class.</p> 
+  <p>The .container class provides a responsive fixed width container.</p>           
+</div>
+
 </body>
 </html>
