@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery.min.js" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" />
 </head>
+
 <body>
   
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This part is inside a .container class.</p> 
-  <p>The .container class provides a responsive fixed width container.</p>           
+<div class="container">  
+<a href="${pageContext.request.contextPath}/login">press here</a>    
+<div class="btn btn-info">press me</div>  
 </div>
 
 </body>
