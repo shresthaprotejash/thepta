@@ -13,13 +13,27 @@ public class HomeController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/login")
 	public ModelAndView showMessage() {
  
 		ModelAndView mv = new ModelAndView("login");
 		UserModel userModel = userService.getUserByMailIdOrPhoneNo("raushan.kumar@sakhatech.com");
 		mv.addObject("userName", userModel.getlName());
+		return mv;
+	}
+	
+	@RequestMapping("/dashboard")
+	public ModelAndView fetchdashboard() {
+ 
+		ModelAndView mv = new ModelAndView("dashboard");
+		return mv;
+	}
+	
+	@RequestMapping("/userprofile")
+	public ModelAndView fetchuser() {
+ 
+		ModelAndView mv = new ModelAndView("user");
 		return mv;
 	}
 }
