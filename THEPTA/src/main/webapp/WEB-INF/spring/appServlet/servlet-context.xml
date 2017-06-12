@@ -41,6 +41,8 @@
 	<mvc:view-controller path="/" view-name="index" />
 	<mvc:view-controller path="/home" view-name="index" />
 	<mvc:view-controller path="/login" view-name="login" />
+	<mvc:view-controller path="/dashboard" view-name="dashboard" />
+	<mvc:view-controller path="/userprofile" view-name="user" />
 	<mvc:view-controller path="/sessionexpired"
 		view-name="sessionexpired" />
 
