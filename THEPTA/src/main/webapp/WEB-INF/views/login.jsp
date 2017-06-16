@@ -3,8 +3,9 @@
 <title>Students Detail Repository</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/jquery.min.js" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" />
+<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
 </head>
   <script>
@@ -35,11 +36,12 @@
 		</div>	
 		<button onclick="submit();"><b>Sign in</b></button>
 	</div>
-    <script src="jquery.min.js"></script>
+    
 <script>
 $(function() {
 	$('.container').hide().slideDown(1000);
 	$('.avatar').hide().slideDown(1300);
+	
 });
 </script>
 </body>
