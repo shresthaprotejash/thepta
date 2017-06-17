@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/faces/face-2.jpg">
+	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/faces/face-2.jpg">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>THEPTA Dashboard</title>
@@ -12,6 +12,8 @@
 
 
     <!-- Bootstrap core CSS     -->
+    <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
@@ -51,14 +53,14 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard">
+                    <a href="/THEPTA/dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
                 <li>
-                    <a href="userprofile">
+                    <a href="/THEPTA/userprofile">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
@@ -78,7 +80,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="/THEPTA/dashboard">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -104,7 +106,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#">
-                                <p>Log out</p>
+                                <p><span class="glyphicon glyphicon-off"></span>Log out</p>
                             </a>
                         </li>
 
@@ -119,7 +121,7 @@
             <div class="container-fluid">
                 <div class="row" align="center">
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='dashboard/uploadattendance';">                        
                             <div class="card-content">
                             <img src="${pageContext.request.contextPath}/resources/img/attendance.png">
                             Upload Attendance
@@ -128,7 +130,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             Upload marks
@@ -137,7 +139,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/chat.png">
                             Chat with Parents
@@ -146,7 +148,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/homework.png">
                             Upload Test/Homework
@@ -159,7 +161,7 @@
 
                 <div class="row" align="center">
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='dashboard/viewattendance';">                        
                             <div class="card-content">
                             <img src="${pageContext.request.contextPath}/resources/img/attendance.png">
                             View Attendance
@@ -168,7 +170,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             View marks
@@ -177,7 +179,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/chat.png">
                             Chat with Teachers
@@ -186,13 +188,14 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card">                        
+                        <div class="card" onclick="location.href='#';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/homework.png">
                             View Test/Homework
                             </div>
                         </div>
                     </div>
+
 
 
 
