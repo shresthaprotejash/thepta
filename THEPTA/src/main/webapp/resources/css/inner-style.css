@@ -1,0 +1,56 @@
+.sub-nav{
+	background-color: #f1f1f1;
+	padding:1px;
+	padding-left:10px;
+
+}
+
+.sub-nav span{
+
+	height:20px;
+	width:15px;
+	display: inline-block;
+	padding-right:25px;
+}
+
+.sub-nav a{
+	color:#000;
+}
+select{
+	height:28px;
+	width:40%;
+}
+#small{
+	width:50%;
+}
+
+table {
+   
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table tr {
+    background-color: #eee;
+    padding:5px;
+}
+
+table th {
+    background-color: grey;
+    color: white;
+}
+
+.panel-body {
+	padding:10px;
+}
+.container {
+	margin-left:15px;
+}
+.row {
+	margin-left:200px;
+}

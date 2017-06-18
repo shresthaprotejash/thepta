@@ -36,4 +36,18 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("user");
 		return mv;
 	}
+	
+	@RequestMapping("/feedback")
+	public ModelAndView feedback() {
+ 
+		ModelAndView mv = new ModelAndView("feedback");
+		return mv;
+	}
+	
+	@RequestMapping("/viewfeedback")
+	public ModelAndView view() {
+ 
+		ModelAndView mv = new ModelAndView("viewfeedback");
+		return mv;
+	}
 }
