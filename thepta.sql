@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 -- Database: `thepta`
 --
 
-DROP DATABASE `thepta`;
+DROP DATABASE if exists `thepta`;
 CREATE DATABASE IF NOT EXISTS `thepta` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `thepta`;
 

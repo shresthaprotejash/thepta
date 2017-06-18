@@ -285,7 +285,7 @@ body > .navbar-collapse {
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      margin-left: 45px; }
+      margin-left: 1px; }
     .sidebar .nav i,
     body > .navbar-collapse .nav i {
       font-size: 28px;
@@ -2932,6 +2932,9 @@ body > .navbar-collapse {
 	  width:140px;
 	  margin-right:30px;
     }
+    .content, input{
+    	font-size:95%;
+    }
 }
 @media screen and (max-width: 512px) {
 	.dimage{
@@ -2953,5 +2956,8 @@ body > .navbar-collapse {
 	  width:180px;
 	  margin-left:15px;
 	 
+    }
+    .content, input{
+    	font-size:90%;
     }
 }
