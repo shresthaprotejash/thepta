@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card" onclick="location.href='#';">                        
+                        <div class="card" onclick="location.href='dashboard/uploadmarks';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             Upload marks
@@ -170,7 +170,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card" onclick="location.href='#';">                        
+                        <div class="card" onclick="location.href='dashboard/viewmarks';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             View marks
