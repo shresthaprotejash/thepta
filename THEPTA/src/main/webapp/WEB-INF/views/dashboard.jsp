@@ -195,7 +195,16 @@
                             </div>
                         </div>
                     </div>
-
+					
+					<div class="col-sm-3">
+                        <div class="card" onclick="location.href='#';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/feedback.png">
+                            Feedback
+                            </div>
+                        </div>
+                    </div>
+					
 
 
 
