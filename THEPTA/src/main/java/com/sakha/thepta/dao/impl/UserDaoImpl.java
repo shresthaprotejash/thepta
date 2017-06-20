@@ -27,4 +27,21 @@ public class UserDaoImpl implements UserDao{
         return (UserModel) criteria.uniqueResult();
 	}
 
+	@Override
+	public UserModel validateUser(String mailIdOrPhoneNo, String password) {
+		
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserModel.class);
+		if(mailIdOrPhoneNo.indexOf('@') > 0){
+	        criteria.add(Restrictions.eq("mailId", mailIdOrPhoneNo));
+		}else{
+	        criteria.add(Restrictions.eq("phoneNo", Integer.parseInt(mailIdOrPhoneNo)));
+		}
+		criteria.add(Restrictions.eq("password", password));
+		if(criteria.list().size() > 0){
+			return (UserModel) criteria.uniqueResult();
+		}else{
+			return new UserModel();
+		}
+	}
+
 }
