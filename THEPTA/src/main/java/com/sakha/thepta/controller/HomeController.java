@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,31 +20,29 @@ public class HomeController {
 	private UserService userService;
 
 	@RequestMapping("/login")
-	public ModelAndView showMessage() {
+	public ModelAndView showMessage(ModelMap map) {
  
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
 
 	@RequestMapping(value = "/validatelogin", method = RequestMethod.POST)
-	public ModelAndView validateLoginCredential(HttpServletRequest request, HttpServletResponse response) {
+	public String validateLoginCredential(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
  
-		ModelAndView loginView = new ModelAndView("login");
-		ModelAndView dashboardView = new ModelAndView("dashboard");
 		String mailIdOrPhoneNo = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserModel currentUser = userService.validateUser(mailIdOrPhoneNo, password);
 		if(currentUser != null && currentUser.getUserId() > 0){
-			dashboardView.addObject("userName", currentUser.getlName());
-			return dashboardView;
+			model.addAttribute("userName", currentUser.getlName());
+			return "forward:/dashboard";
 		}else{	//invalid username or password
-			dashboardView.addObject("message", "invalid username or password");
-			return loginView;
+			model.addAttribute("message", "invalid username or password");
+			return "forward:/login";
 		}
 	}
 		
 	@RequestMapping("/dashboard")
-	public ModelAndView fetchdashboard() {
+	public ModelAndView fetchdashboard(ModelMap map) {
  
 		ModelAndView mv = new ModelAndView("dashboard");
 		return mv;
