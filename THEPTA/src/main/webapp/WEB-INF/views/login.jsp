@@ -20,22 +20,26 @@
 </script>
 <body>
 <div class="container">
-<div class="wrap">
-		<div class="avatar">
-      <img src="${pageContext.request.contextPath}/resources/img/avatar.png">
-		</div>
-		<input type="text" placeholder="username" id="username" required>
-		<div class="bar">
-			<i></i>
-		</div>
-		<input type="password" placeholder="password" id="password" required>
-	</div>	
-	  <div class="form-group text-center">
-			<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-			<label for="remember"> Remember Me</label>
+	<form method="post" action="${pageContext.request.contextPath}/validatelogin" >
+		<div class="wrap">
+	
+			<div class="avatar">
+	      <img src="${pageContext.request.contextPath}/resources/img/avatar.png">
+			</div>
+			<input type="text" placeholder="username" name = "username" id="username" required>
+			<div class="bar">
+				<i></i>
+			</div>
+			<input type="password" placeholder="password" id="password" name = "password" required>
+		</div>	
+		<div class="form-group text-center">
+				<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+				<label for="remember"> Remember Me</label>
 		</div>	
 		<button onclick="submit();"><b>Sign in</b></button>
-	</div>
+	</form>	
+	<span style="color: red;">${message}</span>
+</div>
     
 <script>
 $(function() {

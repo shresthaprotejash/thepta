@@ -1,5 +1,7 @@
 package com.sakha.thepta.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +32,9 @@ public class UserModel {
 	@Column(name="phoneNo")
 	private String phoneNo;
 	@Column(name="createdTs")
-	private String createdTs;
+	private Timestamp createdTs;
+	@Column(name="password")
+	private String password;
 	
 	public int getUserId() {
 		return userId;
@@ -74,11 +78,18 @@ public class UserModel {
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	public String getCreatedTs() {
+	public Timestamp getCreatedTs() {
 		return createdTs;
 	}
-	public void setCreatedTs(String createdTs) {
+	public void setCreatedTs(Timestamp createdTs) {
 		this.createdTs = createdTs;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
+		
 }

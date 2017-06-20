@@ -5,4 +5,6 @@ import com.sakha.thepta.model.UserModel;
 public interface UserDao {
 
 	public UserModel getUserByMailIdOrPhoneNo(String mailIdOrPhoneNo);
+	
+	public UserModel validateUser(String mailIdOrPhoneNo, String password);
 }

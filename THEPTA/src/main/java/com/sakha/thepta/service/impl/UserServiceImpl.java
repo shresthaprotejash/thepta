@@ -20,4 +20,18 @@ public class UserServiceImpl implements UserService{
 		return userDao.getUserByMailIdOrPhoneNo(mailIdOrPhoneNo);
 	}
 
+	@Override
+	@Transactional
+	public UserModel validateUser(String mailIdOrPhoneNo, String password) {
+		
+		if(mailIdOrPhoneNo != null && mailIdOrPhoneNo.length() > 0 && 
+				password != null && password.length() > 0){
+			
+			UserModel currentUser = userDao.validateUser(mailIdOrPhoneNo, password);
+			return currentUser;
+		}else{	//invalid input
+			return new UserModel();
+		}
+	}
+
 }

@@ -39,7 +39,7 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
+                            <h4 class="title">${userName}<br />
                                  <small>shrestha123</small>
                             </h4>
                         </a>
