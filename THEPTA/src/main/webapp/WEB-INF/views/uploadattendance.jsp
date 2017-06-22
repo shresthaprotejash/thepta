@@ -99,7 +99,7 @@
                 </li>
                 
                 <li>
-                    <a href="/THEPTA/dashboard/">
+                    <a href="/THEPTA/dashboard/viewhwandtest">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>View Test/Homework</p>
                     </a>
                 </li>

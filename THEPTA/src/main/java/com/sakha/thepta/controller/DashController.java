@@ -39,5 +39,16 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("viewmarks");
 		return mv;
 	}
-
+	@RequestMapping("/viewhomework")
+	public ModelAndView fetchviewhomework() {
+ 
+		ModelAndView mv = new ModelAndView("viewhomework");
+		return mv;
+	}
+	@RequestMapping("/viewhwandtest")
+	public ModelAndView fetchviewhwandtest() {
+ 
+		ModelAndView mv = new ModelAndView("viewhwandtest");
+		return mv;
+	}
 }

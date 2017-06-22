@@ -35,7 +35,7 @@ public class HomeController {
 		String password = request.getParameter("password");
 		UserModel currentUser = userService.validateUser(mailIdOrPhoneNo, password);
 		if(currentUser != null && currentUser.getUserId() > 0){
-			dashboardView.addObject("userName", currentUser.getlName());
+			dashboardView.addObject("userName", currentUser.getfName());
 			return dashboardView;
 		}else{	//invalid username or password
 			dashboardView.addObject("message", "invalid username or password");
@@ -56,4 +56,5 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("user");
 		return mv;
 	}
+	
 }
