@@ -115,11 +115,9 @@
         </nav>    
       
         <div class="sub-nav">
-        	 <a href="#">
-          		<span class="glyphicon glyphicon-chevron-left"></span> 
-          		<h5>Feedback</h5>
-       		 </a>
-        </div>
+        	 <a href='dashboard'>
+          		<h5><span class="glyphicon glyphicon-chevron-left"></span></a>Feedback</h5>
+       	</div>
         <br>
         <br>
         <div class="content">
@@ -132,7 +130,7 @@
                            		<label>Subject</label>                                                
                         	</div>
                     	</div>
-                    	<div class="col-md-9">  
+                    	<div class="col-md-7">  
       						<select name="subject" id="small" >
       					 		<option value="none" selected>none</option>
        							<option>subject1</option>
@@ -157,7 +155,7 @@
                  	
        				<div class="form-group">
       					<label for="feedback">Feedback</label>
-     					<textarea class="form-control" rows="5" id="feedback"></textarea>
+     					<textarea class="form-control" rows="6" id="feedback"></textarea>
      					<br>
      					<br>
      					<a href="#" class="btn btn-info pull-right " value="Submit">Submit</a>
@@ -174,9 +172,7 @@
                <nav class="pull-left">
                    <ul>
                        <li>
-                           <a href="#">
-                               Home
-                           </a>
+                           <a href="#">Home</a>
                        </li>
                     </ul>
                </nav>
