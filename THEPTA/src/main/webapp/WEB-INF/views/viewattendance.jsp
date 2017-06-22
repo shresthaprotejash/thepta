@@ -39,8 +39,8 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
-                                 <small>shrestha123</small>
+                            <h4 class="title">${fName} ${lName}<br />
+                                 <small>${userMailId}</small>
                             </h4>
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                 </li>
                 
                 <li>
-                    <a href="/THEPTA/dashboard/">
+                    <a href="/THEPTA/dashboard/uploadmarks">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
                     </a>
                 </li>
@@ -86,7 +86,7 @@
                 </li>
                 
                 <li>
-                    <a href="/THEPTA/dashboard/">
+                    <a href="/THEPTA/dashboard/viewmarks">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>View Marks</p>
                     </a>
                 </li>
@@ -171,7 +171,7 @@
                                         
                                         <div class="col-md-7">
                                                                    
-                                                <input type="text" class="form-control" disabled placeholder="Name" value="Sakhatech Information Ltd.">
+                                                <input type="text" class="form-control" disabled placeholder="Name" value='${fName} ${lName}'>
                                             
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@
                             <TABLE BORDER="3" align="center">
    
                               <TH width="50">S.N.</TH>
-                              <TH width="300">Name</TH>
+                              <TH width="300">Subject Name</TH>
                               <TH width="80">Present</TH>
                               <TH width="80">Absent</TH>
                               <TH width="80">Total</TH>
@@ -221,7 +221,7 @@
                                   <TD>32</TD>
                                   <TD>421</TD>
                                   <TD>61</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <td>45</td>
                                   
                                </TR>
                                <TR>

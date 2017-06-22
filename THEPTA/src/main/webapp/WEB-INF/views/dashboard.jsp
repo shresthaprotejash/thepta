@@ -39,8 +39,8 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
-                                 <small>shrestha123</small>
+                            <h4 class="title">${fName}  ${lName}<br />
+                                 <small>${userMailId}</small>
                             </h4>
                         </a>
                     </div>
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card" onclick="location.href='#';">                        
+                        <div class="card" onclick="location.href='dashboard/uploadmarks';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             Upload marks
@@ -170,7 +170,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card" onclick="location.href='#';">                        
+                        <div class="card" onclick="location.href='dashboard/viewmarks';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/performance.png">
                             View marks
@@ -195,7 +195,16 @@
                             </div>
                         </div>
                     </div>
-
+					
+					<div class="col-sm-3">
+                        <div class="card" onclick="location.href='#';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/feedback.png">
+                            Feedback
+                            </div>
+                        </div>
+                    </div>
+					
 
 
 

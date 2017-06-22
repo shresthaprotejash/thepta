@@ -53,14 +53,14 @@
 
             <ul class="nav">
                                 
-                 <li class="active">                	
+                 <li>                	
                     <a href="/THEPTA/dashboard/uploadattendance">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
                     </a>
                     
                 </li>
                 
-                <li>
+                <li class="active">
                     <a href="/THEPTA/dashboard/uploadmarks">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
                     </a>
@@ -156,9 +156,9 @@
 
         <div class="sub-nav">      
             <a href="../dashboard">
-                <h5><span class="glyphicon glyphicon-chevron-left"></span></a>Upload Attendance</h5>              
+                <h5><span class="glyphicon glyphicon-chevron-left"></span></a>Upload Marks</h5>              
         </div>
-
+        
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -179,7 +179,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+
+                                      <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Class </label>                                                
@@ -222,30 +223,36 @@
                                         <div class="col-md-7">                                          
                                             <select name="Subject">
                                                     <option value="Subject1" selected>none</option>
-                                                    <option value="Subject1">Subject1</option>
-                                                    <option value="Subject2">Subject2</option>
-                                                    <option value="Subject3">Subject3</option>
-                                                    <option value="Subject4">Subject4</option>
+                                                    <option value="Subject1">Maths</option>
+                                                    <option value="Subject2">Science</option>
+                                                    <option value="Subject3">Hindi</option>
+                                                    <option value="Subject4">English</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Marks for </label>                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">                                          
+                                            <select name="Section" id="small">
+                                                    <option value="none" selected>none</option>
+                                                    <option value="Section1">1st Term</option>
+                                                    <option value="Section2">2nd Term</option>
+                                                    <option value="Section3">3rd Term</option>
+                                                    <option value="Section4">Final</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Date </label>                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">                                          
-                                            <input type="date" name="bday" min="2017-01-02">
-                                        </div>
-                                    </div>
-                                        
 
                                      
                                 </form>
                             </div>
-                            <div class="showme btn btn-info pull-right ">Get</div>
+                           
+       <div class="showme btn btn-info pull-right ">Get</div>
                             <br>
                             <br>
                             <div id="after-click">
@@ -254,81 +261,52 @@
    
                               <TH width="50">S.N.</TH>
                               <TH width="300">Name</TH>
-                              <TH width="80">Present</TH>
-                              <TH width="80">Absent</TH>
-                              <TH width="80">Total</TH>
-                              <TH width="80">Percent</TH>
-                              <TH width="80">Mark</TH>
+                              <TH width="150">Mark</TH>
                                <TR>
                                   <TD>1</TD>
                                   <TD>Tejash Shrestha</TD>
-                                  <TD>121</TD>
-                                  <TD>21</TD>
-                                  <TD>142</TD>
-                                  <TD>75</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" style="margin-left:auto; margin-right:auto;" ></td>
+                                  <td style="text-align:center;"><input type="number" name="name1" min="0" max="100"></td>
                                </TR>
                                <TR>
                                   
                                   <TD>2</TD>                                  
                                   <TD>Supreetha Achar K</TD>
-                                   <TD>221</TD>
-                                  <TD>32</TD>
-                                  <TD>421</TD>
-                                  <TD>61</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <td style="text-align:center;"><input type="number" name="name1" min="0" max="100" />&nbsp;</td>
                                   
                                </TR>
                                <TR>
                                   <TD>3</TD>
                                   <TD>Medha Mishra</TD>                                  
-                                  <TD>221</TD>
-                                  <TD>32</TD>
-                                  <TD>421</TD>                                  
-                                  <TD>61</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <td style="text-align:center;"><input type="number" name="name1"  min="0" max="100"/>&nbsp;</td>
                                </TR>
                                <TR>
                                   <TD>4</TD>
-                                  <TD>Prerana Rani</TD>                                 
-                                  <TD>21</TD>
-                                  <TD>52</TD>
-                                  <TD>21</TD>                                  
-                                  <TD>13</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <TD>Prerana Rani</TD>                                
+                                  <td style="text-align:center;"><input type="number" name="name1" min="0" max="100" />&nbsp;</td>
                                </TR>
                                 <TR>
                                   <TD>5</TD>
                                   <TD>Preeti Kumari</TD>                                  
-                                  <TD>21</TD>
-                                  <TD>52</TD>
-                                  <TD>21</TD>                                  
-                                  <TD>13</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <td style="text-align:center;"><input type="number" name="name1" min="0" max="100" />&nbsp;</td>
                                </TR>
                                 <TR>
                                   <TD>6</TD>
-                                  <TD>Suruchi Rai</TD>
-                                  <TD>21</TD>
-                                  <TD>52</TD>
-                                  <TD>21</TD>                                  
-                                  <TD>13</TD>
-                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
+                                  <TD>Suruchi Kumari</TD>
+                                  <td style="text-align:center;"><input type="number" name="name1" min="0" max="100" />&nbsp;</td>
                                </TR>
 
                             </TABLE>
 
                             <br><br>
-                            <div class="btn btn-info pull-right">Submit</div>
-                            <br><br>
+                              <div class="btn btn-info pull-right">Submit</div>
+                                <br><br>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
+        
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">

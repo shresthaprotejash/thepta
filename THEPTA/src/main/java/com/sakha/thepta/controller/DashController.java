@@ -25,5 +25,19 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("viewattendance");
 		return mv;
 	}
+	
+	@RequestMapping("/uploadmarks")
+	public ModelAndView uploadMarks() {
+ 
+		ModelAndView mv = new ModelAndView("uploadmarks");
+		return mv;
+	}
+	
+	@RequestMapping("/viewmarks")
+	public ModelAndView fetchMarks() {
+ 
+		ModelAndView mv = new ModelAndView("viewmarks");
+		return mv;
+	}
 
 }

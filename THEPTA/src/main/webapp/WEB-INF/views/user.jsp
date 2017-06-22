@@ -39,8 +39,8 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
-                                 <small>shrestha123</small>
+                            <h4 class="title">${fName} ${lName}<br />
+                                 <small>${userMailId}</small>
                             </h4>
                         </a>
                     </div>
@@ -135,13 +135,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="shrestha123">
+                                                <input type="text" class="form-control" placeholder="Username" value=${userMailId}>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <input type="email" class="form-control" placeholder=${userMailId}>
                                             </div>
                                         </div>
                                     </div>
@@ -150,13 +150,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Tejash">
+                                                <input type="text" class="form-control" placeholder="Company" value=${fName}>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Shrestha">
+                                                <input type="text" class="form-control" placeholder="Last Name" value=${lName}>
                                             </div>
                                         </div>
                                     </div>

@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `age` int(4) DEFAULT NULL,
   `phoneNo` varchar(14) NOT NULL,
   `createdTs` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `password` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -46,8 +47,43 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`) VALUES
-(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', '2017-06-12 04:24:32');
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES
+(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', '2017-06-12 04:24:32', 'welcome');
+
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES
+(2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', '2017-06-20 12:24:32', 'shrestha');
+
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES 
+('3', 'Supreetha', 'Achar', 'supreethaachar09@gmail.com', 'F', '20', '9740712402', CURRENT_TIMESTAMP, 'supreetha');
+
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES 
+('4', 'Suruchi', 'kumari', 'suruchirai.022@gmail.com', 'F', '21', '8951218781', CURRENT_TIMESTAMP, 'suruchi');
+
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES 
+('5', 'Prerana', 'Rani', 'prerana.rani1996@gmail.com', 'M', '32', '7353175506', CURRENT_TIMESTAMP, 'prerana');
+
+--
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `userId` int(11) NOT NULL,
+  `class` varchar(10) DEFAULT NULL,
+  `section` varchar(10) DEFAULT NULL,
+  `subject` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`userId`),
+  CONSTRAINT `FOREIGN KEY` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`userId`, `class`, `section`, `subject`) VALUES ('1', '10', 'A', 'Java programming');
+
+INSERT INTO `teachers` (`userId`, `class`, `section`, `subject`) VALUES ('2', '10', 'A', 'Python');
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
