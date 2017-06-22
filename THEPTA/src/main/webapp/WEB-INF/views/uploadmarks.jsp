@@ -39,8 +39,8 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
-                                 <small>shrestha123</small>
+                            <h4 class="title">${fName} ${lName}<br />
+                                 <small>${userMailId}</small>
                             </h4>
                         </a>
                     </div>
@@ -174,7 +174,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">                        
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Sakhatech Information Ltd.">
+                                                <input type="text" class="form-control" disabled placeholder="Company" value='${fName} ${lName}'>
                                             </div>
                                         </div>
                                     </div>

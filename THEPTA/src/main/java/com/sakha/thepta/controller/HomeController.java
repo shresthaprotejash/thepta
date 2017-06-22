@@ -2,6 +2,7 @@ package com.sakha.thepta.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -24,6 +25,8 @@ public class HomeController {
  
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
+		
+		
 	}
 
 	@RequestMapping(value = "/validatelogin", method = RequestMethod.POST)
@@ -34,11 +37,14 @@ public class HomeController {
 		String mailIdOrPhoneNo = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserModel currentUser = userService.validateUser(mailIdOrPhoneNo, password);
-		if(currentUser != null && currentUser.getUserId() > 0){
-			dashboardView.addObject("userName", currentUser.getlName());
+		if(currentUser != null && currentUser.getUserId() > 0){			
+			HttpSession session = request.getSession();
+			session.setAttribute("fName", currentUser.getfName());
+			session.setAttribute("lName", currentUser.getlName());
+			session.setAttribute("userMailId", currentUser.getMailId());			
 			return dashboardView;
 		}else{	//invalid username or password
-			dashboardView.addObject("message", "invalid username or password");
+			loginView.addObject("message", "Invalid Username or Password");
 			return loginView;
 		}
 	}
