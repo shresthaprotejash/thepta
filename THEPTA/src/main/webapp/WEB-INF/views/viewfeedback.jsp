@@ -130,7 +130,7 @@
      					 			<p>Lorem ipsum dolor sit amet, consectetur <br>adipisicing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
    								</div>
    							
-    							<div id="Subject2" class="tab-pane fade w3-panel w3-green w3-round-xlarg">
+    							<div id="Subject2" class="tab-pane fade in w3-panel w3-green w3-round-xlarg">
      								<h3>Subject2</h3>
       								<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     							</div>

@@ -228,7 +228,7 @@
 								<div class="card-content">
 									<img
 										src="${pageContext.request.contextPath}/resources/img/feedback.png">
-									Feedback
+									View Feedback
 								</div>
 							</div>
 						</div>
