@@ -39,8 +39,8 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">Tejash Shrestha<br />
-                                 <small>shrestha123</small>
+                            <h4 class="title">${fName} ${lName}<br />
+                                 <small>${userMailId}</small>
                             </h4>
                         </a>
                     </div>
@@ -98,7 +98,7 @@
                 </li>
                 
                 <li>
-                    <a href="/THEPTA/dashboard/">
+                    <a href="/THEPTA/dashboard/viewhwandtest">
                         <p><span class="glyphicon glyphicon-chevron-right"></span>View Test/Homework</p>
                     </a>
                 </li>
@@ -171,7 +171,7 @@
                                         
                                         <div class="col-md-7">
                                                                    
-                                                <input type="text" class="form-control" disabled placeholder="Name" value="Sakhatech Information Ltd.">
+                                                <input type="text" class="form-control" disabled placeholder="Name" value='${fName} ${lName}'>
                                             
                                         </div>
                                     </div>

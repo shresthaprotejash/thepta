@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/faces/face-2.jpg">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/faces/face-2.jpg">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>THEPTA Dashboard</title>
+	<title>THEPTA Dashboard</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
     <link href="${pageContext.request.contextPath}/resources/css/animate.min.css" rel="stylesheet"/>
@@ -26,7 +26,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+    <link href="${pageContext.request.contextPath}/resources/css/w3.css" rel="stylesheet" />
+        
 </head>
 <body>
 
@@ -52,23 +53,26 @@
             </div>
 
             <ul class="nav">
+              
                 <li>
-                    <a href="/THEPTA/dashboard">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                    <a href="/THEPTA/dashboard/viewhomework">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Homework</p>
                     </a>
-                </li>
-
+                </li>                  
+                                	
+                    
+                
                 <li class="active">
-                    <a href="/THEPTA/userprofile">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                    <a href="/THEPTA/dashboard/viewtest">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Test</p>
                     </a>
                 </li>
 
             </ul>
     	</div>
     </div>
+
+
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -115,99 +119,108 @@
             </div>
         </nav>
 
+        <div class="sub-nav">      
+            <a href="/THEPTA/dashboard/viewhwandtest">
+                <h5><span class="glyphicon glyphicon-chevron-left"></span></a>View Test</h5>              
+        </div>
+
+     
+
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10 col-sm-offset-1">
+                    <div class="col-md-10  col-md-offset-1">
                         <div class="u-card">
-                            <div class="header">
-                                <h4 class="title">Edit Profile</h4>
-                            </div>
                             <div class="content">
                                 <form>
+								<p id="demo"></p>
+									<script>
+										var d = new Date();
+                                        document.getElementById("demo").innerHTML = d.toDateString(); 
+									</script>
+									<br>
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>School (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Sakhatech Information Ltd.">
-                                            </div>
-                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value=${userMailId}>
+                                                <label>Exam Type </label>                                                
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder=${userMailId}>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value=${fName}>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value=${lName}>
+                                        <div class="col-md-7">                                          
+                                            <div class="dropdown">
+                                               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" >Select<span class="caret"></span></button>
+                                                   <ul class="dropdown-menu">
+                                                       <li class="active"><a href="/THEPTA/dashboard/term">Term I</a></li>
+                                                       <li><a href="/THEPTA/dashboard/term">Term II</a></li>
+                                                       <li><a href="/THEPTA/dashboard/term">Periodic Assessment</a></li>
+													   <li><a href="/THEPTA/dashboard/classtest">Class Test/Mock Test</a>
+													   <li><a href="/THEPTA/dashboard/assignments">Assignments</a>
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Banshankari, 2nd stage">
-                                            </div>
-                                        </div>
-                                    </div>
+                               
+                            <hr>
+							<div class="w3-card-4">
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Bangalore">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="India">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
+                               <header class="w3-container w3-light-grey">
+                               <h3>EXAMINATION PATTERN OF MID TERM</h3>
+                               </header>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Tejash">Discover new things on demand.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="w3-container">
+                            <p>TERM I examination Total marks : 80</p>
+							<p>TERM I examination DATE : AUG</p>
+							<hr>
+							<p>Periodic Assement I total marks : 20</p>
+							<p>Periodic  Assement I DATE : JUNE,OCTOBER</p>
+							<hr>
+							<p>Class test/Mock Test total marks: 5</p>
+							<p>Class test/Mock Test DATE: every FRIDAY</p>
+							<hr>
+							<p>Assignments marks : 5</p>
+							<p>Assignments DATE : provide by teachers</p>
+							</div>
+							</div>
+							<br>
+							<hr>
+							<div class="w3-card-4">
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
-                                    <div class="clearfix"></div>
-                                </form>
+                               <header class="w3-container w3-light-grey">
+                               <h3>EXAMINATION PATTERN OF FINAL EXAM</h3>
+                               </header>
+
+                            <div class="w3-container">
+                            <p>TERM II examination Total marks : 80</p>
+							<p>TERM II examination DATE : MARCH</p>
+							<hr>
+							<p>Periodic Assement II total marks : 20</p>
+							<p>Periodic  Assement II DATE : DECEMBER,FEBRUARY</p>
+							<hr>
+							<p>Class test/Mock Test total marks: 5</p>
+							<p>Class test/Mock Test DATE: every FRIDAY</p>
+							<hr>
+							<p>Assignments marks : 5</p>
+							<p>Assignments DATE : provide by teachers</p>
+							</div>
+							
+                              
+                            </div>
+							<hr>
+							<div class="w3-card">
+							<br>
+                            <p>TERM I, TERM II average marks will be considered as final marks out of 80.</p>
+							<p>Periodic Assesments I,Periodic Assements II average marks will be considereed as final marks out of 10</p>
+							<p>Class tests/Mock Tests and Assignments average marks will be considered as final marks out of 10</p>
+							<br>
+                            </div>
+                            
+                            <br><br>
+                            
+                            <br><br>
                             </div>
                         </div>
                     </div>
-                   
-
                 </div>
             </div>
         </div>
@@ -222,10 +235,11 @@
                                 Home
                             </a>
                         </li>
-                       
+
+
                     </ul>
                 </nav>
-                 <p class="copyright pull-right">
+                <p class="copyright pull-right">
                     &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">TShrestha</a>
                 </p>
             </div>
@@ -254,6 +268,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>    
+  
+ 
 
 </html>

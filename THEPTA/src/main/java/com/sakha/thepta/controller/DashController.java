@@ -51,4 +51,53 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("viewhwandtest");
 		return mv;
 	}
+	@RequestMapping("/viewtest")
+	public ModelAndView fetchviewtest() {
+ 
+		ModelAndView mv = new ModelAndView("viewtest");
+		return mv;
+	}
+	@RequestMapping("/menu")
+	public ModelAndView fetchmenu() {
+ 
+		ModelAndView mv = new ModelAndView("menu");
+		return mv;
+	}
+	@RequestMapping("/english")
+	public ModelAndView fetchenglish() {
+ 
+		ModelAndView mv = new ModelAndView("english");
+		return mv;
+	}
+	@RequestMapping("/math")
+	public ModelAndView fetchmath() {
+ 
+		ModelAndView mv = new ModelAndView("math");
+		return mv;
+	}
+	@RequestMapping("/computer")
+	public ModelAndView fetchcomputer() {
+ 
+		ModelAndView mv = new ModelAndView("computer");
+		return mv;
+	}
+	@RequestMapping("/term")
+	public ModelAndView fetchterm() {
+ 
+		ModelAndView mv = new ModelAndView("term");
+		return mv;
+	}
+	@RequestMapping("/classtest")
+	public ModelAndView fetchclasstest() {
+ 
+		ModelAndView mv = new ModelAndView("classtest");
+		return mv;
+	}
+	@RequestMapping("/assignments")
+	public ModelAndView fetchassignments() {
+ 
+		ModelAndView mv = new ModelAndView("assignments");
+		return mv;
+	}
+	
 }

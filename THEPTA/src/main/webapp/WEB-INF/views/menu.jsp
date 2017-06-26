@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/faces/face-2.jpg">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/faces/face-2.jpg">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>THEPTA Dashboard</title>
+	<title>THEPTA Dashboard</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
     <link href="${pageContext.request.contextPath}/resources/css/animate.min.css" rel="stylesheet"/>
@@ -26,10 +26,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+        
 </head>
-<body>
-
 <div class="wrapper">
     <div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
 
@@ -52,23 +50,25 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="/THEPTA/dashboard">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                                
+                 <li class="active">
+                    <a href="/THEPTA/dashboard/viewhomework">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Homework</p>
                     </a>
-                </li>
-
-                <li class="active">
-                    <a href="/THEPTA/userprofile">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                </li>                  
+                                	
+                    
+                
+                <li>
+                    <a href="/THEPTA/dashboard/viewtest">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Test</p>
                     </a>
                 </li>
 
             </ul>
     	</div>
     </div>
+
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -80,7 +80,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/THEPTA/dashboard">Dashboard</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/THEPTA/dashboard">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -115,105 +115,106 @@
             </div>
         </nav>
 
+        <div class="sub-nav">      
+            <a href="/THEPTA/dashboard/viewhwandtest">
+                <h5><span class="glyphicon glyphicon-chevron-left"></span></a>view homework</h5>              
+        </div>
+
+     
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10 col-sm-offset-1">
+                    <div class="col-md-10  col-md-offset-1">
                         <div class="u-card">
-                            <div class="header">
-                                <h4 class="title">Edit Profile</h4>
-                            </div>
                             <div class="content">
-                                <form>
+                               
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>School (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Sakhatech Information Ltd.">
-                                            </div>
-                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value=${userMailId}>
+                                                <label>Date </label>                                                
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder=${userMailId}>
-                                            </div>
+                                        <div class="col-md-7">                                          
+                                            <input type="date" name="bday" min="2017-01-02">
                                         </div>
                                     </div>
+                                        
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value=${fName}>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value=${lName}>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Banshankari, 2nd stage">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Bangalore">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="India">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Tejash">Discover new things on demand.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
-                                    <div class="clearfix"></div>
+                                     
                                 </form>
+                            </div>
+                            <div class="showme btn btn-info pull-right ">Get</div>
+                            <br>
+                            <br>
+                            
+                            <hr>
+                            <TABLE   BORDER="3" align="center" class="table">
+   
+                              <TH width="100">subject</TH>                             
+                              <TH width="300">Homework</TH>
+							  <TH width="200">textbook's name</TH>
+							  <TH width="100">Description</TH>
+							  
+							  
+                              
+                               <TR>
+                                  <TD>English</TD>
+                                  <TD>complete page no 231,exercise 4.5</TD>
+								  <TD>communication english</TD>
+								  <TD>
+								  <div class="btn-group">
+                                  <a href="/THEPTA/dashboard/english" class="btn btn-primary">Get</a>
+							  </div>
+                                 </TD>
+						 
+								
+							</TR>
+							
+                                  
+                               </TR>
+                               <TR>
+                                  <TD>Mathematics</TD>
+                                  <TD>complete page no 112,exercise 2.5</TD>
+								  <TD>Math is fun</TD>
+								   <TD>
+								  <div class="btn-group">
+                              <a href="/THEPTA/dashboard/math" class="btn btn-primary">Get</a>
+							  </div>
+                                 </TD>
+                                  </TR>                               
+                                   
+                                   
+                                  
+                               
+                               <TR>
+                                  
+                                  <TD>Computer Science</TD>
+                                  <TD>Revise out page no. 212 and 213</TD>
+								  <TD>My computer</TD>
+								   <TD>
+								  <div class="btn-group">
+                              <a href="/THEPTA/dashboard/computer" class="btn btn-primary">Get</a>
+							  </div>
+                                 </TD>
+                                  
+                               </TR>
+                              
+
+                            </TABLE>
+
+                            <br><br>
+                            
+                            <br><br>
                             </div>
                         </div>
                     </div>
-                   
-
                 </div>
             </div>
         </div>
 
 
-        <footer class="footer">
+         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -222,10 +223,11 @@
                                 Home
                             </a>
                         </li>
-                       
+
+
                     </ul>
                 </nav>
-                 <p class="copyright pull-right">
+                <p class="copyright pull-right">
                     &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">TShrestha</a>
                 </p>
             </div>
@@ -254,6 +256,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>    
+  
+ 
 
 </html>

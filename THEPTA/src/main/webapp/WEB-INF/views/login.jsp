@@ -38,15 +38,19 @@
 		</div>	
 		<button onclick="submit();"><b>Sign in</b></button>
 	</form>	
-	<span style="color: red;">${message}</span>
+	<h4 style="color: red;" align="center">${message}</h4>
 </div>
     
 <script>
-$(function() {
-	$('.container').hide().slideDown(1000);
-	$('.avatar').hide().slideDown(1300);
-	
+$(function() {	
+	var value = "${message}";  
+    if (!value) {
+            $('.container').hide().slideDown(1000);
+        	$('.avatar').hide().slideDown(1300);
+        }
 });
+
+	
 </script>
 </body>
 </html>
