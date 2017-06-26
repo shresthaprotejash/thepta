@@ -24,8 +24,6 @@
 	href="${pageContext.request.contextPath}/resources/css/inner-style.css"
 	rel="stylesheet" />
 	
-<link href="${pageContext.request.contextPath}/resources/css/homework.css" rel="stylesheet" />
-
 <!-- Animation library for notifications   -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/animate.min.css"
@@ -174,7 +172,7 @@
 				<div class="container-fluid">
 					<div class="row" align="center">
 						<div class="col-sm-3">
-							<div class="card" id="homeworkdiv">
+							<div class="card" onclick="location.href='${pageContext.request.contextPath}/dashboard/viewhomework';" >
 								<div class="card-content">
 									<img src="${pageContext.request.contextPath}/resources/img/homework.png">
 									    View Homework
@@ -184,7 +182,7 @@
 
 
 						<div class="col-sm-3">
-							<div class="card" id="test" onclick="location.href='${pageContext.request.contextPath}/dashboard/viewtest';">
+							<div class="card" onclick="location.href='${pageContext.request.contextPath}/dashboard/viewtest';">
 								<div class="card-content">
 									<img src="${pageContext.request.contextPath}/resources/img/exam3.png">
 									    View Test
@@ -251,9 +249,7 @@
                 timer: 1000
             });
 
-            $("#homeworkdiv").click(function(){
-            	window.location.assign("${pageContext.request.contextPath}/dashboard/viewhomework");
-            });
+           
             
         });
     </script>
