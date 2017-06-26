@@ -104,8 +104,8 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
-                                <p>Log out</p>
+                            <a href="/THEPTA/login">
+                                <p><span class="glyphicon glyphicon-off"></span>Log out</p>
                             </a>
                         </li>
 
@@ -115,7 +115,7 @@
         </nav>    
       
         <div class="sub-nav">
-        	 <a href='dashboard'>
+        	 <a href="/THEPTA/dashboard">
           		<h5><span class="glyphicon glyphicon-chevron-left"></span></a>Feedback</h5>
        	</div>
         <br>
