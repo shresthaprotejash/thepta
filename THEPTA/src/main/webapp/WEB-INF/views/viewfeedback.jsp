@@ -7,33 +7,51 @@
 
 <title>THEPTA Dashboard</title>
 
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
 
 <!-- Bootstrap core CSS     -->
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/inner-style.css"
+	rel="stylesheet" />
 
 <!-- Animation library for notifications   -->
-<link href="${pageContext.request.contextPath}/resources/css/animate.min.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/animate.min.css"
+	rel="stylesheet" />
 
 <!--  Light Bootstrap Table core CSS    -->
-<link href="${pageContext.request.contextPath}/resources/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/light-bootstrap-dashboard.css"
+	rel="stylesheet" />
 
 <!--     Fonts and icons     -->
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-<link href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+	rel='stylesheet' type='text/css'>
+<link
+	href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
 	<div class="wrapper">
-		<div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
+		<div class="sidebar" data-color="blue"
+			data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
 			<div class="sidebar-wrapper">
 				<div class="logo">
 					<div class="content">
@@ -41,23 +59,88 @@
 							<a href="#"> <img class="avatar border-gray"
 								src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg"
 								alt="..." />
-								<h4 class="title">
-									Tejash Shrestha<br /> <small>shrestha123</small>
+								<h4 class="title">${fName}
+									${lName}<br /> <small>${userMailId}</small>
 								</h4>
 							</a>
 						</div>
 					</div>
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
+
 				<ul class="nav">
-					<li class="active"><a href="dashboard"> <i
-							class="pe-7s-graph"></i>
-							<p>Dashboard</p>
+
+					<li><a href="/THEPTA/dashboard/uploadattendance">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Attendance
+							</p>
 					</a></li>
-					<li><a href="userprofile"> <i class="pe-7s-user"></i>
-							<p>User Profile</p>
+
+					<li><a href="/THEPTA/dashboard/uploadmarks">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Marks
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
+								Parents
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload
+								Test/Homework
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/viewattendance">
+
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Attendance
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/viewmarks">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Marks
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
+								Teachers
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/viewhwandtest">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Test/Homework
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/feedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
+							</p>
+					</a></li>
+
+					<li class="active"><a href="/THEPTA/dashboard/viewfeedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Feedback
+							</p>
 					</a></li>
 				</ul>
+
 			</div>
 		</div>
 		<div class="main-panel">
@@ -91,7 +174,9 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/THEPTA/login">
-									<p><span class="glyphicon glyphicon-off"></span>Log out</p>
+									<p>
+										<span class="glyphicon glyphicon-off"></span>Log out
+									</p>
 							</a></li>
 						</ul>
 					</div>
@@ -99,19 +184,18 @@
 			</nav>
 
 			<div class="sub-nav">
-				<a href="/THEPTA/dashboard">
+				
 					<h5>
+					<a href="../dashboard">
 						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>View Feedback
-				</h5>
+				</a>View Feedback</h5>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 			<div class="panel">
 				<div class="container-fluid">
-				<br>
+					<br>
 					<div class="u-card">
-						<ul class="nav nav-tabs nav-justified" >
+						<ul class="nav nav-tabs nav-justified">
 							<li class="active"><a data-toggle="tab" href="#Subject1">Subject1</a></li>
 							<li><a data-toggle="tab" href="#Subject2">Subject2</a></li>
 							<li><a data-toggle="tab" href="#Subject3">Subject3</a></li>
@@ -119,43 +203,57 @@
 							<li><a data-toggle="tab" href="#Subject5">Subject5</a></li>
 							<li><a data-toggle="tab" href="#Subject6">Subject6</a></li>
 						</ul>
-						<br>
-						<br>
-			
+						<br> <br>
+
 						<div class="tab-content">
-							<div class="w3-container">
-    						 	<div id="Subject1" class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
-     					 			<h3>Teacher:Tejash Shrestha</h3>
-     					 			<br>
-     					 			<p>Lorem ipsum dolor sit amet, consectetur <br>adipisicing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
-   								</div>
-   							
-    							<div id="Subject2" class="tab-pane fade in w3-panel w3-green w3-round-xlarg">
-     								<h3>Subject2</h3>
-      								<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    							</div>
-    							
-   								<div id="Subject3" class="tab-pane fade w3-panel w3-yellow w3-round-xlarg">
-      								<h3>Subject3</h3>
-      								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    							</div>
-    							
-    							<div id="Subject4" class="tab-pane fade  w3-panel w3-orange w3-round-xlarg">
-      								<h3>Subject4</h3>
-      								<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    							</div>
-    							
-    							<div id="Subject5" class="tab-pane fade  w3-panel w3-black w3-round-xlarg">
-      								<h3>Subject5</h3>
-      								<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    							</div>
-    							
-    							<div id="Subject6" class="tab-pane fade  w3-panel w3-pink w3-round-xlarg">
-      								<h3>Subject6</h3>
-      								<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    							</div> 
-    						</div>
-  						</div>
+							<div id="Subject1"
+								class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
+								<h3>Teacher:Tejash Shrestha</h3>
+								<br>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur <br>adipisicing
+									elit, sed do eiusmod tempor <br>incididunt ut labore et
+									dolore magna aliqua.
+								</p>
+							</div>
+
+							<div id="Subject2"
+								class="tab-pane fade in w3-panel w3-green w3-round-xlarg">
+								<h3>Subject2</h3>
+								<p>Ut enim ad minim veniam, quis nostrud exercitation
+									ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							</div>
+
+							<div id="Subject3"
+								class="tab-pane fade w3-panel w3-yellow w3-round-xlarg">
+								<h3>Subject3</h3>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit
+									voluptatem accusantium doloremque laudantium, totam rem
+									aperiam.</p>
+							</div>
+
+							<div id="Subject4"
+								class="tab-pane fade  w3-panel w3-orange w3-round-xlarg">
+								<h3>Subject4</h3>
+								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
+									architecto beatae vitae dicta sunt explicabo.</p>
+							</div>
+
+							<div id="Subject5"
+								class="tab-pane fade  w3-panel w3-black w3-round-xlarg">
+								<h3>Subject5</h3>
+								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
+									architecto beatae vitae dicta sunt explicabo.</p>
+							</div>
+
+							<div id="Subject6"
+								class="tab-pane fade  w3-panel w3-pink w3-round-xlarg">
+								<h3>Subject6</h3>
+								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
+									architecto beatae vitae dicta sunt explicabo.</p>
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -167,7 +265,7 @@
 						</ul>
 					</nav>
 					<p class="copyright pull-right">
-					&copy;
+						&copy;
 						<script>
 							document.write(new Date().getFullYear())
 						</script>
@@ -176,48 +274,41 @@
 				</div>
 			</footer>
 		</div>
-	</body>
+</body>
 
 <!--   Core JS Files   -->
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="$https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="$https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
+	type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-checkbox-radio-switch.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap-checkbox-radio-switch.js"></script>
 
 <!--  Charts Plugin -->
-<script src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/chartist.min.js"></script>
 
 <!--  Notifications Plugin    -->
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap-notify.js"></script>
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
 
-		demo.initChartist();
-
-		$.notify({
-			icon : 'pe-7s-bell',
-			message : "Welcome <b>Tejash Shrestha</b> - view the updates."
-
-		}, {
-			type : 'info',
-			timer : 1000
-		});
-
-	});
-
-	
-</script>
 
 
 </html>

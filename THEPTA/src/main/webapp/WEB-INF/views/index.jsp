@@ -21,7 +21,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-            	<a class="navbar-brand page-scroll">THEPTA</a>
+            	<a class="navbar-brand page-scroll" style="color:black;">THEPTA</a>
             </div>
           </div>
     </nav>
@@ -33,7 +33,7 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h2>The Parent Teacher app has been developed as vital school tool that provides parents and teachers throughout with events,including school term dates, updates about child, all pertaining to theri own childern.</h2><br>
-                            <a href="login" class="btn btn-outline btn-xl page-scroll">Log In</a>
+                            <a href="login" class="btn btn-warning btn-xl page-scroll">Log In</a>
                         </div>
                     </div>
                 </div>
@@ -50,16 +50,14 @@
                                             </div>
 
                                             <div class="item">
-                                                <img src="${pageContext.request.contextPath}/resources/img/p2.jpg"  width="621" height="1104">
+                                                <img src="${pageContext.request.contextPath}/resources/img/log.png"  width="621" height="1104">
                                             </div>
     
                                             <div class="item">
-                                                <img src="${pageContext.request.contextPath}/resources/img/p3.jpg"  width="621" height="1104">
+                                                <img src="${pageContext.request.contextPath}/resources/img/dash.png"  width="621" height="1104">
                                             </div>   
 
-                                            <div class="item">
-                                            	<img src="${pageContext.request.contextPath}/resources/img/p4.jpg" width="621" height="1104">
-                                   			</div>          
+                                                   
                                     	</div>                                  
                                 	</div>
                                  </div>

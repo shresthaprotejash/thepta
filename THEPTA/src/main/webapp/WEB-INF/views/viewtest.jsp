@@ -109,12 +109,11 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="/THEPTA/login">
                                 <p><span class="glyphicon glyphicon-off"></span>Log out</p>
                             </a>
                         </li>
-
-                    </ul>
+					</ul>
                 </div>
             </div>
         </nav>
@@ -124,10 +123,7 @@
                 <h5><span class="glyphicon glyphicon-chevron-left"></span></a>View Test</h5>              
         </div>
 
-     
-
-
-        <div class="content">
+     	<div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-10  col-md-offset-1">
