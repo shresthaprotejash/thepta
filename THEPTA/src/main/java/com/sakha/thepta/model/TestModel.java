@@ -1,0 +1,53 @@
+package com.sakha.thepta.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name="Test")
+public class TestModel {
+
+	@Id
+	@GeneratedValue
+	@Column(name="testId")
+	private int testId;
+	@Column(name="subjectId")
+	private int subjectId;
+	@Column(name="teacherId")
+	private int teacherId;
+	@Column(name="marks")
+	private int marks;
+	public int getTestId() {
+		return testId;
+	}
+	public void setTestId(int testId) {
+		this.testId = testId;
+	}
+	public int getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
+	}
+	public int getTeacherId() {
+		return teacherId;
+	}
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
+	}
+	public int getMarks() {
+		return marks;
+	}
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
+	
+	
+	
+}

@@ -35,6 +35,13 @@ public class UserModel {
 	private Timestamp createdTs;
 	@Column(name="password")
 	private String password;
+	@Column(name="address")
+	private String address;
+	@Column(name="isTeacher")
+	private Boolean isTeacher;
+	@Column(name="isStudent")
+	private Boolean isStudent;
+	
 	
 	public int getUserId() {
 		return userId;
@@ -90,6 +97,25 @@ public class UserModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Boolean getIsTeacher() {
+		return isTeacher;
+	}
+	public void setIsTeacher(Boolean isTeacher) {
+		this.isTeacher = isTeacher;
+	}
+	public Boolean getIsStudent() {
+		return isStudent;
+	}
+	public void setIsStudent(Boolean isStudent) {
+		this.isStudent = isStudent;
+	}
+	
 	
 		
 }
