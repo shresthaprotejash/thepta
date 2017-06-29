@@ -233,7 +233,7 @@
                                   <TD>32</TD>
                                   <TD>421</TD>
                                   <TD>61</TD>
-                                  <td>45</td>
+                                  <td style="text-align:center;"><input type="checkbox" name="name1" />&nbsp;</td>
                                   
                                </TR>
                                <TR>

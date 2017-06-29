@@ -71,14 +71,16 @@ INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phon
 -- Table structure for table `attendance`
 --
 
-CREATE TABLE IF NOT EXISTS `attendance` (
-  `attendanceId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `attendance` (
+  `attendanceId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `classId` int(11) NOT NULL,
-  `attendancePercentage` int(4) NOT NULL,
-  PRIMARY KEY (`attendanceId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `presentdays` int(5) NOT NULL,
+  `absentdays` int(5) NOT NULL,
+  `totaldays` int(6) NOT NULL,
+  `attendancePercentage` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -91,6 +93,21 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `classesName` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`classesId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`classesId`, `classesName`) VALUES
+(1, '1st Standard'),
+(2, '2nd Standard'),
+(3, '3rd Standard'),
+(4, '4th Standard'),
+(5, '5th Standard'),
+(6, '6th Standard'),
+(7, '7th Standard'),
+(8, '8th Standard');
+
 
 -- --------------------------------------------------------
 
@@ -133,6 +150,18 @@ CREATE TABLE IF NOT EXISTS `section` (
   PRIMARY KEY (`sectionIds`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`sectionIds`, `sectionName`) VALUES
+(1, 'A'),
+(2, 'B'),
+(3, 'C'),
+(4, 'D'),
+(5, 'E');
+
+
 -- --------------------------------------------------------
 
 --
@@ -146,6 +175,17 @@ CREATE TABLE IF NOT EXISTS `student` (
   PRIMARY KEY (`studentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentId`, `classId`, `sectionId`) VALUES
+(1, 3, 1),
+(2, 3, 2),
+(3, 2, 1),
+(4, 2, 1),
+(5, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -158,6 +198,29 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `classId` int(11) NOT NULL,
   PRIMARY KEY (`subjectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subjectId`, `subjectName`, `classId`) VALUES
+(1001, 'Mathematics', 1),
+(1002, 'English', 1),
+(1003, 'Science', 1),
+(1004, 'Social Studies', 1),
+(2001, 'Mathematics', 2),
+(2002, 'English', 2),
+(2003, 'Science', 2),
+(2004, 'Social Studies', 2),
+(3001, 'Mathematics', 3),
+(3002, 'Science', 3),
+(3003, 'English', 3),
+(3004, 'Social Studies', 3),
+(4001, 'Mathematics', 4),
+(4002, 'Science', 4),
+(4003, 'English', 4),
+(4004, 'Social Studies', 4);
+
 
 -- --------------------------------------------------------
 
