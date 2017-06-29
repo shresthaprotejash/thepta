@@ -105,12 +105,11 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="/THEPTA/login">
                                 <p><span class="glyphicon glyphicon-off"></span>Log out</p>
                             </a>
                         </li>
-
-                    </ul>
+					</ul>
                 </div>
             </div>
         </nav>

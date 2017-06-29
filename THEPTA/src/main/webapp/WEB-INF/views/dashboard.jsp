@@ -123,7 +123,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="/THEPTA/login">
                                 <p><span class="glyphicon glyphicon-off"></span>Log out</p>
                             </a>
                         </li>
@@ -229,7 +229,7 @@
 								<div class="card-content">
 									<img
 										src="${pageContext.request.contextPath}/resources/img/feedback.png">
-									Feedback
+									View Feedback
 								</div>
 							</div>
 						</div>

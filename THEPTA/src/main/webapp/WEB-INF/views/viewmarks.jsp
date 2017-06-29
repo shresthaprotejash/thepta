@@ -102,6 +102,18 @@
                         <p><span class="glyphicon glyphicon-chevron-right"></span>View Test/Homework</p>
                     </a>
                 </li>
+                
+                  <li>
+                    <a href="/THEPTA/dashboard/feedback">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>Feedback</p>
+                    </a>
+                </li>
+                
+                  <li>
+                    <a href="/THEPTA/dashboard/viewfeedback">
+                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Feedback</p>
+                    </a>
+                </li>
 
             </ul>
     	</div>
