@@ -114,5 +114,24 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("viewfeedback");
 		return mv;
 	}
+	@RequestMapping("/uploadhomework")
+	public ModelAndView uploadhomework() {
+ 
+		ModelAndView mv = new ModelAndView("uploadhomework");
+		return mv;
+	}
+	@RequestMapping("/uploadtestandhomework")
+	public ModelAndView uploadtestandhomework() {
+ 
+		ModelAndView mv = new ModelAndView("uploadtestandhomework");
+		return mv;
+	}
+	@RequestMapping("/uploadtest")
+	public ModelAndView uploadtest() {
+ 
+		ModelAndView mv = new ModelAndView("uploadtest");
+		return mv;
+	}
+	
 
 }
