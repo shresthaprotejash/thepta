@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `gender` char(1) DEFAULT NULL COMMENT 'm-male,f-female',
   `age` int(4) DEFAULT NULL,
   `phoneNo` varchar(14) NOT NULL,
-  `createdTs` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdTs` timestamp NULL DEFAULT CURRENT_TIMESTAMP, 
   `password` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`userId`)
+  PRIMARY KEY (`userId`),
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES
-(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', '2017-06-12 04:24:32', 'welcome');
+(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', '2017-06-12 04:24:32', 'welcome'));
 
 INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `createdTs`, `password`) VALUES
 (2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', '2017-06-20 12:24:32', 'shrestha');
