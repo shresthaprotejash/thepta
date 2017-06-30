@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="Feedback")
+@Table(name="feedback")
 public class FeedbackModel {
 	@Id
 	@GeneratedValue

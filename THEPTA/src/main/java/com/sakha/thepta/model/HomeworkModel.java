@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="Homework")
+@Table(name="homework")
 public class HomeworkModel {
 
 	@Id

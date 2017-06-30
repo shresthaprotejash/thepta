@@ -51,19 +51,20 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES
-(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', 'Bangalore', '2017-06-12 04:24:32', 'welcome', '0', '1');
-
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES
-(2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', 'Bangalore', '2017-06-20 12:24:32', 'shrestha', '0', '1');
-
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES 
-(3, 'Supreetha', 'Achar', 'supreethaachar09@gmail.com', 'f', 20, '9740712402', 'Bangalore', '2017-06-12 04:24:32', 'supreetha', '0', '1');
-
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES 
-(4, 'Suruchi', 'kumari', 'suruchirai.022@gmail.com', 'f', 21, '8951218781', 'Bangalore', '2017-06-12 04:24:32', 'suruchi', '0', '1');
-
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES 
-(5, 'Prerana', 'Rani', 'prerana.rani1996@gmail.com', 'f', 32, '7353175506', 'Bangalore', '2017-06-12 04:24:32', 'prerana', '0', '1');
+(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', 'Bangalore', '2017-06-11 22:54:32', 'welcome', 0, 1),
+(2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', 'Bangalore', '2017-06-20 06:54:32', 'shrestha', 0, 1),
+(3, 'Supreetha', 'Achar', 'supreethaachar09@gmail.com', 'f', 20, '9740712402', 'Bangalore', '2017-06-11 22:54:32', 'supreetha', 0, 1),
+(4, 'Suruchi', 'kumari', 'suruchirai.022@gmail.com', 'f', 21, '8951218781', 'Bangalore', '2017-06-11 22:54:32', 'suruchi', 0, 1),
+(5, 'Prerana', 'Rani', 'prerana.rani1996@gmail.com', 'f', 32, '7353175506', 'Bangalore', '2017-06-11 22:54:32', 'prerana', 0, 1),
+(6, 'Medha', 'Mishra', 'medha009@gmail.com', 'f', 21, '9025614203', 'Bangalore', '2017-06-29 09:23:50', 'medha', 0, 1),
+(7, 'Priti', 'Kumari', 'pritijee6@gmail.com', 'f', 21, '8951119168', 'Bangalore', '2017-06-29 09:17:39', 'priti', 0, 1),
+(8, 'Vijaya', 'Shetty', 'vijaya100@gmail.com', 'f', 40, '7852364102', 'Bangalore', '2017-06-29 09:28:25', 'vijaya', 1, 0),
+(9, 'Archana', 'Nayak', 'archana123@gmail.com', 'f', 36, '9536842078', 'Bangalore', '2017-06-29 09:28:25', 'archana', 1, 0),
+(10, 'Pratibha', 'Ballal', 'pratibha123@gmail.com', 'f', 40, '8562486520', 'Bangalore', '2017-06-29 09:32:07', 'pratibha', 1, 0),
+(11, 'Afroz', 'Pasha', 'afroz345@gmail.com', 'm', 42, '7469523140', 'Bangalore', '2017-06-29 09:32:07', 'afroz', 1, 0),
+(12, 'Mohan', 'BA', 'mohanba@gmail.com', 'm', 50, '7865239550', 'Bangalore', '2017-06-29 09:34:53', 'mohan', 1, 0),
+(13, 'Kavita', 'Sooda', 'kavita001@gmail.com', 'f', 35, '9620539920', 'Bangalore', '2017-06-29 09:34:53', 'kavita', 1, 0),
+(14, 'Ganesh', 'Panth', 'gannubaba@gmail.com', 'm', 30, '8562485502', 'Bangalore', '2017-06-29 09:38:32', 'ganesh', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -72,14 +73,15 @@ INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phon
 --
 
 CREATE TABLE `attendance` (
-  `attendanceId` int(11) NOT NULL,
+  `attendanceId` int(11) NOT NULL AUTO_INCREMENT,
   `studentId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `classId` int(11) NOT NULL,
   `presentdays` int(5) NOT NULL,
   `absentdays` int(5) NOT NULL,
   `totaldays` int(6) NOT NULL,
-  `attendancePercentage` int(4) NOT NULL
+  `attendancePercentage` int(4) NOT NULL,
+  PRIMARY KEY (`attendanceId`)  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -89,7 +91,7 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
-  `classesId` int(11) NOT NULL AUTO_INCREMENT,
+  `classId` int(11) NOT NULL AUTO_INCREMENT,
   `classesName` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`classesId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -98,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`classesId`, `classesName`) VALUES
+INSERT INTO `classes` (`classId`, `classesName`) VALUES
 (1, '1st Standard'),
 (2, '2nd Standard'),
 (3, '3rd Standard'),
@@ -236,6 +238,40 @@ CREATE TABLE IF NOT EXISTS `test` (
   PRIMARY KEY (`testId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- ----------------------------------------------------------
+--
+-- Table structure for table `teacher-subject`
+--
+
+CREATE TABLE IF NOT EXISTS `teacher_subject` (
+  `teacher_subjectId` int(11) NOT NULL AUTO_INCREMENT,
+  `teacherId` int(11) NOT NULL,
+  `classId` int(11) NOT NULL,
+  `sectionId` int(11) NOT NULL,
+  `subjectId` int(11) NOT NULL,
+  PRIMARY KEY (`teacher_subjectId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- ---------------------------------------------------------
+
+
+--
+-- Table structure for table `test_marks`
+--
+
+CREATE TABLE IF NOT EXISTS `test_marks` (
+  `test_marksId` int(11) NOT NULL AUTO_INCREMENT,
+  `testId` int(11) NOT NULL,
+  `studentId` int(11) NOT NULL,
+  `subjectId` int(11) NOT NULL,
+  `obtanedMarks` int(4) NOT NULL,
+  `result` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`test_marksId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+ 
+ 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

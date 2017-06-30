@@ -302,7 +302,7 @@
 
             $.notify({
                 icon: 'pe-7s-bell',
-                message: "Welcome <b>Tejash Shrestha</b> - view the updates."
+                message: "Welcome <b>${fName} ${lName}</b> - view the updates."
 
             },{
                 type: 'info',
