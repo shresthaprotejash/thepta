@@ -17,15 +17,16 @@ public class ClassesModel {
 
 	@Id
 	@GeneratedValue
-	@Column(name="classesId")
-	private int classesId;
+	@Column(name="classId")
+	private int classId;
 	@Column(name="classesName")
 	private String classesName;
-	public int getClassesId() {
-		return classesId;
+	
+	public int getClassId() {
+		return classId;
 	}
-	public void setClassesId(int classesId) {
-		this.classesId = classesId;
+	public void setClassId(int classId) {
+		this.classId = classId;
 	}
 	public String getClassesName() {
 		return classesName;

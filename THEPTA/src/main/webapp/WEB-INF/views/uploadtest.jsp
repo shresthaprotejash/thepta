@@ -69,78 +69,22 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active">
-						<a href="/THEPTA/dashboard/uploadattendance">
-							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-						</a>
-					</li>
-
-					<li><a href="/THEPTA/dashboard/uploadmarks">
+					<li><a href="/THEPTA/dashboard/uploadhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
+								Homework
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
+					<li class="active"><a href="/THEPTA/dashboard/uploadtest">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Parents
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Test
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload
-								Test/Homework
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/viewattendance">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Attendance
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/viewmarks">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Marks
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Teachers
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewhwandtest">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Test/Homework
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewfeedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Feedback
-							</p>
-					</a></li>
-<li><a href="/THEPTA/dashboard/circular">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Circular
-							</p>
-					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -189,10 +133,10 @@
 			</nav>
 
 			<div class="sub-nav">
-				<a href="../dashboard">
+				<a href="/THEPTA/dashboard/uploadtestandhomework">
 					<h5>
 						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>Upload Attendance
+				</a>Upload Test
 				</h5>
 			</div>
 
@@ -251,19 +195,21 @@
 											</div>
 										</div>
 
+
 										<div class="row">
 											<div class="col-md-3">
 												<div class="form-group">
-													<label>Subject </label>
+													<label>Exam Type </label>
 												</div>
 											</div>
 											<div class="col-md-7">
 												<select name="Subject">
-													<option value="Subject1" selected>none</option>
-													<option value="Subject1">Subject1</option>
-													<option value="Subject2">Subject2</option>
-													<option value="Subject3">Subject3</option>
-													<option value="Subject4">Subject4</option>
+													<option value="none" selected>none</option>
+													<option value="Term1">TermI</option>
+													<option value="term2">TermII</option>
+													<option value="periodictest">PeriodicTest</option>
+													<option value="classtest">ClassTest</option>
+													<option value="assignments">Assignments</option>
 												</select>
 											</div>
 										</div>
@@ -290,82 +236,49 @@
 									<TABLE BORDER="3" align="center">
 
 										<TH width="50">S.N.</TH>
-										<TH width="300">Name</TH>
-										<TH width="80">Present</TH>
-										<TH width="80">Absent</TH>
-										<TH width="80">Total</TH>
-										<TH width="80">Percent</TH>
-										<TH width="80">Mark</TH>
+										<TH width="100">SUBJECT</TH>
+										<TH width="50">DATE</TH>
+										<TH width="50">TIME</TH>
+										<TH width="50">ROOM NO</TH>
 										<TR>
 											<TD>1</TD>
-											<TD>Tejash Shrestha</TD>
-											<TD>121</TD>
-											<TD>21</TD>
-											<TD>142</TD>
-											<TD>75</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" style="margin-left: auto; margin-right: auto;"></td>
+											<TD>English</TD>
+											<td style="text-align: center;"><input type="textarea"
+												name="date" /></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="time" /></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="roomno" /></td>
+
 										</TR>
 										<TR>
-
 											<TD>2</TD>
-											<TD>Supreetha Achar K</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
+											<TD>Mathematics</TD>
+											<td style="text-align: center;"><input type="textarea"
+												name="date" id="date1"/></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="time" id="time1" /></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="roomno" id="room"/></td>
 
 										</TR>
 										<TR>
 											<TD>3</TD>
-											<TD>Medha Mishra</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
+											<TD>Computer Science</TD>
+											<td style="text-align: center;"><input type="textarea"
+												name="date" /></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="time" /></td>
+											<td style="text-align: center;"><input type="textarea"
+												name="roomno" /></td>
+
 										</TR>
-										<TR>
-											<TD>4</TD>
-											<TD>Prerana Rani</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>5</TD>
-											<TD>Preeti Kumari</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>6</TD>
-											<TD>Suruchi Rai</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
+										
 
 									</TABLE>
-
-									<br>
-									<br>
+									<br> <br>
 									<div class="btn btn-info pull-right">Submit</div>
-									<br>
-									<br>
+									<br> <br>
 								</div>
 							</div>
 						</div>
@@ -385,7 +298,9 @@
 					</nav>
 					<p class="copyright pull-right">
 						&copy;
-						<script>document.write(new Date().getFullYear())</script>
+						<script>
+							document.write(new Date().getFullYear())
+						</script>
 						<a href="#">TShrestha</a>
 					</p>
 				</div>
@@ -425,11 +340,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
 <script>
-$(document).ready(function(){
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
-});
+	$(document).ready(function() {
+		$(".showme").click(function() {
+			$("#after-click").show();
+		});
+	});
 </script>
 
 </html>

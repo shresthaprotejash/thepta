@@ -69,78 +69,22 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active">
-						<a href="/THEPTA/dashboard/uploadattendance">
-							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-						</a>
-					</li>
-
-					<li><a href="/THEPTA/dashboard/uploadmarks">
+					<li class="active"><a href="/THEPTA/dashboard/uploadhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
+								Homework
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
+					<li><a href="/THEPTA/dashboard/uploadtest">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Parents
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Test
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload
-								Test/Homework
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/viewattendance">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Attendance
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/viewmarks">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Marks
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Teachers
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewhwandtest">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Test/Homework
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewfeedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Feedback
-							</p>
-					</a></li>
-<li><a href="/THEPTA/dashboard/circular">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Circular
-							</p>
-					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -189,10 +133,10 @@
 			</nav>
 
 			<div class="sub-nav">
-				<a href="../dashboard">
+				<a href="/THEPTA/dashboard/uploadtestandhomework">
 					<h5>
 						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>Upload Attendance
+				</a>Upload Homework
 				</h5>
 			</div>
 
@@ -287,85 +231,22 @@
 								<br> <br>
 								<div id="after-click">
 									<hr>
-									<TABLE BORDER="3" align="center">
+									<div class="container">
 
-										<TH width="50">S.N.</TH>
-										<TH width="300">Name</TH>
-										<TH width="80">Present</TH>
-										<TH width="80">Absent</TH>
-										<TH width="80">Total</TH>
-										<TH width="80">Percent</TH>
-										<TH width="80">Mark</TH>
-										<TR>
-											<TD>1</TD>
-											<TD>Tejash Shrestha</TD>
-											<TD>121</TD>
-											<TD>21</TD>
-											<TD>142</TD>
-											<TD>75</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" style="margin-left: auto; margin-right: auto;"></td>
-										</TR>
-										<TR>
 
-											<TD>2</TD>
-											<TD>Supreetha Achar K</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
+										<form>
+											<div class="form-group">
+												<label for="comment">Comment:</label>
+												<textarea class="form-control" rows="5" id="comment"
+													style="width: 676px; height: 218px;"></textarea>
+											</div>
+										</form>
+									</div>
 
-										</TR>
-										<TR>
-											<TD>3</TD>
-											<TD>Medha Mishra</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>4</TD>
-											<TD>Prerana Rani</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>5</TD>
-											<TD>Preeti Kumari</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>6</TD>
-											<TD>Suruchi Rai</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-
-									</TABLE>
-
-									<br>
-									<br>
+									<br> <br> <label class="control-label">Select File</label>
+<input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"> <br>
 									<div class="btn btn-info pull-right">Submit</div>
-									<br>
-									<br>
+									<br> <br>
 								</div>
 							</div>
 						</div>
@@ -385,7 +266,9 @@
 					</nav>
 					<p class="copyright pull-right">
 						&copy;
-						<script>document.write(new Date().getFullYear())</script>
+						<script>
+							document.write(new Date().getFullYear())
+						</script>
 						<a href="#">TShrestha</a>
 					</p>
 				</div>
@@ -425,11 +308,16 @@
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
 <script>
-$(document).ready(function(){
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
-});
+	$(document).ready(function() {
+		$(".showme").click(function() {
+			$("#after-click").show();
+		});
+	});
+	$(document).on('ready', function() {
+	    $("#input-folder-1").fileinput({
+	        browseLabel: 'Select Folder...'
+	    });
+	});
 </script>
 
 </html>

@@ -5,19 +5,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sakha.thepta.dao.AttendanceDao;
-import com.sakha.thepta.dao.ClassesDao;
-import com.sakha.thepta.model.ClassesModel;
-import com.sakha.thepta.service.ClassesService;
+import com.sakha.thepta.dao.Test_marksDao;
+import com.sakha.thepta.model.Test_marksModel;
+import com.sakha.thepta.service.Test_marksService;
+
 
 @Service
-public class ClassesServiceImpl implements ClassesService {
+public class Test_marksServiceImpl implements Test_marksService{
 	
 	@Autowired
-	private ClassesDao classesDao;
-	
+	private Test_marksDao test_marksDao;
+
 	@Override
 	@Transactional
-	public ClassesModel getClassesByClassId(int classId) {
+	public Test_marksModel getMarksBytestIdandsubjectIdandstudentId(String testId, String subjectId, String studentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

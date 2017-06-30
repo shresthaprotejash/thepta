@@ -10,7 +10,7 @@ import com.sakha.thepta.model.ClassesModel;
 public class ClassesDaoImpl implements ClassesDao{
 
 	@Override
-	public ClassesModel getClassesByClassId(int classesId) {
+	public ClassesModel getClassesByClassId(int classId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

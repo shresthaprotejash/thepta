@@ -46,11 +46,9 @@
 
 </head>
 <body>
-
 	<div class="wrapper">
 		<div class="sidebar" data-color="blue"
 			data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
-
 			<div class="sidebar-wrapper">
 				<div class="logo">
 					<div class="content">
@@ -64,16 +62,15 @@
 							</a>
 						</div>
 					</div>
-
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
-
 				<ul class="nav">
-					<li class="active">
-						<a href="/THEPTA/dashboard/uploadattendance">
-							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-						</a>
-					</li>
+					<li><a href="/THEPTA/dashboard/uploadattendance">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Attendance
+							</p>
+					</a></li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
@@ -89,7 +86,7 @@
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
+					<li class="active"><a href="/THEPTA/dashboard/uploadtestandhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Upload
 								Test/Homework
@@ -97,6 +94,7 @@
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/viewattendance">
+
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Attendance
@@ -136,11 +134,7 @@
 								Feedback
 							</p>
 					</a></li>
-<li><a href="/THEPTA/dashboard/circular">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Circular
-							</p>
-					</a></li>
+
 				</ul>
 			</div>
 		</div>
@@ -182,198 +176,48 @@
 										<span class="glyphicon glyphicon-off"></span>Log out
 									</p>
 							</a></li>
-
 						</ul>
 					</div>
 				</div>
 			</nav>
-
+			
 			<div class="sub-nav">
-				<a href="../dashboard">
+				<a href="/THEPTA/dashboard">
 					<h5>
 						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>Upload Attendance
+				</a>Upload Test/Homework
 				</h5>
 			</div>
 
+
 			<div class="content">
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-10  col-md-offset-1">
-							<div class="u-card">
-								<div class="content">
-									<form>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Name </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<div class="form-group">
-													<input type="text" class="form-control" disabled
-														placeholder="Company" value='${fName} ${lName}'>
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Class </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<select name="Class" id="small">
-													<option value="none" selected>none</option>
-													<option value="Class1">Class1</option>
-													<option value="Class2">Class2</option>
-													<option value="Class3">Class3</option>
-													<option value="Class4">Class4</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Section </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<select name="Section" id="small">
-													<option value="none" selected>none</option>
-													<option value="Section1">Section1</option>
-													<option value="Section2">Section2</option>
-													<option value="Section3">Section3</option>
-													<option value="Section4">Section4</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Subject </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<select name="Subject">
-													<option value="Subject1" selected>none</option>
-													<option value="Subject1">Subject1</option>
-													<option value="Subject2">Subject2</option>
-													<option value="Subject3">Subject3</option>
-													<option value="Subject4">Subject4</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Date </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<input type="date" name="bday" min="2017-01-02">
-											</div>
-										</div>
-
-
-
-									</form>
+					<div class="row" align="center">
+						<div class="col-sm-3">
+							<div class="card"
+								onclick="location.href='${pageContext.request.contextPath}/dashboard/uploadhomework';">
+								<div class="card-content">
+									<img
+										src="${pageContext.request.contextPath}/resources/img/homework.png">
+									Upload Homework
 								</div>
-								<div class="showme btn btn-info pull-right ">Get</div>
-								<br> <br>
-								<div id="after-click">
-									<hr>
-									<TABLE BORDER="3" align="center">
+							</div>
+						</div>
 
-										<TH width="50">S.N.</TH>
-										<TH width="300">Name</TH>
-										<TH width="80">Present</TH>
-										<TH width="80">Absent</TH>
-										<TH width="80">Total</TH>
-										<TH width="80">Percent</TH>
-										<TH width="80">Mark</TH>
-										<TR>
-											<TD>1</TD>
-											<TD>Tejash Shrestha</TD>
-											<TD>121</TD>
-											<TD>21</TD>
-											<TD>142</TD>
-											<TD>75</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" style="margin-left: auto; margin-right: auto;"></td>
-										</TR>
-										<TR>
 
-											<TD>2</TD>
-											<TD>Supreetha Achar K</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-
-										</TR>
-										<TR>
-											<TD>3</TD>
-											<TD>Medha Mishra</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>4</TD>
-											<TD>Prerana Rani</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>5</TD>
-											<TD>Preeti Kumari</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>6</TD>
-											<TD>Suruchi Rai</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-
-									</TABLE>
-
-									<br>
-									<br>
-									<div class="btn btn-info pull-right">Submit</div>
-									<br>
-									<br>
+						<div class="col-sm-3">
+							<div class="card"
+								onclick="location.href='${pageContext.request.contextPath}/dashboard/uploadtest';">
+								<div class="card-content">
+									<img
+										src="${pageContext.request.contextPath}/resources/img/exam3.png">
+									Upload Test
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -424,12 +268,15 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
-<script>
-$(document).ready(function(){
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
-});
-</script>
 
 </html>
+
+
+
+
+
+
+
+
+
+
