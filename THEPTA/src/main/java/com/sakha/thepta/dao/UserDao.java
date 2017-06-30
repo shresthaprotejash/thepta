@@ -7,4 +7,6 @@ public interface UserDao {
 	public UserModel getUserByMailIdOrPhoneNo(String mailIdOrPhoneNo);
 	
 	public UserModel validateUser(String mailIdOrPhoneNo, String password);
+
+	public UserModel getUserByUserId(int userId);	
 }

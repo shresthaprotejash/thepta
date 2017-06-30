@@ -40,7 +40,8 @@ public class HomeController {
 			session = request.getSession();
 			session.setAttribute("fName", currentUser.getfName());
 			session.setAttribute("lName", currentUser.getlName());
-			session.setAttribute("userMailId", currentUser.getMailId());	
+			session.setAttribute("userMailId", currentUser.getMailId());
+			session.setAttribute("userId", currentUser.getUserId());
 			return "forward:/dashboard";
 		}else{	//invalid username or password
 			model.addAttribute("message", "invalid username or password");
