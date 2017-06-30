@@ -94,7 +94,7 @@ CREATE TABLE `attendance` (
 CREATE TABLE IF NOT EXISTS `classes` (
   `classId` int(11) NOT NULL AUTO_INCREMENT,
   `classesName` varchar(128) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`classesId`)
+  PRIMARY KEY (`classId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
