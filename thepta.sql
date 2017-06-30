@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `test` (
 
 -- ----------------------------------------------------------
 --
--- Table structure for table `teacher-subject`
+-- Table structure for table `teacher_subject`
 --
 
 CREATE TABLE IF NOT EXISTS `teacher_subject` (
@@ -252,6 +252,18 @@ CREATE TABLE IF NOT EXISTS `teacher_subject` (
   `subjectId` int(11) NOT NULL,
   PRIMARY KEY (`teacher_subjectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+--
+-- Dumping data for table `teacher_subject`
+--
+
+INSERT INTO `teacher_subject` (`teacher_subjectId`, `teacherId`, `classId`, `sectionId`, `subjectId`) VALUES
+(1, 1, 1, 1, 1001),
+(2, 1, 1, 3, 1001),
+(3, 2, 1, 1, 1002),
+(4, 2, 1, 2, 1002),
+(5, 3, 1, 1, 1003),
+(6, 3, 1, 2, 1003);
 
 -- ---------------------------------------------------------
 
