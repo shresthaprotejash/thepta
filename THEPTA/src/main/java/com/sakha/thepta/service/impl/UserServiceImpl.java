@@ -7,10 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sakha.thepta.dao.UserDao;
 import com.sakha.thepta.model.UserModel;
 import com.sakha.thepta.service.UserService;
+import com.sakha.thepta.util.Util;
 
 @Service
 public class UserServiceImpl implements UserService{
 
+	@Autowired
+	private Util util;
+	
 	@Autowired
 	private UserDao userDao;
 	
@@ -27,7 +31,8 @@ public class UserServiceImpl implements UserService{
 		if(mailIdOrPhoneNo != null && mailIdOrPhoneNo.length() > 0 && 
 				password != null && password.length() > 0){
 			
-			UserModel currentUser = userDao.validateUser(mailIdOrPhoneNo, password);
+			String md5ConvertedPassword = util.convertToMD5(password);
+			UserModel currentUser = userDao.validateUser(mailIdOrPhoneNo, md5ConvertedPassword);
 			return currentUser;
 		}else{	//invalid input
 			return new UserModel();

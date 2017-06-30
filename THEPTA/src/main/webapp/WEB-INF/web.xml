@@ -14,18 +14,58 @@
 		<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 	</context-param>
 
-	<servlet>
-		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value></param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+    <servlet>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value></param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+	<filter>
+		<filter-name>filterclass</filter-name>		
+		<filter-class>com.sakha.thepta.util.AuthenticationFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+       <filter-name>filterclass</filter-name>
+       <url-pattern>/*</url-pattern>       
+	</filter-mapping>
+
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404</location>
+	</error-page>
+
+<!-- parameters in a POST request -->
+<filter>
+    <filter-name>setCharacterEncodingFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param> 
+    	<param-name>forceEncoding</param-name> 
+    	<param-value>true</param-value> 
+    </init-param>
+</filter>
+
+<!-- The mapping for the Set Character Encoding Filter -->
+<filter-mapping>
+    <filter-name>setCharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+	
 </web-app>

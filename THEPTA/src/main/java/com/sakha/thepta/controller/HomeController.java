@@ -41,10 +41,10 @@ public class HomeController {
 			session.setAttribute("fName", currentUser.getfName());
 			session.setAttribute("lName", currentUser.getlName());
 			session.setAttribute("userMailId", currentUser.getMailId());	
-			return "forward:/dashboard";
+			return "redirect:/dashboard";
 		}else{	//invalid username or password
-			model.addAttribute("message", "invalid username or password");
-			return "forward:/login";
+			session.setAttribute("message", "invalid username or password");
+			return "redirect:/login";
 
 		}
 	}
