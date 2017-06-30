@@ -114,5 +114,11 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("viewfeedback");
 		return mv;
 	}
+	@RequestMapping("/circular")
+	public ModelAndView circular() {
+ 
+		ModelAndView mv = new ModelAndView("circular");
+		return mv;
+	}
 
 }

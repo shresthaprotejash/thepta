@@ -135,6 +135,12 @@
 							<p><span class="glyphicon glyphicon-chevron-right"></span>View Feedback</p>
 						</a>
 					</li>
+					<li><a href="/THEPTA/dashboard/circular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Circular
+								
+							</p>
+					</a></li>
 				</ul>
 			</div>
 		</div>
