@@ -7,7 +7,17 @@
 
 	<session-factory>
 
-		<!-- login related form -->
+		<!-- login related form -->		
+		<mapping class="com.sakha.thepta.model.AttendanceModel" />
+		<mapping class="com.sakha.thepta.model.ClassesModel" />
+		<mapping class="com.sakha.thepta.model.FeedbackModel" />
+		<mapping class="com.sakha.thepta.model.HomeworkModel" />
+		<mapping class="com.sakha.thepta.model.SectionModel" />
+		<mapping class="com.sakha.thepta.model.StudentModel" />
+		<mapping class="com.sakha.thepta.model.SubjectModel" />
+		<mapping class="com.sakha.thepta.model.TeacherSubjectModel" />
+		<mapping class="com.sakha.thepta.model.Test_marksModel" />
+		<mapping class="com.sakha.thepta.model.TestModel" />
 		<mapping class="com.sakha.thepta.model.UserModel" />
 
 	</session-factory>
