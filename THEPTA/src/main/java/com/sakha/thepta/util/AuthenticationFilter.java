@@ -49,8 +49,9 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 					filterChain.doFilter(request, response);
 				}
 			}
+		}else if(session != null){
+			filterChain.doFilter(request, response);
 		}
-		
 	}
 
 }
