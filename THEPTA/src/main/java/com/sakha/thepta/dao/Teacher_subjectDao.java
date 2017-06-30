@@ -1,10 +1,12 @@
 package com.sakha.thepta.dao;
 
-import com.sakha.thepta.model.Teacher_subjectModel;
+import java.util.List;
+
+import com.sakha.thepta.model.TeacherSubjectModel;
 
 public interface Teacher_subjectDao {
 
-	public Teacher_subjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
-
+	public TeacherSubjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
+	public List<TeacherSubjectModel> getTeacherSubjectListByTeacherId(int teacherId);
 
 }

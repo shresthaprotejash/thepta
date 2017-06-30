@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="teacher_subject")
-public class Teacher_subjectModel {
+public class TeacherSubjectModel {
 	@Id
 	@GeneratedValue
 	@Column(name="teacher_subjectId")

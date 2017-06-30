@@ -1,10 +1,12 @@
 package com.sakha.thepta.service;
 
-import com.sakha.thepta.model.Teacher_subjectModel;
+import org.json.JSONObject;
+
+import com.sakha.thepta.model.TeacherSubjectModel;
 
 public interface Teacher_subjectService {
 
-	public Teacher_subjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
-
+	public TeacherSubjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
+	public JSONObject getTeacherSubjectListByTeacherId(int teacherId);
 
 }

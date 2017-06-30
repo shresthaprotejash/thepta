@@ -44,4 +44,15 @@ public class UserDaoImpl implements UserDao{
 		}
 	}
 
+	@Override
+	public UserModel getUserByUserId(int userId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserModel.class);
+		criteria.add(Restrictions.eq("userId", userId));
+		if(criteria.list().size() > 0){
+			return (UserModel) criteria.uniqueResult();
+		}else{
+			return new UserModel();
+		}
+	}
+
 }

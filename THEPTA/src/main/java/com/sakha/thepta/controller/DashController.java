@@ -1,21 +1,30 @@
 package com.sakha.thepta.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sakha.thepta.model.UserModel;
-import com.sakha.thepta.service.UserService;
+import com.sakha.thepta.service.Teacher_subjectService;
 
 @Controller
 @RequestMapping("/dashboard")
 public class DashController {
 	
+	@Autowired
+	private Teacher_subjectService teacherSubjectService;
+	
 	@RequestMapping("/uploadattendance")
-	public ModelAndView uploadAttendance() {
+	public ModelAndView uploadAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadattendance");
+		int teacherId = (int) session.getAttribute("userId");
+		JSONObject teacherSubject = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		System.out.println(teacherSubject);
+		mv.addObject("teacherSubject", teacherSubject);
 		return mv;
 	}
 	
