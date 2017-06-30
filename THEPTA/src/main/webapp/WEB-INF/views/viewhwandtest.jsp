@@ -86,7 +86,7 @@
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
+					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Upload
 								Test/Homework

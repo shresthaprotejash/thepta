@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" type="image/png" href="assets/img/faces/face-2.jpg">
+<link rel="icon" type="image/png"
+	href="${pageContext.request.contextPath}/resources/img/faces/face-2.jpg">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>THEPTA Dashboard</title>
@@ -14,8 +15,6 @@
 
 
 <!-- Bootstrap core CSS     -->
-
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link
@@ -44,14 +43,14 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css"
 	rel="stylesheet" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
+
 	<div class="wrapper">
 		<div class="sidebar" data-color="blue"
 			data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
+
 			<div class="sidebar-wrapper">
 				<div class="logo">
 					<div class="content">
@@ -65,84 +64,32 @@
 							</a>
 						</div>
 					</div>
+
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
 
 				<ul class="nav">
-
-					<li><a href="/THEPTA/dashboard/uploadattendance">
+					<li class="active"><a href="/THEPTA/dashboard/uploadhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Attendance
+								Homework
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/uploadmarks">
+					<li><a href="/THEPTA/dashboard/uploadtest">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
+								Test
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Parents
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload
-								Test/Homework
-							</p>
-					</a></li>
 
-					<li><a href="/THEPTA/dashboard/viewattendance">
-
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Attendance
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewmarks">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Marks
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Teachers
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewhwandtest">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Test/Homework
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
-					<li class="active"><a href="/THEPTA/dashboard/viewfeedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Feedback
-							</p>
-					</a></li>
 				</ul>
-
 			</div>
 		</div>
+
+
 		<div class="main-panel">
 			<nav class="navbar navbar-default navbar-fixed">
 				<div class="container-fluid">
@@ -172,96 +119,149 @@
 									<li><a href="#">Another notification</a></li>
 								</ul>
 						</ul>
+
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/THEPTA/login">
 									<p>
 										<span class="glyphicon glyphicon-off"></span>Log out
 									</p>
 							</a></li>
+
 						</ul>
 					</div>
 				</div>
 			</nav>
 
 			<div class="sub-nav">
-				
+				<a href="/THEPTA/dashboard/uploadtestandhomework">
 					<h5>
-					<a href="../dashboard">
 						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>View Feedback</h5>
+				</a>Upload Homework
+				</h5>
 			</div>
-			<br> <br>
-			<div class="panel">
+
+			<div class="content">
 				<div class="container-fluid">
-					<br>
-					<div class="u-card">
-						<ul class="nav nav-tabs nav-justified">
-							<li class="active"><a data-toggle="tab" href="#Subject1">Subject1</a></li>
-							<li><a data-toggle="tab" href="#Subject2">Subject2</a></li>
-							<li><a data-toggle="tab" href="#Subject3">Subject3</a></li>
-							<li><a data-toggle="tab" href="#Subject4">Subject4</a></li>
-							<li><a data-toggle="tab" href="#Subject5">Subject5</a></li>
-							<li><a data-toggle="tab" href="#Subject6">Subject6</a></li>
-						</ul>
-						<br> <br>
+					<div class="row">
+						<div class="col-md-10  col-md-offset-1">
+							<div class="u-card">
+								<div class="content">
+									<form>
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Name </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<div class="form-group">
+													<input type="text" class="form-control" disabled
+														placeholder="Company" value='${fName} ${lName}'>
+												</div>
+											</div>
+										</div>
 
-						<div class="tab-content">
-							<div id="Subject1"
-								class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
-								<h3>Teacher:Tejash Shrestha</h3>
-								<br>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur <br>adipisicing
-									elit, sed do eiusmod tempor <br>incididunt ut labore et
-									dolore magna aliqua.
-								</p>
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Class </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<select name="Class" id="small">
+													<option value="none" selected>none</option>
+													<option value="Class1">Class1</option>
+													<option value="Class2">Class2</option>
+													<option value="Class3">Class3</option>
+													<option value="Class4">Class4</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Section </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<select name="Section" id="small">
+													<option value="none" selected>none</option>
+													<option value="Section1">Section1</option>
+													<option value="Section2">Section2</option>
+													<option value="Section3">Section3</option>
+													<option value="Section4">Section4</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Subject </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<select name="Subject">
+													<option value="Subject1" selected>none</option>
+													<option value="Subject1">Subject1</option>
+													<option value="Subject2">Subject2</option>
+													<option value="Subject3">Subject3</option>
+													<option value="Subject4">Subject4</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Date </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<input type="date" name="bday" min="2017-01-02">
+											</div>
+										</div>
+
+
+
+									</form>
+								</div>
+								<div class="showme btn btn-info pull-right ">Get</div>
+								<br> <br>
+								<div id="after-click">
+									<hr>
+									<div class="container">
+
+
+										<form>
+											<div class="form-group">
+												<label for="comment">Comment:</label>
+												<textarea class="form-control" rows="5" id="comment"
+													style="width: 676px; height: 218px;"></textarea>
+											</div>
+										</form>
+									</div>
+
+									<br> <br> <label class="control-label">Select File</label>
+<input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"> <br>
+									<div class="btn btn-info pull-right">Submit</div>
+									<br> <br>
+								</div>
 							</div>
-
-							<div id="Subject2"
-								class="tab-pane fade in w3-panel w3-green w3-round-xlarg">
-								<h3>Subject2</h3>
-								<p>Ut enim ad minim veniam, quis nostrud exercitation
-									ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							</div>
-
-							<div id="Subject3"
-								class="tab-pane fade w3-panel w3-yellow w3-round-xlarg">
-								<h3>Subject3</h3>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit
-									voluptatem accusantium doloremque laudantium, totam rem
-									aperiam.</p>
-							</div>
-
-							<div id="Subject4"
-								class="tab-pane fade  w3-panel w3-orange w3-round-xlarg">
-								<h3>Subject4</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
-							<div id="Subject5"
-								class="tab-pane fade  w3-panel w3-black w3-round-xlarg">
-								<h3>Subject5</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
-							<div id="Subject6"
-								class="tab-pane fade  w3-panel w3-pink w3-round-xlarg">
-								<h3>Subject6</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
+
+
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul>
 							<li><a href="#"> Home </a></li>
+
+
 						</ul>
 					</nav>
 					<p class="copyright pull-right">
@@ -273,16 +273,14 @@
 					</p>
 				</div>
 			</footer>
+
 		</div>
+	</div>
+
+
 </body>
 
 <!--   Core JS Files   -->
-
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
-	src="$https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.js"
 	type="text/javascript"></script>
@@ -309,6 +307,17 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
-
+<script>
+	$(document).ready(function() {
+		$(".showme").click(function() {
+			$("#after-click").show();
+		});
+	});
+	$(document).on('ready', function() {
+	    $("#input-folder-1").fileinput({
+	        browseLabel: 'Select Folder...'
+	    });
+	});
+</script>
 
 </html>

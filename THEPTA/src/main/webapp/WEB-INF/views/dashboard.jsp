@@ -166,7 +166,7 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="card" onclick="location.href='#';">                        
+                        <div class="card" onclick="location.href='dashboard/uploadtestandhomework';">                        
                             <div class="card-content">
                              <img src="${pageContext.request.contextPath}/resources/img/homework.png">
                             Upload Test/Homework
