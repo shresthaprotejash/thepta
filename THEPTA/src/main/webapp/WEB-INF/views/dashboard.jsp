@@ -137,7 +137,7 @@
 
         <div class="content">     
             <div class="container-fluid">
-                <div class="row" align="center">
+                <div class="row" id="teachersrow" align="center">
                     <div class="col-sm-3">
                         <div class="card" onclick="location.href='dashboard/uploadattendance';">                        
                             <div class="card-content">
@@ -173,11 +173,21 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="col-sm-3">
+							<div class="card" onclick="location.href='dashboard/feedback';">
+								<div class="card-content">
+									<img
+										src="${pageContext.request.contextPath}/resources/img/feedback.png">
+									Feedback
+								</div>
+							</div>
+						</div>
                 </div>
 
 
 
-                <div class="row" align="center">
+                <div class="row" id="studentsrow" align="center">
                     <div class="col-sm-3">
                         <div class="card" onclick="location.href='dashboard/viewattendance';">                        
                             <div class="card-content">
@@ -213,16 +223,7 @@
                             </div>
                         </div>
                     </div>
-					
-					<div class="col-sm-3">
-							<div class="card" onclick="location.href='dashboard/feedback';">
-								<div class="card-content">
-									<img
-										src="${pageContext.request.contextPath}/resources/img/feedback.png">
-									Feedback
-								</div>
-							</div>
-						</div>
+										
 						
 						<div class="col-sm-3">
 							<div class="card" onclick="location.href='dashboard/viewfeedback';">
@@ -232,12 +233,7 @@
 									View Feedback
 								</div>
 							</div>
-						</div>
-					
-
-
-
-
+						</div>	
                 </div>
             </div>
         </div>
@@ -308,7 +304,18 @@
                 type: 'info',
                 timer: 1000
             });
-
+			
+        });
+        
+        $(document).ready(function(){
+        	$("#teachersrow").hide();
+        	$("#studentsrow").hide();
+        	var user=${userType};
+        	if (user==0) {
+        		$("#teachersrow").show();            	
+            } else {
+            	$("#studentsrow").show(); 
+            }        	
         });
     </script>
 
