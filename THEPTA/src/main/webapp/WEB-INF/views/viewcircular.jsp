@@ -55,30 +55,29 @@
 							<a href="#"> <img class="avatar border-gray"
 								src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg"
 								alt="..." />
+							
 								<h4 class="title">${fName}
 									${lName}<br /> <small>${userMailId}</small>
 								</h4>
 							</a>
 						</div>
 					</div>
+					
 
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
 
-				<ul class="nav">
-
-					<li><a href="/THEPTA/dashboard/uploadattendance">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Attendance
-							</p>
-					</a></li>
+				<ul class="nav" id="teachers">
+            
+              		<li>
+						<a href="/THEPTA/dashboard/uploadattendance">
+							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
+						</a>
+					</li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
-							</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -88,13 +87,27 @@
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
+					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Upload
 								Test/Homework
 							</p>
 					</a></li>
-
+					
+					<li ><a href="/THEPTA/dashboard/feedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/uploadcircular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span> Upload Circular
+							</p>
+					</a></li>
+		         </ul>
+					
+					<ul class="nav" id="students">
 					<li><a href="/THEPTA/dashboard/viewattendance">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -122,37 +135,22 @@
 								Test/Homework
 							</p>
 					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
+					
 					<li><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Feedback
 							</p>
 					</a></li>
-					<li><a href="/THEPTA/dashboard/uploadcircular">
+					
+					<li  class="active"><a href="/THEPTA/dashboard/viewcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload
-								Circular
-
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
 							</p>
 					</a></li>
-
-					<li class="äctive"><a href="/THEPTA/dashboard/viewcircular">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Circular
-							</p>
-					</a></li>
-
-				</ul>
-			</div>
-		</div>
+					</ul>
+    	</div>
+    </div>
 
 		<div class="main-panel">
 			<nav class="navbar navbar-default navbar-fixed">
@@ -310,6 +308,20 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
-
+<script>
+$(document).ready(function(){
+	$('#teachers').hide();
+	$('#students').hide();
+	var user=${userType};
+	if (user==0)
+		{
+			$('#teachers').show();
+		}
+	else
+		{
+			$('#students').show();
+		}
+});
+</script>
 
 </html>

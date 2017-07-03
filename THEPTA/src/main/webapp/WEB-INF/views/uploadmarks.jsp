@@ -52,72 +52,7 @@
             </div>
 
 
-            <ul class="nav">
-                                
-                 <li>                	
-                    <a href="/THEPTA/dashboard/uploadattendance">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-                    </a>
-                    
-                </li>
-                
-                <li class="active">
-                    <a href="/THEPTA/dashboard/uploadmarks">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Chat with Parents</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/uploadtestandhomework">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Upload Test/Homework</p>
-                    </a>
-                </li>
-                
-                <li>
-                
-                    <a href="/THEPTA/dashboard/viewattendance">
-                   
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Attendance</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/viewmarks">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Marks</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Chat with Teachers</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/viewhwandtest">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Test/Homework</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/feedback">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Feedback</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/viewfeedback">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Feedback</p>
-                    </a>
-                </li>
-<li><a href="/THEPTA/dashboard/circular">
-
+            
             <ul class="nav" id="teachers">
 				
 					<li>
@@ -151,10 +86,10 @@
 							</p>
 					</a></li>
 					
-					<li><a href="/THEPTA/dashboard/circular">
+					<li><a href="/THEPTA/dashboard/uploadcircular">
 
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload Circular
 							</p>
 					</a></li>
 

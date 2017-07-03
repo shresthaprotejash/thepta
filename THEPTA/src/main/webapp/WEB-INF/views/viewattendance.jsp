@@ -67,19 +67,17 @@
 
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
-				<ul class="nav">
-					<li><a href="/THEPTA/dashboard/uploadattendance">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Attendance
-							</p>
-					</a></li>
+				<ul class="nav" id="teachers">
+				
+					<li>
+						<a href="/THEPTA/dashboard/uploadattendance">
+							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
+						</a>
+					</li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
-							</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -95,96 +93,22 @@
 								Test/Homework
 							</p>
 					</a></li>
-
-					<li class="active"><a href="/THEPTA/dashboard/viewattendance">
-
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Attendance
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewmarks">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Marks
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
-								Teachers
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewhwandtest">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Test/Homework
-							</p>
-					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
+					
+					<li ><a href="/THEPTA/dashboard/feedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
-
-					<li><a href="/THEPTA/dashboard/viewfeedback">
+					
+					<li><a href="/THEPTA/dashboard/uploadcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Feedback
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload Circular
 							</p>
 					</a></li>
-					<li><a href="/THEPTA/dashboard/cicular">
-							<ul class="nav" id="teachers">
-
-								<li><a href="/THEPTA/dashboard/uploadattendance">
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Update
-											Attendance
-										</p>
-								</a></li>
-
-								<li><a href="/THEPTA/dashboard/uploadmarks">
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Update
-											Marks
-										</p>
-								</a></li>
-
-								<li><a href="/THEPTA/dashboard/">
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Chat
-											with Parents
-										</p>
-								</a></li>
-
-								<li><a href="/THEPTA/dashboard/uploadtestandhomework">
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Upload
-											Test/Homework
-										</p>
-								</a></li>
-
-								<li><a href="/THEPTA/dashboard/feedback">
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-										</p>
-								</a></li>
-
-								<li><a href="/THEPTA/dashboard/uploadcircular">
-
-										<p>
-											<span class="glyphicon glyphicon-chevron-right"></span>Upload
-											Circular
-										</p>
-								</a></li>
-							</ul>
-				</ul>
-
-				<ul class="nav" id="students">
+					
+					</ul>
+					
+					<ul class="nav" id="students">
 					<li class="active"><a href="/THEPTA/dashboard/viewattendance">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -212,7 +136,7 @@
 								Test/Homework
 							</p>
 					</a></li>
-
+					
 					<li><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -220,15 +144,13 @@
 							</p>
 					</a></li>
 
+					
 					<li><a href="/THEPTA/dashboard/viewcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
 							</p>
 					</a></li>
-
-
-				</ul>
+					</ul>
 			</div>
 		</div>
 		<div class="main-panel">
@@ -458,11 +380,7 @@
 	$(document).ready(function() {
 		$('#teachers').hide();
 		$('#students').hide();
-		var user = $
-		{
-			userType
-		}
-		;
+		var user = ${userType};
 		if (user == 0) {
 			$('#teachers').show();
 		} else {
