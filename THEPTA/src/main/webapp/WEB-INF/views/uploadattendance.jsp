@@ -103,16 +103,11 @@
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
-<<<<<<< HEAD
-					
 					<li><a href="/THEPTA/dashboard/circular">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Circular
 							</p>
 					</a></li>
-					
-=======
->>>>>>> b3e213ed20efa70a5832289abdcc47b3498bdae7
 					</ul>
 					
 					<ul class="nav" id="students">
@@ -149,18 +144,13 @@
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Feedback
 							</p>
-					</a></li>
-					
-<<<<<<< HEAD
+					</a></li>					
+
 					<li><a href="/THEPTA/dashboard/viewcircular">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
 							</p>
-					</a></li>
-					
-					
-=======
->>>>>>> b3e213ed20efa70a5832289abdcc47b3498bdae7
+					</a></li>				
 				</ul>
 			</div>
 		</div>
@@ -217,7 +207,6 @@
 			</div>
 
 			<div class="content">
-			${teacherSubjectList}
 			
 				<div class="container-fluid">
 					<div class="row">
