@@ -1,5 +1,7 @@
 package com.sakha.thepta.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.service.Teacher_subjectService;
 
 @Controller
@@ -22,9 +25,8 @@ public class DashController {
  
 		ModelAndView mv = new ModelAndView("uploadattendance");
 		int teacherId = (int) session.getAttribute("userId");
-		JSONObject teacherSubject = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
-		System.out.println(teacherSubject);
-		mv.addObject("teacherSubject", teacherSubject);
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		mv.addObject("teacherSubjectList", teacherSubjectList);
 		return mv;
 	}
 	

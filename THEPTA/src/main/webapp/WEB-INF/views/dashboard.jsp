@@ -48,6 +48,7 @@
 <body>
 
 
+<<<<<<< HEAD
 
 
 
@@ -225,6 +226,135 @@
 
 						<div class="col-sm-3">
 
+=======
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <div class="content">
+                    <div class="author">
+                        <a href="#">
+                            <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
+                            <h4 class="title">${fName}  ${lName}<br />
+                                 <small>${userMailId}</small>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="simple-text">
+                    Profile Info
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="/THEPTA/dashboard">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/THEPTA/userprofile">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/THEPTA/dashboard">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-sm hidden-xs"></b>
+                                    <span class="notification hidden-sm hidden-xs">5</span>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                             </ul>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/THEPTA/login">
+                                <p><span class="glyphicon glyphicon-off"></span>Log out</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="dimage"></div>
+
+        <div class="content">     
+            <div class="container-fluid">
+                <div class="row" id="teachersrow" align="center">
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/uploadattendance';">                        
+                            <div class="card-content">
+                            <img src="${pageContext.request.contextPath}/resources/img/attendance.png">
+                            Upload Attendance
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/uploadmarks';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/performance.png">
+                            Upload marks
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='#';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/chat.png">
+                            Chat with Parents
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/uploadtestandhomework';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/homework.png">
+                            Upload Test/Homework
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-3">
+>>>>>>> 0c9cb0093c6cfebad2772bf294446c3ab53451e9
 							<div class="card" onclick="location.href='dashboard/feedback';">
 								<div class="card-content">
 									<img
@@ -233,7 +363,52 @@
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 
+=======
+                </div>
+
+
+
+                <div class="row" id="studentsrow" align="center">
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/viewattendance';">                        
+                            <div class="card-content">
+                            <img src="${pageContext.request.contextPath}/resources/img/attendance.png">
+                            View Attendance
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/viewmarks';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/performance.png">
+                            View marks
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='#';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/chat.png">
+                            Chat with Teachers
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="card" onclick="location.href='dashboard/viewhwandtest';">                        
+                            <div class="card-content">
+                             <img src="${pageContext.request.contextPath}/resources/img/homework.png">
+                            View Test/Homework
+                            </div>
+                        </div>
+                    </div>
+										
+						
+>>>>>>> 0c9cb0093c6cfebad2772bf294446c3ab53451e9
 						<div class="col-sm-3">
 							<div class="card"
 								onclick="location.href='dashboard/viewfeedback';">
@@ -244,6 +419,7 @@
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 
 						<div class="col-sm-3">
 							<div class="card"
@@ -273,6 +449,11 @@
 				</div>
 			</div>
 		</div>
+=======
+                </div>
+            </div>
+        </div>
+>>>>>>> 0c9cb0093c6cfebad2772bf294446c3ab53451e9
 
 
 		<footer class="footer">
@@ -336,6 +517,7 @@
 			icon : 'pe-7s-bell',
 			message : "Welcome <b>${fName} ${lName}</b> - view the updates."
 
+<<<<<<< HEAD
 		}, {
 			type : 'info',
 			timer : 1000
@@ -343,5 +525,25 @@
 
 	});
 </script>
+=======
+            },{
+                type: 'info',
+                timer: 1000
+            });
+			
+        });
+        
+        $(document).ready(function(){
+        	$("#teachersrow").hide();
+        	$("#studentsrow").hide();
+        	var user=${userType};
+        	if (user==0) {
+        		$("#teachersrow").show();            	
+            } else {
+            	$("#studentsrow").show(); 
+            }        	
+        });
+    </script>
+>>>>>>> 0c9cb0093c6cfebad2772bf294446c3ab53451e9
 
 </html>

@@ -42,6 +42,7 @@ public class HomeController {
 			session.setAttribute("lName", currentUser.getlName());
 			session.setAttribute("userMailId", currentUser.getMailId());
 			session.setAttribute("userId", currentUser.getUserId());	
+			session.setAttribute("userType", currentUser.getIsStudent());
 			return "redirect:/dashboard";
 		}else{	//invalid username or password
 			session.setAttribute("message", "invalid username or password");

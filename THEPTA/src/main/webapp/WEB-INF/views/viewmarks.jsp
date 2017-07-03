@@ -39,7 +39,7 @@
                     <div class="author">
                         <a href="#">
                             <img class="avatar border-gray" src="${pageContext.request.contextPath}/resources/img/faces/face-3.jpg" alt="..."/>
-                            <h4 class="title">${fName} ${lName}<br />
+                            <h4 class="title">${fName} ${lName}<br>
                                  <small>${userMailId}</small>
                             </h4>
                         </a>
@@ -50,77 +50,88 @@
                     Profile Info
                 </a>
             </div>
+            	<ul class="nav" id="teachers">
+            
+              		<li>
+						<a href="/THEPTA/dashboard/uploadattendance">
+							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
+						</a>
+					</li>
 
-            <ul class="nav">
-                <li>                	
-                    <a href="/THEPTA/dashboard/uploadattendance">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-                    </a>
-                    
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/uploadmarks">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Chat with Parents</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/uploadtestandhomework">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Upload Test/Homework</p>
-                    </a>
-                </li>
-                
-                <li>
-                
-                    <a href="/THEPTA/dashboard/viewattendance">
-                   
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Attendance</p>
-                    </a>
-                </li>
-                
-                <li class="active">
-                    <a href="/THEPTA/dashboard/viewmarks">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Marks</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Chat with Teachers</p>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="/THEPTA/dashboard/viewhwandtest">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Test/Homework</p>
-                    </a>
-                </li>
-                
-                  <li>
-                    <a href="/THEPTA/dashboard/feedback">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>Feedback</p>
-                    </a>
-                </li>
-                
-                  <li>
-                    <a href="/THEPTA/dashboard/viewfeedback">
-                        <p><span class="glyphicon glyphicon-chevron-right"></span>View Feedback</p>
-                    </a>
-                </li>
-                <li><a href="/THEPTA/dashboard/circular">
+					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
+								Parents
 							</p>
 					</a></li>
 
-            </ul>
+					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload
+								Test/Homework
+							</p>
+					</a></li>
+					
+					<li ><a href="/THEPTA/dashboard/feedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/uploadcircular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span> Upload Circular
+							</p>
+					</a></li>
+		         </ul>
+					
+					<ul class="nav" id="students">
+					<li><a href="/THEPTA/dashboard/viewattendance">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Attendance
+							</p>
+					</a></li>
+
+					<li class="active"><a href="/THEPTA/dashboard/viewmarks">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Marks
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Chat with
+								Teachers
+							</p>
+					</a></li>
+
+					<li><a href="/THEPTA/dashboard/viewhwandtest">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Test/Homework
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/viewfeedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Feedback
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/viewcircular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
+							</p>
+					</a></li>
+					</ul>
     	</div>
     </div>
 
@@ -346,6 +357,22 @@
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script> 
+	
+	<script>
+	$(document).ready(function(){
+		$('#teachers').hide();
+		$('#students').hide();
+		var user=${userType};
+		if (user==0)
+			{
+				$('#teachers').show();
+			}
+		else
+			{
+				$('#students').show();
+			}
+	});
+	</script>
     
    
 

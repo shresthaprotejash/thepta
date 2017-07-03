@@ -65,7 +65,34 @@ INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phon
 (11, 'Afroz', 'Pasha', 'afroz345@gmail.com', 'm', 42, '7469523140', 'Bangalore', '2017-06-29 09:32:07', '268db804a1ac71cbc437fabaa7752622', 1, 0),
 (12, 'Mohan', 'BA', 'mohanba@gmail.com', 'm', 50, '7865239550', 'Bangalore', '2017-06-29 09:34:53', 'e9206237def4b4ef46fd933ed0f5a08f', 1, 0),
 (13, 'Kavita', 'Sooda', 'kavita001@gmail.com', 'f', 35, '9620539920', 'Bangalore', '2017-06-29 09:34:53', '38bd642af5cc5256b92aca4c6bc35cf5', 1, 0),
-(14, 'Ganesh', 'Panth', 'gannubaba@gmail.com', 'm', 30, '8562485502', 'Bangalore', '2017-06-29 09:38:32', 'fa1d87bc7f85769ea9dee2e4957321ae', 1, 0);
+(14, 'Ganesh', 'Panth', 'gannubaba@gmail.com', 'm', 30, '8562485502', 'Bangalore', '2017-06-29 09:38:32', 'fa1d87bc7f85769ea9dee2e4957321ae', 1, 0),
+(15, 'Saumya', 'R', 'saumya123@gmail.com', 'f', 35, '8625936522', 'Bangalore', '2017-07-03 04:38:03', '5b2aaf7ba5628ded9ada39a5c9a2c46e', 1, 0),
+(16, 'Shobhana', 'Rao', 'shobhana716@gmail.com', 'f', 30, '7458263910', 'Bangalore', '2017-07-03 04:38:03', '0226d5b6d5f7fc7b38cbe5b52a62c815', 1, 0),
+(17, 'Ashwini', 'Jp', 'ashwini800@gmail.com', 'f', 32, '7584422036', 'Bangalopre', '2017-07-03 04:40:43', 'ff0eef605a66301097c87d2724025384', 1, 0),
+(18, 'Sanketh', 'Salvi', 'sankethnmit@gmail.com', 'm', 31, '9563320115', 'Bangalore', '2017-07-03 04:40:43', 'ab34b9e99074ad38ebb49d130c3d8198', 1, 0),
+(19, 'Sujatha', 'Joshi', 'sujatha011@gmail.com', 'f', 40, '7541120036', 'Bangalore', '2017-07-03 04:44:39', 'a456d9b63119588568e98cb27a5e2a52', 1, 0),
+(20, 'Nagaraj', 'Rao', 'nagarajnmit@gmail.com', 'm', 36, '9886482255', 'Bangalore', '2017-07-03 04:44:39', '306208cbd8906746df9ecb0316b71ad2', 1, 0),
+(21, 'Mansa', 'Gowda', 'mansagowda2gmail.com', 'f', 30, '9682033025', 'Bangalore', '2017-07-03 04:48:48', '8aab326bd2c6be65b978b4131dee6848', 1, 0),
+(22, 'Vidya', 'Kumari', 'vidya022@gmail.com', 'f', 40, '9482073990', 'Bangalore', '2017-07-03 04:48:48', '4dc13c8aa6371cbcb715d66f351ca293', 1, 0),
+(23, 'Nigam', 'Paudel', 'nigampaudel@gmail.com', 'm', 21, '9620529985', 'Bangalore', '2017-07-03 04:54:30', '6d7e8664505010dc18f6d3c3f31b585a', 0, 1),
+(24, 'Nitish', 'Kafle', 'nitish123@gmail.com', 'm', 21, '9886485533', 'Bangalore', '2017-07-03 04:54:30', 'fde62956f023ab40685ecceee22c402e', 0, 1),
+(25, 'Akshatha', 'Nayak', 'nayakakshatha@gmail.com', 'f', 21, '9480737110', 'Bangalore', '2017-07-03 04:59:03', 'a56eaad23c8319b792617c10861c0015', 0, 1),
+(26, 'Nathasha', 'Ramesh', 'nathasharamesh@gmail.com', 'f', 20, '7845120369', 'Bangalore', '2017-07-03 04:59:03', 'ddce7a0ea584f242f473cde80e0fbe84', 0, 1),
+(27, 'Megha', 'Poojari', 'meghabvr@gmail.com', 'f', 21, '8552663300', 'Bangalore', '2017-07-03 05:01:58', '13e96516ed6773efbe6c51dadb8e2856', 0, 1),
+(28, 'Pratiksha', 'Rai', 'pratiksha123@gmail.com', 'f', 22, '9663356440', 'Bangalore', '2017-07-03 05:01:58', 'acf48cde9806f74929606d54f1730005', 0, 1),
+(29, 'Prasuna', 'Reddy', 'prasunanmit@gmail.com', 'f', 21, '7445622003', 'Bangalore', '2017-07-03 05:06:13', '26370e25a698a435463b7d9dcbd0b8b1', 0, 1),
+(30, 'Anisha', 'Shrestha', 'shresthaanisha@gmail.com', 'f', 20, '8556622330', 'Bangalore', '2017-07-03 05:06:13', '759adfcf909ea2f9bd083e8b60cbb6d4', 0, 1),
+(31, 'Shashi', 'Shrestha', 'shashi123@gmail.com', 'f', 20, '9480839938', 'Bangalore', '2017-07-03 05:39:35', '11eba10d3544ac6d881143c0ecb59852', 0, 1),
+(32, 'Trishan', 'Shrestha', 'trishan033@gmail.com', 'm', 15, '7123002560', 'Bangalore', '2017-07-03 05:39:35', '38086dcb8cc56c14a8b2285439e208c4', 0, 1),
+(33, 'Sushma', 'Achar', 'sushmaachar@gmail.com', 'f', 22, '9782053992', 'Bangalore', '2017-07-03 05:39:35', 'e41e25979bc909c51157039ec1b2b2a3', 0, 1),
+(34, 'Shrisha', 'Vaidya', 'shrish123@gmail.com', 'm', 20, '8552663300', 'Bangalore', '2017-07-03 05:39:35', 'd90e13bd7052ada74d0ac1ddbe177360', 0, 1),
+(35, 'Mona', 'Oraon', 'mona123@gmail.com', 'f', 21, '8663320123', 'Bangalore', '2017-07-03 05:39:35', '4af5cab77c62eaec5f87b570f2d2b127', 0, 1),
+(36, 'Meghna', 'Nayak', 'meghnanayak@gmail.com', 'f', 22, '9886482233', 'Bangalore', '2017-07-03 05:39:35', 'ef5d369314eb5b845bd6f520a2eaee68', 0, 1),
+(37, 'Sindhu', 'R', 'sindhunmit@gmail.com', 'f', 21, '9663620012', 'Bangalore', '2017-07-03 05:39:35', 'cb626e8cb0e7d26c8bcbe8a7d31f980e', 0, 1),
+(38, 'Arpitha', 'Yadav', 'arpithayadav@gmail.com', 'f', 23, '9031146469', 'Bangalore', '2017-07-03 05:39:35', '94d96d6e3fe6914bd1c7451236173dde', 0, 1),
+(39, 'Namitha', 'Mn', 'namithamn@gmail.com', 'f', 21, '9663322030', 'Bangalore', '2017-07-03 05:39:35', '4d6c57324bebe9e244be3e1faf150a97', 0, 1),
+(40, 'Suwan', 'Shrestha', 'suwanshrestha@gmail.com', 'f', 22, '9523012503', 'Bangalore', '2017-07-03 05:39:35', 'c8be6f443c63cdbd592755e11c71991a', 0, 1);
+
 
 -- --------------------------------------------------------
 
@@ -109,7 +136,8 @@ INSERT INTO `classes` (`classId`, `classesName`) VALUES
 (5, '5th Standard'),
 (6, '6th Standard'),
 (7, '7th Standard'),
-(8, '8th Standard');
+(8, '8th Standard'),
+(9, '9th Standard');
 
 
 -- --------------------------------------------------------
@@ -222,7 +250,36 @@ INSERT INTO `subject` (`subjectId`, `subjectName`, `classId`) VALUES
 (4001, 'Mathematics', 4),
 (4002, 'Science', 4),
 (4003, 'English', 4),
-(4004, 'Social Studies', 4);
+(4004, 'Social Studies', 4),
+(5001, 'Mathematics', 5),
+(5002, 'English', 5),
+(5003, 'Science', 5),
+(5004, 'Social Studies', 5),
+(5005, 'Computer Science', 5),
+(6001, 'Mathematics', 6),
+(6002, 'English', 6),
+(6003, 'Science', 6),
+(6004, 'Social Studies', 6),
+(6005, 'Computer Science', 6),
+(7001, 'Mathematics', 7),
+(7002, 'English', 7),
+(7003, 'Science', 7),
+(7004, 'Social Studies', 7),
+(7005, 'Computer Science', 7),
+(7006, 'Environment and health', 7),
+(8001, 'Mathematics', 8),
+(8002, 'English', 8),
+(8003, 'Science', 8),
+(8004, 'Social Studies', 8),
+(8005, 'Computer Science', 8),
+(8006, 'Environment and health', 8),
+(9001, 'Mathematics', 9),
+(9002, 'English', 9),
+(9003, 'Science', 9),
+(9004, 'Social Studies', 9),
+(9005, 'Computer Science', 9),
+(9006, 'Environment and health', 9),
+(9007, 'Optional Math', 9);
 
 
 -- --------------------------------------------------------
@@ -241,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `test` (
 
 -- ----------------------------------------------------------
 --
--- Table structure for table `teacher-subject`
+-- Table structure for table `teacher_subject`
 --
 
 CREATE TABLE IF NOT EXISTS `teacher_subject` (
@@ -252,6 +309,109 @@ CREATE TABLE IF NOT EXISTS `teacher_subject` (
   `subjectId` int(11) NOT NULL,
   PRIMARY KEY (`teacher_subjectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+--
+-- Dumping data for table `teacher_subject`
+--
+
+INSERT INTO `teacher_subject` (`teacher_subjectId`, `teacherId`, `classId`, `sectionId`, `subjectId`) VALUES
+(1, 8, 1, 1, 1001),
+(2, 9, 1, 1, 1002),
+(3, 10, 1, 1, 1003),
+(4, 11, 1, 1, 1004),
+(5, 8, 1, 2, 1001),
+(6, 9, 1, 2, 1002),
+(7, 10, 1, 2, 1003),
+(8, 11, 1, 2, 1004),
+(9, 8, 2, 1, 2001),
+(10, 9, 2, 1, 2002),
+(11, 10, 2, 1, 2003),
+(12, 11, 2, 1, 2004),
+(13, 8, 2, 2, 2001),
+(14, 9, 2, 2, 2002),
+(15, 10, 2, 2, 2003),
+(16, 11, 2, 2, 2004),
+(17, 8, 3, 1, 3001),
+(18, 9, 3, 1, 3002),
+(19, 10, 3, 1, 3003),
+(20, 11, 3, 1, 3004),
+(21, 8, 3, 2, 3001),
+(22, 9, 3, 2, 3002),
+(23, 10, 3, 2, 3003),
+(24, 11, 3, 2, 3004),
+(25, 12, 4, 1, 4001),
+(26, 13, 4, 1, 4002),
+(27, 14, 4, 1, 4003),
+(28, 15, 4, 1, 4004),
+(29, 12, 4, 2, 4001),
+(30, 13, 4, 2, 4002),
+(31, 14, 4, 2, 4003),
+(32, 15, 4, 2, 4004),
+(33, 12, 5, 1, 5001),
+(34, 13, 5, 1, 5002),
+(35, 14, 5, 1, 5003),
+(36, 15, 5, 1, 5004),
+(37, 16, 5, 1, 5005),
+(38, 12, 5, 2, 5001),
+(39, 13, 5, 2, 5002),
+(40, 14, 5, 2, 5003),
+(41, 15, 5, 2, 5004),
+(42, 16, 5, 2, 5005),
+(43, 12, 6, 1, 6001),
+(44, 13, 6, 1, 6002),
+(45, 14, 6, 1, 6003),
+(51, 15, 6, 1, 6004),
+(52, 16, 6, 1, 6005),
+(53, 12, 6, 2, 6001),
+(54, 13, 6, 2, 6002),
+(55, 14, 6, 2, 6003),
+(56, 15, 6, 2, 6004),
+(57, 16, 6, 2, 6005),
+(58, 12, 7, 1, 7001),
+(59, 13, 7, 1, 7002),
+(60, 14, 7, 1, 7003),
+(61, 15, 7, 1, 7004),
+(62, 16, 7, 1, 7005),
+(63, 17, 7, 1, 7006),
+(64, 12, 7, 2, 7001),
+(65, 13, 7, 2, 7002),
+(66, 14, 7, 2, 7003),
+(67, 15, 7, 2, 7004),
+(68, 16, 7, 2, 7005),
+(69, 17, 7, 2, 7006),
+(70, 12, 8, 1, 8001),
+(71, 13, 8, 1, 8002),
+(72, 14, 8, 1, 8003),
+(73, 15, 8, 1, 8004),
+(74, 16, 8, 1, 8005),
+(75, 17, 8, 1, 8006),
+(76, 12, 8, 2, 8001),
+(77, 13, 8, 2, 8002),
+(78, 14, 8, 2, 8003),
+(79, 15, 8, 2, 8004),
+(80, 16, 8, 2, 8005),
+(81, 17, 8, 2, 8006),
+(82, 17, 9, 1, 9001),
+(83, 18, 9, 1, 9002),
+(84, 19, 9, 1, 9003),
+(85, 20, 9, 1, 9004),
+(86, 21, 9, 1, 9005),
+(87, 22, 9, 1, 9006),
+(88, 22, 9, 1, 9007),
+(89, 17, 9, 2, 9001),
+(90, 18, 9, 2, 9002),
+(91, 19, 9, 2, 9003),
+(92, 20, 9, 2, 9004),
+(93, 21, 9, 2, 9005),
+(94, 22, 9, 2, 9006),
+(95, 22, 9, 2, 9007),
+(96, 17, 9, 3, 9001),
+(97, 18, 9, 3, 9002),
+(98, 19, 9, 3, 9003),
+(99, 20, 9, 3, 9004),
+(100, 21, 9, 3, 9005),
+(101, 22, 9, 3, 9006),
+(102, 22, 9, 3, 9007);
 
 -- ---------------------------------------------------------
 
