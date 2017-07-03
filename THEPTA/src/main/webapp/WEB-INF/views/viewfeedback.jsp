@@ -68,20 +68,17 @@
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
 
-				<ul class="nav">
-
-					<li><a href="/THEPTA/dashboard/uploadattendance">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Attendance
-							</p>
-					</a></li>
+				<ul class="nav" id="teachers">
+				
+					<li>
+						<a href="/THEPTA/dashboard/uploadattendance">
+							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
+						</a>
+					</li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
-							</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -97,9 +94,23 @@
 								Test/Homework
 							</p>
 					</a></li>
-
+					
+					<li ><a href="/THEPTA/dashboard/feedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/circular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Circular
+							</p>
+					</a></li>
+					
+					</ul>
+					
+					<ul class="nav" id="students">
 					<li><a href="/THEPTA/dashboard/viewattendance">
-
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Attendance
@@ -126,19 +137,21 @@
 								Test/Homework
 							</p>
 					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
+					
 					<li class="active"><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Feedback
 							</p>
 					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/viewcircular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
+							</p>
+					</a></li>
+					
+					
 				</ul>
 
 			</div>
@@ -308,6 +321,22 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('#teachers').hide();
+	$('#students').hide();
+	var user=${userType};
+	if (user==0)
+		{
+			$('#teachers').show();
+		}
+	else
+		{
+			$('#students').show();
+		}
+});
+</script>
 
 
 

@@ -70,7 +70,7 @@
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
 
-				<ul class="nav">
+				<ul class="nav" >
 
 					<li><a href="/THEPTA/dashboard/viewhomework">
 							<p>

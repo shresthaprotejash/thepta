@@ -1,3 +1,6 @@
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -67,9 +70,10 @@
 
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
-
-				<ul class="nav">
-					<li class="active">
+				
+				<ul class="nav" id="teachers">
+				
+					<li class="active" >
 						<a href="/THEPTA/dashboard/uploadattendance">
 							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
 						</a>
@@ -77,9 +81,7 @@
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update
-								Marks
-							</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -95,7 +97,22 @@
 								Test/Homework
 							</p>
 					</a></li>
-
+					
+					<li ><a href="/THEPTA/dashboard/feedback">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
+							</p>
+					</a></li>
+					
+					<li><a href="/THEPTA/dashboard/circular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Circular
+							</p>
+					</a></li>
+					
+					</ul>
+					
+					<ul class="nav" id="students">
 					<li><a href="/THEPTA/dashboard/viewattendance">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -123,20 +140,21 @@
 								Test/Homework
 							</p>
 					</a></li>
-
-					<li><a href="/THEPTA/dashboard/feedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
-							</p>
-					</a></li>
-
+					
 					<li><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Feedback
 							</p>
 					</a></li>
-
+					
+					<li><a href="/THEPTA/dashboard/viewcircular">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
+							</p>
+					</a></li>
+					
+					
 				</ul>
 			</div>
 		</div>
@@ -193,6 +211,8 @@
 			</div>
 
 			<div class="content">
+			${teacherSubjectList}
+			
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-10  col-md-offset-1">
@@ -220,13 +240,12 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Class" id="small">
+												<select name="Class" id="class small">										
 													<option value="none" selected>none</option>
-													<option value="Class1">Class1</option>
-													<option value="Class2">Class2</option>
-													<option value="Class3">Class3</option>
-													<option value="Class4">Class4</option>
-												</select>
+													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
+														<option value="Class1"><c:out value="${teacherSubjectList.className}"/></option>
+													</c:forEach>
+													</select>
 											</div>
 										</div>
 
@@ -237,12 +256,11 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Section" id="small">
+												<select name="Section" id="section small">
 													<option value="none" selected>none</option>
-													<option value="Section1">Section1</option>
-													<option value="Section2">Section2</option>
-													<option value="Section3">Section3</option>
-													<option value="Section4">Section4</option>
+													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
+														<option value="Class1"><c:out value="${teacherSubjectList.sectionName}"/></option>
+													</c:forEach>													
 												</select>
 											</div>
 										</div>
@@ -254,13 +272,12 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Subject">
+												<select name="Subject" id="subject">
 													<option value="Subject1" selected>none</option>
-													<option value="Subject1">Subject1</option>
-													<option value="Subject2">Subject2</option>
-													<option value="Subject3">Subject3</option>
-													<option value="Subject4">Subject4</option>
-												</select>
+													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
+														<option value="Class1"><c:out value="${teacherSubjectList.subjectName}"/></option>
+													</c:forEach>
+													</select>
 											</div>
 										</div>
 
@@ -422,9 +439,24 @@
 
 <script>
 $(document).ready(function(){
+
     $(".showme").click(function(){
         $("#after-click").show();
     });
+    
+});
+$(document).ready(function(){
+	$('#teachers').hide();
+	$('#students').hide();
+	var user=${userType};
+	if (user==0)
+		{
+			$('#teachers').show();
+		}
+	else
+		{
+			$('#students').show();
+		}
 });
 </script>
 
