@@ -103,6 +103,7 @@
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
+<<<<<<< HEAD
 					
 					<li><a href="/THEPTA/dashboard/circular">
 							<p>
@@ -110,6 +111,8 @@
 							</p>
 					</a></li>
 					
+=======
+>>>>>>> b3e213ed20efa70a5832289abdcc47b3498bdae7
 					</ul>
 					
 					<ul class="nav" id="students">
@@ -148,6 +151,7 @@
 							</p>
 					</a></li>
 					
+<<<<<<< HEAD
 					<li><a href="/THEPTA/dashboard/viewcircular">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
@@ -155,6 +159,8 @@
 					</a></li>
 					
 					
+=======
+>>>>>>> b3e213ed20efa70a5832289abdcc47b3498bdae7
 				</ul>
 			</div>
 		</div>
@@ -242,8 +248,9 @@
 											<div class="col-md-7">
 												<select name="Class" id="class small">										
 													<option value="none" selected>none</option>
-													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
-														<option value="Class1"><c:out value="${teacherSubjectList.className}"/></option>
+
+													<c:forEach items="${teacherSubjectList}" var="teacherSubject">
+														<option value="${teacherSubject.className}">${teacherSubject.className}</option>
 													</c:forEach>
 													</select>
 											</div>

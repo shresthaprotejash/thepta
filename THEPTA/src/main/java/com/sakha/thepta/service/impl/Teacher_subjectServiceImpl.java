@@ -1,16 +1,19 @@
 package com.sakha.thepta.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sakha.thepta.dao.AttendanceDao;
+import com.sakha.thepta.dao.ClassesDao;
+import com.sakha.thepta.dao.SectionDao;
+import com.sakha.thepta.dao.SubjectDao;
 import com.sakha.thepta.dao.Teacher_subjectDao;
 import com.sakha.thepta.dao.UserDao;
+import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.model.TeacherSubjectModel;
 import com.sakha.thepta.model.UserModel;
 import com.sakha.thepta.service.Teacher_subjectService;
@@ -19,7 +22,18 @@ import com.sakha.thepta.service.Teacher_subjectService;
 public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 	
 	@Autowired
-	private UserDao userDao; 
+	private UserDao userDao;
+	
+	@Autowired
+	private ClassesDao classesDao;
+	
+	@Autowired
+	private SectionDao sectionDao;
+	
+	@Autowired
+	private SubjectDao subjectDao;
+	
+	
 	
 	@Autowired
 	private Teacher_subjectDao teacher_subjectDao;
@@ -33,22 +47,29 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 
 	@Override
 	@Transactional
-	public JSONObject getTeacherSubjectListByTeacherId(int teacherId) {
+	public List<TeacherSubjectDto> getTeacherSubjectListByTeacherId(int teacherId) {
 		
 		String teacherName = getUserFullName(userDao.getUserByUserId(teacherId));
-		JSONObject jsonObject = new JSONObject();
-		JSONArray jsonArr = new JSONArray();
+		TeacherSubjectDto newTeacherSubjectDto = null;
+		List<TeacherSubjectDto> teacherSujectDtoList = new ArrayList<TeacherSubjectDto>();
 		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getTeacherSubjectListByTeacherId(teacherId);
+		List<Integer> uniqueClassIdList = new ArrayList<Integer>();
+		
 		for(TeacherSubjectModel teacherModel : teacherSubjectModelList){
 			
-			jsonObject.put("teacherName", teacherName);
-			jsonObject.put("classId", teacherModel.getClassId());
-			jsonObject.put("subjectId", teacherModel.getSubjectId());
-			jsonObject.put("sectionId", teacherModel.getSectionId());
-			jsonArr.put(jsonObject);
+			if(!uniqueClassIdList.contains(teacherModel.getClassId())){
+
+				uniqueClassIdList.add(teacherModel.getClassId());
+				newTeacherSubjectDto = new TeacherSubjectDto();
+				newTeacherSubjectDto.setTeacherName(teacherName);				
+				newTeacherSubjectDto.setClassName(classesDao.getClassesByClassId(teacherModel.getClassId()));
+				newTeacherSubjectDto.setSectionName(sectionDao.getSectionBysectionId(teacherModel.getSectionId()));
+				newTeacherSubjectDto.setSubjectName(subjectDao.getSubjectBySubjectId(teacherModel.getSubjectId()));
+				
+				teacherSujectDtoList.add(newTeacherSubjectDto);
+			}
 		}
-		
-		return jsonObject.put("teacherList", jsonArr);
+		return teacherSujectDtoList;
 	}
 
 	public String getUserFullName(UserModel userModel){
@@ -61,4 +82,5 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 			return userModel.getlName();
 		}
 	}
+	
 }
