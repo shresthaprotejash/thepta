@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="icon" type="image/png"
-	href="${pageContext.request.contextPath}/resources/img/faces/face-2.jpg">
+<link rel="icon" type="image/png" href="assets/img/faces/face-2.jpg">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>THEPTA Dashboard</title>
 
 <meta
@@ -14,11 +14,15 @@
 
 
 <!-- Bootstrap core CSS     -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" />
-     <link href="${pageContext.request.contextPath}/resources/css/inner-style.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/inner-style.css"
+	rel="stylesheet" />
 
- 
 <!-- Animation library for notifications   -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/animate.min.css"
@@ -38,8 +42,6 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/pe-icon-7-stroke.css"
 	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/w3.css"
-	rel="stylesheet" />
 
 </head>
 <body>
@@ -47,7 +49,6 @@
 	<div class="wrapper">
 		<div class="sidebar" data-color="blue"
 			data-image="${pageContext.request.contextPath}/resources/img/sidebar-4.jpg">
-
 			<div class="sidebar-wrapper">
 				<div class="logo">
 					<div class="content">
@@ -88,7 +89,7 @@
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/">
+					<li><a href="/THEPTA/dashboard/uploadtestandhomework">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Upload
 								Test/Homework
@@ -96,6 +97,7 @@
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/viewattendance">
+
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
 								Attendance
@@ -123,33 +125,28 @@
 							</p>
 					</a></li>
 
-					<li><a href="/THEPTA/dashboard/feedback">
+					<li class="active"><a href="/THEPTA/dashboard/feedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/viewfeedback">
-							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Feedback
-							</p>
-					</a></li>
+							<p><span class="glyphicon glyphicon-chevron-right"></span>View Feedback</p>
+						</a></li>
 					<li><a href="/THEPTA/dashboard/uploadcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload
-								Circular
-
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload Circular
+								
 							</p>
 					</a></li>
-
-					<li class="äctive"><a href="/THEPTA/dashboard/viewcircular">
+					
+					<li class="active"><a href="/THEPTA/dashboard/viewcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View
-								Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
 							</p>
 					</a></li>
-
+					
 				</ul>
 			</div>
 		</div>
@@ -190,93 +187,91 @@
 										<span class="glyphicon glyphicon-off"></span>Log out
 									</p>
 							</a></li>
-
 						</ul>
 					</div>
 				</div>
 			</nav>
 
-
 			<div class="sub-nav">
-				<a href="../dashboard">
-					<h5>
-						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>View Circular
+				<a href="/THEPTA/dashboard">
+					<h5><span class="glyphicon glyphicon-chevron-left"></span>
+				</a>Upload Circular
 				</h5>
 			</div>
-
-		
+			
+			<br> <br>
 			<div class="content">
-				<div class="w3-container">
+				<div class="container-fluid">
 					<div class="u-card">
 						<form>
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
 									
-
 									</div>
-									</div>
-									</div>
-
-							<div class="w3-container">
-
-
-								<div class="w3-card-4" style="width: 100%;">
-									<header class="w3-container w3-blue">
-										<h3 align="center">Circular</h3>
-										<h3 align="right">19/06/2017</h3>
-									</header>
-
-									<div class="w3-container">
-										<p>Dear students and staffs,</p>
-										<b><p>This is to inform you all that on behalf of air
-												show college will remain closed tommo..</p>
-									</div>
-
-
-
 								</div>
-								<br><br>
-								<div class="w3-card-4" style="width: 100%;">
-									<header class="w3-container w3-blue">
-										<h3 align="center">Circular</h3>
-										<h3 align="right">19/06/2017</h3>
-									</header>
-
-									<div class="w3-container">
-										<p>Dear students and staffs,</p>
-										<b><p>This is to inform you all that on behalf of air
-												show college will remain closed tommo..</p>
+								
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Date </label>
+										
 									</div>
-
-
 								</div>
+								<div class="col-md-7">
+									<div class="form-group">
+										<input type="date" name="bday" min="2017-01-02">
+										
+									
+									</div>
 								</div>
 							</div>
-							<br><br>
 
-							<footer class="footer">
-								<div class="container-fluid">
-									<nav class="pull-left">
-										<ul>
-											<li><a href="#"> Home </a></li>
+							<div class="form-group">
+								
+								<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Title </label>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<div class="form-group">
+													<input type="text" class="form-control"	>
+												</div>
+											</div>
+										</div>
+								
+								
+								<textarea class="form-control" rows="6" id="uploadcircular"></textarea>
+								<br> <br> <a href="#" class="btn btn-info pull-right "
+									value="Submit">Submit</a>
+							</div>
+						</form>
 
 
-										</ul>
-									</nav>
-									<p class="copyright pull-right">
-										&copy;
-										<script>
-											document.write(new Date()
-													.getFullYear())
-										</script>
-										<a href="#">TShrestha</a>
-									</p>
-								</div>
-							</footer>
 					</div>
-					</div>
+				</div>
+
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul>
+							<li><a href="#">Home</a></li>
+						</ul>
+					</nav>
+					<p class="copyright pull-right">
+						&copy;
+						<script>document.write(new Date().getFullYear())</script>
+						<a href="#">TShrestha</a>
+					</p>
+				</div>
+			</footer>
+
+
+		</div>
 </body>
 
 <!--   Core JS Files   -->

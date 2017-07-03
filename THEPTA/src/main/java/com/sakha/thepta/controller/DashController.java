@@ -124,12 +124,19 @@ public class DashController {
 		return mv;
 	}
 
-	@RequestMapping("/circular")
-	public ModelAndView circular() {
+	@RequestMapping("/viewcircular")
+	public ModelAndView viewcircular() {
  
-		ModelAndView mv = new ModelAndView("circular");
+		ModelAndView mv = new ModelAndView("viewcircular");
 		return mv;
 	}
+	@RequestMapping("/uploadcircular")
+	public ModelAndView uploadcircular() {
+ 
+		ModelAndView mv = new ModelAndView("uploadcircular");
+		return mv;
+	}
+	
 	@RequestMapping("/uploadhomework")
 	public ModelAndView uploadhomework() {
  
