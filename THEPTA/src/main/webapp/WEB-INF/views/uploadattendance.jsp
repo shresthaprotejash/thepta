@@ -237,11 +237,11 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Class" id="class small">										
+												<select name="Class" id="classListSelectBox">										
 													<option value="none" selected>none</option>
 
 													<c:forEach items="${teacherSubjectList}" var="teacherSubject">
-														<option value="${teacherSubject.className}">${teacherSubject.className}</option>
+														<option value="${teacherSubject.className}" id="${teacherSubject.classId}">${teacherSubject.className}</option>
 													</c:forEach>
 													</select>
 											</div>
@@ -434,7 +434,8 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-
+<!-- ajax utility file -->
+<script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
 $(document).ready(function(){
 
@@ -442,6 +443,15 @@ $(document).ready(function(){
         $("#after-click").show();
     });
     
+    $("#classListSelectBox").change(function(){
+    	var teacherId = 0;
+    	var classId = $("#classListSelectBox").value();
+//     	alert(classId)
+    	var url = "${pageContext.request.contextPath}/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+			console.log(JSON.stringify(result));
+		});
+    });
 });
 $(document).ready(function(){
 	$('#teachers').hide();

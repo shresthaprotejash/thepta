@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +29,16 @@ public class DashController {
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
 		return mv;
+	}
+	
+	@RequestMapping("/getsectionlistbyteacheridandclassid/{teacherid}/{classid}")
+	public String getSectionListByTeacheridAndClassid(@PathVariable("teacherid") int teacherId, 
+			@PathVariable("classid") int classId){
+		
+		JSONObject mainObj = new JSONObject();
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getSectionListByTeacheridAndClassid(teacherId, classId);
+		mainObj.put("teacherSubjectSectionList", teacherSubjectList);
+		return mainObj.toString();
 	}
 	
 	@RequestMapping("/viewattendance")

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sakha.thepta.dao.AttendanceDao;
 import com.sakha.thepta.dao.ClassesDao;
 import com.sakha.thepta.dao.SectionDao;
 import com.sakha.thepta.dao.SubjectDao;
@@ -32,8 +31,6 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 	
 	@Autowired
 	private SubjectDao subjectDao;
-	
-	
 	
 	@Autowired
 	private Teacher_subjectDao teacher_subjectDao;
@@ -83,6 +80,30 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 		}else{
 			return userModel.getlName();
 		}
+	}
+
+	@Override
+	@Transactional
+	public List<TeacherSubjectDto> getSectionListByTeacheridAndClassid(int teacherId, int classId) {
+
+		TeacherSubjectDto newTeacherSubjectDto = null;
+		List<TeacherSubjectDto> teacherSujectDtoList = new ArrayList<TeacherSubjectDto>();
+		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getTeacherSubjectListByTeacherIdAndClassId(teacherId, classId);
+		List<Integer> uniqueSectionIdList = new ArrayList<Integer>();
+		
+		for(TeacherSubjectModel teacherModel : teacherSubjectModelList){
+			
+			if(!uniqueSectionIdList.contains(teacherModel.getSectionId())){
+
+				uniqueSectionIdList.add(teacherModel.getSectionId());
+				newTeacherSubjectDto = new TeacherSubjectDto();
+				newTeacherSubjectDto.setSectionName(sectionDao.getSectionBysectionId(teacherModel.getSectionId()));
+				newTeacherSubjectDto.setSubjectName(subjectDao.getSubjectBySubjectId(teacherModel.getSubjectId()));
+				
+				teacherSujectDtoList.add(newTeacherSubjectDto);
+			}
+		}
+		return teacherSujectDtoList;
 	}
 	
 }

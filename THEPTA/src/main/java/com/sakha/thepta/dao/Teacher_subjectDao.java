@@ -8,5 +8,6 @@ public interface Teacher_subjectDao {
 
 	public TeacherSubjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
 	public List<TeacherSubjectModel> getTeacherSubjectListByTeacherId(int teacherId);
+	public List<TeacherSubjectModel> getTeacherSubjectListByTeacherIdAndClassId(int teacherId, int classId);
 
 }
