@@ -61,7 +61,9 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 
 				uniqueClassIdList.add(teacherModel.getClassId());
 				newTeacherSubjectDto = new TeacherSubjectDto();
-				newTeacherSubjectDto.setTeacherName(teacherName);				
+				newTeacherSubjectDto.setTeacherId(teacherId);
+				newTeacherSubjectDto.setTeacherName(teacherName);
+				newTeacherSubjectDto.setClassId(teacherModel.getClassId());
 				newTeacherSubjectDto.setClassName(classesDao.getClassesByClassId(teacherModel.getClassId()));
 				newTeacherSubjectDto.setSectionName(sectionDao.getSectionBysectionId(teacherModel.getSectionId()));
 				newTeacherSubjectDto.setSubjectName(subjectDao.getSubjectBySubjectId(teacherModel.getSubjectId()));
