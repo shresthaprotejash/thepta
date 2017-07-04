@@ -9,6 +9,7 @@ function callAjaxGetReqest(projectName, url, callback){
   			 window.location.href = projectName + "/sessionexpired";
   		  },
   		  200 : function(result){
+  			console.log(JSON.stringify(result));
 			callback(result);
   		  },
   		  500 : function(result){

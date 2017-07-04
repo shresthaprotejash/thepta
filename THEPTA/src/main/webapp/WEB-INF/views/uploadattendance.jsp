@@ -241,7 +241,7 @@
 													<option value="none" selected>none</option>
 
 													<c:forEach items="${teacherSubjectList}" var="teacherSubject">
-														<option value="${teacherSubject.className}" id="${teacherSubject.classId}">${teacherSubject.className}</option>
+														<option value="${teacherSubject.classId}" id="${teacherSubject.classId}">${teacherSubject.className}</option>
 													</c:forEach>
 													</select>
 											</div>
@@ -444,13 +444,29 @@ $(document).ready(function(){
     });
     
     $("#classListSelectBox").change(function(){
-    	var teacherId = 0;
-    	var classId = $("#classListSelectBox").value();
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
 //     	alert(classId)
-    	var url = "${pageContext.request.contextPath}/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
-    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	$.ajax({         	
+    	  	  url: url,
+    	  	  statusCode : {
+    	  		  
+    	  		  901: function(){
+    	  			 window.location.href = projectName + "/sessionexpired";
+    	  		  },
+    	  		  200 : function(result){
+    	  			console.log(JSON.stringify(result));
+//     				callback(result);
+    	  		  },
+    	  		  500 : function(result){
+    	  			  alert("Server not responding...try again later...");
+    	  		  }
+    	  	  }
+    	  });
+    	/* callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
 			console.log(JSON.stringify(result));
-		});
+		}); */
     });
 });
 $(document).ready(function(){
