@@ -214,16 +214,15 @@
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<label>Subject</label>
+										<label>Subject </label>
 									</div>
 								</div>
-								<div class="col-md-7">
-									<select name="subject" id="small">
-										<option value="none" selected>none</option>
-										<option>subject1</option>
-										<option>subject2</option>
-										<option>subject3</option>
-										<option>subject4</option>
+								<div class="col-md-5">
+									<select name="Subject" id="subject">
+										<option value="Subject1" selected>none</option>
+										<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
+											<option value="Class1"><c:out value="${teacherSubjectList.subjectName}"/></option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -248,8 +247,6 @@
 									value="Submit">Submit</a>
 							</div>
 						</form>
-
-
 					</div>
 				</div>
 
@@ -302,9 +299,26 @@
 	src="${pageContext.request.contextPath}/resources/js/light-bootstrap-dashboard.js"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>\
+<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>ss
 
 <script>
+$(document).ready(function(){
+
+    $(".showme").click(function(){
+        $("#after-click").show();
+    });
+    
+    $("#classListSelectBox").change(function(){
+    	var teacherId = 0;
+    	var classId = $("#classListSelectBox").value();
+     	alert(teacherId)
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacherid/"+teacherId;
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+			console.log(JSON.stringify(result));
+		});
+    });
+});
+
 $(document).ready(function(){
 	$('#teachers').hide();
 	$('#students').hide();
