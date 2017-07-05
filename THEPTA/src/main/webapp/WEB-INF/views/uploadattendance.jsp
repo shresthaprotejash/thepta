@@ -254,11 +254,8 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Section" id="section small">
-													<option value="none" selected>none</option>
-													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
-														<option value="Class1"><c:out value="${teacherSubjectList.sectionName}"/></option>
-													</c:forEach>													
+												<select name="Section" id="sectionListSelectId">
+													<option value="none" selected>none</option>									
 												</select>
 											</div>
 										</div>
@@ -270,11 +267,8 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Subject" id="subject">
-													<option value="Subject1" selected>none</option>
-													<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
-														<option value="Class1"><c:out value="${teacherSubjectList.subjectName}"/></option>
-													</c:forEach>
+												<select name="Subject" id="subjectListSelect">
+													<option value="none" selected>none</option>												
 													</select>
 											</div>
 										</div>
@@ -286,7 +280,7 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<input type="date" name="bday" min="2017-01-02">
+												<input type="date" name="bday" id="attandanceDate" min="2017-01-02">
 											</div>
 										</div>
 
@@ -294,7 +288,7 @@
 
 									</form>
 								</div>
-								<div class="showme btn btn-info pull-right ">Get</div>
+								<div class="showme btn btn-info pull-right">Get</div>
 								<br> <br>
 								<div id="after-click">
 									<hr>
@@ -373,8 +367,9 @@
 									</TABLE>
 
 									<br>
-									<br>
-									<div class="btn btn-info pull-right">Submit</div>
+									<br>									
+									<div class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
+									<div class="btn btn-danger pull-right">Cancel</div>
 									<br>
 									<br>
 								</div>
@@ -417,8 +412,7 @@
 	type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap-checkbox-radio-switch.js"></script>
+
 
 <!--  Charts Plugin -->
 <script
@@ -438,40 +432,10 @@
 <script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
 $(document).ready(function(){
-
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
     
-    $("#classListSelectBox").change(function(){
-    	var teacherId = ${userId};
-    	var classId = $("#classListSelectBox").val();
-//     	alert(classId)
-    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
-    	$.ajax({         	
-    	  	  url: url,
-    	  	  statusCode : {
-    	  		  
-    	  		  901: function(){
-    	  			 window.location.href = projectName + "/sessionexpired";
-    	  		  },
-    	  		  200 : function(result){
-    	  			console.log(JSON.stringify(result));
-//     				callback(result);
-    	  		  },
-    	  		  500 : function(result){
-    	  			  alert("Server not responding...try again later...");
-    	  		  }
-    	  	  }
-    	  });
-    	/* callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
-			console.log(JSON.stringify(result));
-		}); */
-    });
-});
-$(document).ready(function(){
-	$('#teachers').hide();
+    $('#teachers').hide();
 	$('#students').hide();
+	
 	var user=${userType};
 	if (user==0)
 		{
@@ -481,6 +445,74 @@ $(document).ready(function(){
 		{
 			$('#students').show();
 		}
+    
+	document.getElementById("sectionListSelectId").disabled = true;
+    document.getElementById("subjectListSelect").disabled = true;
+    
+    $("#classListSelectBox").change(function(){    	 
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("sectionListSelectId").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			output.push('<option value="'+ item.sectionId +'">'+ item.sectionName +'</option>');
+    		});
+    		$('#sectionListSelectId').html(output.join(''));
+
+		});
+    	}
+    });
+    
+    $("#sectionListSelectId").change(function(){
+    	document.getElementById("subjectListSelect").disabled = false;
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none" && sectionId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("subjectListSelect").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			if(item.sectionId==sectionId)
+    			output.push('<option value="'+ item.subjectName +'">'+ item.subjectName +'</option>');
+    		});
+    		$('#subjectListSelect').html(output.join(''));
+
+    	});
+    	}
+    });
+    
+    $(".showme").click(function(){
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+        var subjectName=$("#subjectListSelect").val();
+        var date=$("#attandanceDate").val();
+    	if (classId!="none" && sectionId!="none" && subjectName!="none" && date!=""){
+        	$("#after-click").show();
+        	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
+        	document.getElementById("classListSelectBox").disabled = true;
+        	document.getElementById("sectionListSelectId").disabled = true;
+            document.getElementById("subjectListSelect").disabled = true;
+            document.getElementById("attandanceDate").disabled = true;
+            $('.showme').addClass('disabled');
+    	}
+    	else
+    	{
+    		$('.showme').addClass('btn-danger').removeClass('btn-info').removeClass('btn-success');
+    		$('.showme').fadeOut(100).fadeIn(1500);
+    	}
+    });
+	
 });
 </script>
 

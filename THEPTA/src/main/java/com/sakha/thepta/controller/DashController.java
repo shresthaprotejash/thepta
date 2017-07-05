@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sakha.thepta.dto.TeacherSubjectDto;
@@ -33,6 +34,7 @@ public class DashController {
 	}
 	
 	@RequestMapping(value = "/getsectionlistbyteacheridandclassid/{teacherid}/{classid}", method = RequestMethod.GET)
+	@ResponseBody
 	public String getSectionListByTeacheridAndClassid(@PathVariable("teacherid") int teacherId, 
 			@PathVariable("classid") int classId){
 		
