@@ -1,10 +1,12 @@
 package com.sakha.thepta.service;
 
-import com.sakha.thepta.model.StudentModel;
+import java.util.List;
+
+import com.sakha.thepta.dto.AttendanceDto;
 
 public interface StudentService {
 
-	public StudentModel getStudentByStudentId(int studentId);
+	public List<AttendanceDto> getStudentbyClassIdAndSectionIdAndSubjectId(int classId, int sectionId, int subjectId);
 	
 	
 }

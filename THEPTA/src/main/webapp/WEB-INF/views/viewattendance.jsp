@@ -1,3 +1,6 @@
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -202,6 +205,7 @@
 				</a>View Attendance
 				</h5>
 			</div>
+			 
 
 			<div class="content">
 				<div class="container-fluid">
@@ -230,7 +234,7 @@
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
-											placeholder="Class" value="7">
+											placeholder="Class" value="${studentAttendanceList[0].className}">
 									</div>
 									<div class="col-md-2 col-md-offset-1">
 										<label>Section </label>
@@ -238,7 +242,7 @@
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
-											placeholder="Section" value="A">
+											placeholder="Section" value="${studentAttendanceList[0].sectionName}">
 									</div>
 								</div>
 								<hr>
@@ -251,70 +255,19 @@
 									<TH width="80">Absent</TH>
 									<TH width="80">Total</TH>
 									<TH width="80">Percent</TH>
-									<TH width="80">Mark</TH>
+									
+									<c:forEach items="${studentAttendanceList}" var="studentList">
 									<TR>
 										<TD>1</TD>
-										<TD>Tejash Shrestha</TD>
-										<TD>121</TD>
-										<TD>21</TD>
-										<TD>142</TD>
-										<TD>75</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" style="margin-left: auto; margin-right: auto;"></td>
+										<TD>${studentList.subjectName}</TD>
+										<TD>${studentList.presentDays}</TD>
+										<TD>${studentList.absentDays}</TD>
+										<TD>${studentList.totalDays}</TD>
+										<TD>${studentList.percentage}</TD>										
 									</TR>
-									<TR>
-
-										<TD>2</TD>
-										<TD>Supreetha Achar K</TD>
-										<TD>221</TD>
-										<TD>32</TD>
-										<TD>421</TD>
-										<TD>61</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" />&nbsp;</td>
-
-									</TR>
-									<TR>
-										<TD>3</TD>
-										<TD>Medha Mishra</TD>
-										<TD>221</TD>
-										<TD>32</TD>
-										<TD>421</TD>
-										<TD>61</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" />&nbsp;</td>
-									</TR>
-									<TR>
-										<TD>4</TD>
-										<TD>Prerana Rani</TD>
-										<TD>21</TD>
-										<TD>52</TD>
-										<TD>21</TD>
-										<TD>13</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" />&nbsp;</td>
-									</TR>
-									<TR>
-										<TD>5</TD>
-										<TD>Preeti Kumari</TD>
-										<TD>21</TD>
-										<TD>52</TD>
-										<TD>21</TD>
-										<TD>13</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" />&nbsp;</td>
-									</TR>
-									<TR>
-										<TD>6</TD>
-										<TD>Suruchi Rai</TD>
-										<TD>21</TD>
-										<TD>52</TD>
-										<TD>21</TD>
-										<TD>13</TD>
-										<td style="text-align: center;"><input type="checkbox"
-											name="name1" />&nbsp;</td>
-									</TR>
-
+										
+									</c:forEach>
+																		
 								</TABLE>
 
 							</div>

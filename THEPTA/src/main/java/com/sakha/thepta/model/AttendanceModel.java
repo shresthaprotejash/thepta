@@ -18,13 +18,45 @@ public class AttendanceModel {
 	private int attendanceId;
 	@Column(name="studentId")
 	private int studentId;
-	@Column(name="subjectId")
-	private int subjectId;
 	@Column(name="classId")
 	private int classId;
+	@Column (name="sectionId")
+	private int sectionId;
+	@Column(name="subjectId")
+	private int subjectId;
+	@Column(name="presentdays")
+	private int presentdays;
+	@Column(name="absentdays")
+	private int absentdays;
+	@Column(name="totaldays")
+	private int totaldays;
 	@Column(name="attendancePercentage")
 	private int attendancePercentage;
 	
+	public int getSectionId() {
+		return sectionId;
+	}
+	public void setSectionId(int sectionId) {
+		this.sectionId = sectionId;
+	}
+	public int getPresentdays() {
+		return presentdays;
+	}
+	public void setPresentdays(int presentdays) {
+		this.presentdays = presentdays;
+	}
+	public int getAbsentdays() {
+		return absentdays;
+	}
+	public void setAbsentdays(int absentdays) {
+		this.absentdays = absentdays;
+	}
+	public int getTotaldays() {
+		return totaldays;
+	}
+	public void setTotaldays(int totaldays) {
+		this.totaldays = totaldays;
+	}
 	public int getAttendanceId() {
 		return attendanceId;
 	}

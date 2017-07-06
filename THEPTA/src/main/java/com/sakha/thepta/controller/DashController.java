@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
+import com.sakha.thepta.model.StudentModel;
+import com.sakha.thepta.service.AttendanceService;
+import com.sakha.thepta.service.StudentService;
 import com.sakha.thepta.service.Teacher_subjectService;
 
 @Controller
@@ -22,6 +26,9 @@ public class DashController {
 	
 	@Autowired
 	private Teacher_subjectService teacherSubjectService;
+	
+	@Autowired
+	private AttendanceService attendanceService;
 	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -44,10 +51,23 @@ public class DashController {
 		return mainObj.toString();
 	}
 	
+	@RequestMapping(value = "/getsectionlistbyteacheridandclassid/{teacherid}/{classid}/{sectionid}/{subjectid}", method = RequestMethod.GET)
+	@ResponseBody
+	public String getStudentListByClassidAndSectionidAndSubjectid(@PathVariable("classid") int classId, 
+			@PathVariable("sectionid") int sectionId, @PathVariable("subjectid") int subjectId){
+		JSONObject mainObj = new JSONObject();
+		List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
+		mainObj.put("studentList", studentList);
+		return mainObj.toString();
+	}
+	
 	@RequestMapping("/viewattendance")
-	public ModelAndView fetchAttendance() {
+	public ModelAndView fetchAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewattendance");
+		int studentId = (int) session.getAttribute("userId");
+		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
+		mv.addObject("studentAttendanceList", studentAttendanceList);
 		return mv;
 	}
 	

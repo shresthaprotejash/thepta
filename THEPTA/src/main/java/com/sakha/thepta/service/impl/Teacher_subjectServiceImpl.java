@@ -16,6 +16,7 @@ import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.model.TeacherSubjectModel;
 import com.sakha.thepta.model.UserModel;
 import com.sakha.thepta.service.Teacher_subjectService;
+import com.sakha.thepta.util.Util;
 
 @Service
 public class Teacher_subjectServiceImpl implements Teacher_subjectService{
@@ -34,6 +35,9 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 	
 	@Autowired
 	private Teacher_subjectDao teacher_subjectDao;
+	
+	@Autowired
+	private Util util;
 
 	@Override
 	@Transactional
@@ -46,7 +50,7 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 	@Transactional
 	public List<TeacherSubjectDto> getTeacherSubjectListByTeacherId(int teacherId) {
 		
-		String teacherName = getUserFullName(userDao.getUserByUserId(teacherId));
+		String teacherName = util.getUserFullName(userDao.getUserByUserId(teacherId));
 		TeacherSubjectDto newTeacherSubjectDto = null;
 		List<TeacherSubjectDto> teacherSujectDtoList = new ArrayList<TeacherSubjectDto>();
 		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getTeacherSubjectListByTeacherId(teacherId);
@@ -71,17 +75,6 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 		return teacherSujectDtoList;
 	}
 
-	public String getUserFullName(UserModel userModel){
-		
-		if(userModel.getfName() != null && userModel.getlName() != null){
-			return userModel.getfName() + " " + userModel.getlName();
-		}else if(userModel.getfName() != null){
-			return userModel.getfName();
-		}else{
-			return userModel.getlName();
-		}
-	}
-
 	@Override
 	@Transactional
 	public List<TeacherSubjectDto> getSectionListByTeacheridAndClassid(int teacherId, int classId) {
@@ -99,6 +92,7 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 				newTeacherSubjectDto = new TeacherSubjectDto();
 				newTeacherSubjectDto.setSectionId(teacherModel.getSectionId());
 				newTeacherSubjectDto.setSectionName(sectionDao.getSectionBysectionId(teacherModel.getSectionId()));
+				newTeacherSubjectDto.setSubjectId(teacherModel.getSubjectId());
 				newTeacherSubjectDto.setSubjectName(subjectDao.getSubjectBySubjectId(teacherModel.getSubjectId()));
 				
 				teacherSujectDtoList.add(newTeacherSubjectDto);
