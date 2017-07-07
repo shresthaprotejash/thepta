@@ -17,10 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
-import com.sakha.thepta.model.StudentModel;
 import com.sakha.thepta.service.AttendanceService;
-import com.sakha.thepta.service.StudentService;
 import com.sakha.thepta.service.Teacher_subjectService;
+import com.sakha.thepta.service.TestTypeService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -32,11 +31,14 @@ public class DashController {
 	@Autowired
 	private AttendanceService attendanceService;
 	
+	@Autowired
+	private TestTypeService testTypeService; 
+	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadattendance");
-		int teacherId = (int) session.getAttribute("userId");
+		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
 		return mv;
@@ -79,16 +81,20 @@ public class DashController {
 	public ModelAndView fetchAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewattendance");
-		int studentId = (int) session.getAttribute("userId");
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
 		mv.addObject("studentAttendanceList", studentAttendanceList);
 		return mv;
 	}
 	
 	@RequestMapping("/uploadmarks")
-	public ModelAndView uploadMarks() {
+	public ModelAndView uploadMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadmarks");
+		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		mv.addObject("teacherSubjectList", teacherSubjectList);
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
 		return mv;
 	}
 	
