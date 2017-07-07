@@ -21,9 +21,9 @@ function callAjaxGetReqest(projectName, url, callback){
 
 
 function callAjaxPostReqest(projectName, url, param, callback){
-
-    $.ajax({     
-    	
+console.log(param);
+    
+	$.ajax({     
   	  url: url,
   	  type: 'POST',
   	  data:param,

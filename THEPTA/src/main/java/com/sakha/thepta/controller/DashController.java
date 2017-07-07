@@ -2,6 +2,8 @@ package com.sakha.thepta.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -58,6 +60,18 @@ public class DashController {
 		JSONObject mainObj = new JSONObject();
 		List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
 		mainObj.put("studentList", studentList);
+		return mainObj.toString();
+	}
+	
+	@RequestMapping(value = "/submitAttendance", method = RequestMethod.POST)
+	@ResponseBody
+	public String putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response){
+		
+		JSONObject mainObj = new JSONObject();
+		String present= request.getParameter("present");
+		System.out.println(present);
+		//List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
+		//mainObj.put("studentList", studentList);
 		return mainObj.toString();
 	}
 	

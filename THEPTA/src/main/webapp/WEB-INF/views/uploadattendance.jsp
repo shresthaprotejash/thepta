@@ -471,7 +471,7 @@ $(document).ready(function(){
 				    cell4.innerHTML = item.absentDays;
 				    cell5.innerHTML = item.totalDays;
 				    cell6.innerHTML = item.percentage;
-				    cell7.innerHTML = '<input type="checkbox" name= "item.studentId"/>';
+				    cell7.innerHTML = '<input type="checkbox" name="mark" value="'+item.studentId+'" />';
 				    cell7.style.textAlign = "center";  	
         					      				  
         			sn=sn+1;
@@ -489,7 +489,29 @@ $(document).ready(function(){
 });
 
 function submit() {
-	alert('hello');
+	var present= new Array();
+	var  absent= new Array();
+	var formdata = new FormData();
+	
+	
+	$("input:checkbox[name=mark]:checked").each(function(){
+	    present.push($(this).val());
+	});
+	$("input:checkbox[name=mark]:not(:checked)").each(function(){
+	    absent.push($(this).val());
+	});
+	
+	formdata.append("present", present);
+	formdata.append("absent", absent);
+	console.log(formdata);
+	var url = "${pageContext.request.contextPath}/dashboard/submitAttendance";
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
+		result = JSON.parse(result);
+		var output=[];
+		var sn=1
+	});
+	console.log(present);
+	console.log(absent);
 }
 
 function reload() {
