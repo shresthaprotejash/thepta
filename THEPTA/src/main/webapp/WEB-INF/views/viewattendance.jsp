@@ -1,5 +1,5 @@
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
@@ -71,16 +71,19 @@
 					<a href="#" class="simple-text"> Profile Info </a>
 				</div>
 				<ul class="nav" id="teachers">
-				
-					<li>
-						<a href="/THEPTA/dashboard/uploadattendance">
-							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-						</a>
-					</li>
+
+					<li><a href="/THEPTA/dashboard/uploadattendance">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Attendance
+							</p>
+					</a></li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Marks
+							</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -96,22 +99,23 @@
 								Test/Homework
 							</p>
 					</a></li>
-					
-					<li ><a href="/THEPTA/dashboard/feedback">
+
+					<li><a href="/THEPTA/dashboard/feedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
-					
+
 					<li><a href="/THEPTA/dashboard/uploadcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload
+								Circular
 							</p>
 					</a></li>
-					
-					</ul>
-					
-					<ul class="nav" id="students">
+
+				</ul>
+
+				<ul class="nav" id="students">
 					<li class="active"><a href="/THEPTA/dashboard/viewattendance">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -139,7 +143,7 @@
 								Test/Homework
 							</p>
 					</a></li>
-					
+
 					<li><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -147,13 +151,14 @@
 							</p>
 					</a></li>
 
-					
+
 					<li><a href="/THEPTA/dashboard/viewcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Circular
 							</p>
 					</a></li>
-					</ul>
+				</ul>
 			</div>
 		</div>
 		<div class="main-panel">
@@ -205,7 +210,7 @@
 				</a>View Attendance
 				</h5>
 			</div>
-			 
+
 
 			<div class="content">
 				<div class="container-fluid">
@@ -234,15 +239,19 @@
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
-											placeholder="Class" value="${studentAttendanceList[0].className}">
+											placeholder="Class"
+											value="${studentAttendanceList[0].className}"
+											 style="width: 106px;">
 									</div>
+									<br>
 									<div class="col-md-2 col-md-offset-1">
 										<label>Section </label>
 
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
-											placeholder="Section" value="${studentAttendanceList[0].sectionName}">
+											placeholder="Section"
+											value="${studentAttendanceList[0].sectionName}">
 									</div>
 								</div>
 								<hr>
@@ -255,19 +264,19 @@
 									<TH width="80">Absent</TH>
 									<TH width="80">Total</TH>
 									<TH width="80">Percent</TH>
-									
+
 									<c:forEach items="${studentAttendanceList}" var="studentList">
-									<TR>
-										<TD>1</TD>
-										<TD>${studentList.subjectName}</TD>
-										<TD>${studentList.presentDays}</TD>
-										<TD>${studentList.absentDays}</TD>
-										<TD>${studentList.totalDays}</TD>
-										<TD>${studentList.percentage}</TD>										
-									</TR>
-										
+										<TR>
+											<TD>1</TD>
+											<TD>${studentList.subjectName}</TD>
+											<TD>${studentList.presentDays}</TD>
+											<TD>${studentList.absentDays}</TD>
+											<TD>${studentList.totalDays}</TD>
+											<TD>${studentList.percentage}</TD>
+										</TR>
+
 									</c:forEach>
-																		
+
 								</TABLE>
 
 							</div>

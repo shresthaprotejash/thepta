@@ -99,9 +99,13 @@ public class DashController {
 	}
 	
 	@RequestMapping("/viewmarks")
-	public ModelAndView fetchMarks() {
+	public ModelAndView fetchMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewmarks");
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
+		mv.addObject("studentAttendanceList", studentAttendanceList);
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
 		return mv;
 	}
 
