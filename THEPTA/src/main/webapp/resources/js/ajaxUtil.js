@@ -20,15 +20,15 @@ function callAjaxGetReqest(projectName, url, callback){
 
 
 
-function callAjaxPostReqest(projectName, url, param, callback){
-console.log(param);
-    
+function callAjaxPostReqest(projectName, url, formData, callback){
+
 	$.ajax({     
   	  url: url,
   	  type: 'POST',
-  	  data:param,
-	  contentType: "application/json; charset=utf-8",
-	  dataType: "json",
+	  processData: false,
+	  contentType: false,
+	  cache: false,
+  	  data: formData,
   	  statusCode : {
   		  
   		  901: function(){

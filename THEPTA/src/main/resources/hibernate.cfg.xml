@@ -19,6 +19,7 @@
 		<mapping class="com.sakha.thepta.model.Test_marksModel" />
 		<mapping class="com.sakha.thepta.model.TestModel" />
 		<mapping class="com.sakha.thepta.model.UserModel" />
+		<mapping class="com.sakha.thepta.model.TestTypeModel" />
 
 	</session-factory>
 

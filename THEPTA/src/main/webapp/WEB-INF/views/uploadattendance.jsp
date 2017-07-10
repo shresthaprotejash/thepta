@@ -490,33 +490,28 @@ $(document).ready(function(){
 
 function submit() {
 	var present= new Array();
-	var  absent= new Array();
-		
+	var  absent= new Array();	
+
 	
 	$("input:checkbox[name=mark]:checked").each(function(){
 	    present.push($(this).val());
 	});
-	$("input:checkbox[name=mark]:not(:checked)").each(function(){
+ 	$("input:checkbox[name=mark]:not(:checked)").each(function(){
 	    absent.push($(this).val());
 	});
-	
-	var formData = new FormData;
-	for (var i = 0; i < present.length; i++) {
-		console.log(present[i]);
-	    formData.append('present[]', present[i]);
-	}
-	for (var i = 0; i < absent.length; i++) {
-	    formData.append('absent[]', absent[i]);
-	}
-	console.log(formData);
+
+
+	var formdata = new FormData();
+	formdata.append("present_student", present);
+	formdata.append("absent_student", absent);
+
 	var url = "${pageContext.request.contextPath}/dashboard/submitAttendance";
-	callAjaxPostReqest("${pageContext.request.contextPath}", url, formData, function(result){
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
 		result = JSON.parse(result);
 		var output=[];
 		var sn=1
 	});
-	console.log(present);
-	console.log(absent);
+
 }
 
 function reload() {
