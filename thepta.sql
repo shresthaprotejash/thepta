@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 12, 2017 at 05:37 PM
--- Server version: 5.6.33-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.21
+-- Host: 127.0.0.1
+-- Generation Time: Jul 09, 2017 at 06:52 PM
+-- Server version: 5.7.13-log
+-- PHP Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,85 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `thepta`
 --
-
-DROP DATABASE if exists `thepta`;
-CREATE DATABASE IF NOT EXISTS `thepta` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `thepta`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `fName` varchar(128) DEFAULT NULL,
-  `lName` varchar(128) DEFAULT NULL,
-  `mailId` varchar(128) DEFAULT NULL,
-  `gender` char(1) DEFAULT NULL COMMENT 'm-male,f-female',
-  `age` int(4) DEFAULT NULL,
-  `phoneNo` varchar(14) NOT NULL,
-  `address` varchar(512) DEFAULT NULL,
-  `createdTs` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `password` varchar(128) DEFAULT NULL,
-  `isTeacher` tinyint(1) DEFAULT '0',
-  `isStudent` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`userId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `user`
---
-
-
-INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES
-(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', 'Bangalore', '2017-06-11 22:54:32', '40be4e59b9a2a2b5dffb918c0e86b3d7', 0, 1),
-(2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', 'Bangalore', '2017-06-20 06:54:32', '4a315d707428056419bbb4aafd3ad620', 0, 1),
-(3, 'Supreetha', 'Achar', 'supreethaachar09@gmail.com', 'f', 20, '9740712402', 'Bangalore', '2017-06-11 22:54:32', '696321967550f9bd9397e1f44bdaa8a2', 0, 1),
-(4, 'Suruchi', 'kumari', 'suruchirai.022@gmail.com', 'f', 21, '8951218781', 'Bangalore', '2017-06-11 22:54:32', 'b1758d8657f2b3eed3dd6bd44cad2f64', 0, 1),
-(5, 'Prerana', 'Rani', 'prerana.rani1996@gmail.com', 'f', 32, '7353175506', 'Bangalore', '2017-06-11 22:54:32', '48b0169ca96683601f39c554bf934311', 0, 1),
-(6, 'Medha', 'Mishra', 'medha009@gmail.com', 'f', 21, '9025614203', 'Bangalore', '2017-06-29 09:23:50', 'a61a55363ec35ed74b617f342352b96c', 0, 1),
-(7, 'Priti', 'Kumari', 'pritijee6@gmail.com', 'f', 21, '8951119168', 'Bangalore', '2017-06-29 09:17:39', '03087548757591325c25a6161986b7f8', 0, 1),
-(8, 'Vijaya', 'Shetty', 'vijaya100@gmail.com', 'f', 40, '7852364102', 'Bangalore', '2017-06-29 09:28:25', 'db8834197077287186e8c7524ca43d6f', 1, 0),
-(9, 'Archana', 'Nayak', 'archana123@gmail.com', 'f', 36, '9536842078', 'Bangalore', '2017-06-29 09:28:25', '46ff90e8e3c3c1cb6cae3a539082ffc9', 1, 0),
-(10, 'Pratibha', 'Ballal', 'pratibha123@gmail.com', 'f', 40, '8562486520', 'Bangalore', '2017-06-29 09:32:07', 'e4c75152da2adb01d664c1d5a236431f', 1, 0),
-(11, 'Afroz', 'Pasha', 'afroz345@gmail.com', 'm', 42, '7469523140', 'Bangalore', '2017-06-29 09:32:07', '268db804a1ac71cbc437fabaa7752622', 1, 0),
-(12, 'Mohan', 'BA', 'mohanba@gmail.com', 'm', 50, '7865239550', 'Bangalore', '2017-06-29 09:34:53', 'e9206237def4b4ef46fd933ed0f5a08f', 1, 0),
-(13, 'Kavita', 'Sooda', 'kavita001@gmail.com', 'f', 35, '9620539920', 'Bangalore', '2017-06-29 09:34:53', '38bd642af5cc5256b92aca4c6bc35cf5', 1, 0),
-(14, 'Ganesh', 'Panth', 'gannubaba@gmail.com', 'm', 30, '8562485502', 'Bangalore', '2017-06-29 09:38:32', 'fa1d87bc7f85769ea9dee2e4957321ae', 1, 0),
-(15, 'Saumya', 'R', 'saumya123@gmail.com', 'f', 35, '8625936522', 'Bangalore', '2017-07-03 04:38:03', '5b2aaf7ba5628ded9ada39a5c9a2c46e', 1, 0),
-(16, 'Shobhana', 'Rao', 'shobhana716@gmail.com', 'f', 30, '7458263910', 'Bangalore', '2017-07-03 04:38:03', '0226d5b6d5f7fc7b38cbe5b52a62c815', 1, 0),
-(17, 'Ashwini', 'Jp', 'ashwini800@gmail.com', 'f', 32, '7584422036', 'Bangalopre', '2017-07-03 04:40:43', 'ff0eef605a66301097c87d2724025384', 1, 0),
-(18, 'Sanketh', 'Salvi', 'sankethnmit@gmail.com', 'm', 31, '9563320115', 'Bangalore', '2017-07-03 04:40:43', 'ab34b9e99074ad38ebb49d130c3d8198', 1, 0),
-(19, 'Sujatha', 'Joshi', 'sujatha011@gmail.com', 'f', 40, '7541120036', 'Bangalore', '2017-07-03 04:44:39', 'a456d9b63119588568e98cb27a5e2a52', 1, 0),
-(20, 'Nagaraj', 'Rao', 'nagarajnmit@gmail.com', 'm', 36, '9886482255', 'Bangalore', '2017-07-03 04:44:39', '306208cbd8906746df9ecb0316b71ad2', 1, 0),
-(21, 'Mansa', 'Gowda', 'mansagowda2gmail.com', 'f', 30, '9682033025', 'Bangalore', '2017-07-03 04:48:48', '8aab326bd2c6be65b978b4131dee6848', 1, 0),
-(22, 'Vidya', 'Kumari', 'vidya022@gmail.com', 'f', 40, '9482073990', 'Bangalore', '2017-07-03 04:48:48', '4dc13c8aa6371cbcb715d66f351ca293', 1, 0),
-(23, 'Nigam', 'Paudel', 'nigampaudel@gmail.com', 'm', 21, '9620529985', 'Bangalore', '2017-07-03 04:54:30', '6d7e8664505010dc18f6d3c3f31b585a', 0, 1),
-(24, 'Nitish', 'Kafle', 'nitish123@gmail.com', 'm', 21, '9886485533', 'Bangalore', '2017-07-03 04:54:30', 'fde62956f023ab40685ecceee22c402e', 0, 1),
-(25, 'Akshatha', 'Nayak', 'nayakakshatha@gmail.com', 'f', 21, '9480737110', 'Bangalore', '2017-07-03 04:59:03', 'a56eaad23c8319b792617c10861c0015', 0, 1),
-(26, 'Nathasha', 'Ramesh', 'nathasharamesh@gmail.com', 'f', 20, '7845120369', 'Bangalore', '2017-07-03 04:59:03', 'ddce7a0ea584f242f473cde80e0fbe84', 0, 1),
-(27, 'Megha', 'Poojari', 'meghabvr@gmail.com', 'f', 21, '8552663300', 'Bangalore', '2017-07-03 05:01:58', '13e96516ed6773efbe6c51dadb8e2856', 0, 1),
-(28, 'Pratiksha', 'Rai', 'pratiksha123@gmail.com', 'f', 22, '9663356440', 'Bangalore', '2017-07-03 05:01:58', 'acf48cde9806f74929606d54f1730005', 0, 1),
-(29, 'Prasuna', 'Reddy', 'prasunanmit@gmail.com', 'f', 21, '7445622003', 'Bangalore', '2017-07-03 05:06:13', '26370e25a698a435463b7d9dcbd0b8b1', 0, 1),
-(30, 'Anisha', 'Shrestha', 'shresthaanisha@gmail.com', 'f', 20, '8556622330', 'Bangalore', '2017-07-03 05:06:13', '759adfcf909ea2f9bd083e8b60cbb6d4', 0, 1),
-(31, 'Shashi', 'Shrestha', 'shashi123@gmail.com', 'f', 20, '9480839938', 'Bangalore', '2017-07-03 05:39:35', '11eba10d3544ac6d881143c0ecb59852', 0, 1),
-(32, 'Trishan', 'Shrestha', 'trishan033@gmail.com', 'm', 15, '7123002560', 'Bangalore', '2017-07-03 05:39:35', '38086dcb8cc56c14a8b2285439e208c4', 0, 1),
-(33, 'Sushma', 'Achar', 'sushmaachar@gmail.com', 'f', 22, '9782053992', 'Bangalore', '2017-07-03 05:39:35', 'e41e25979bc909c51157039ec1b2b2a3', 0, 1),
-(34, 'Shrisha', 'Vaidya', 'shrish123@gmail.com', 'm', 20, '8552663300', 'Bangalore', '2017-07-03 05:39:35', 'd90e13bd7052ada74d0ac1ddbe177360', 0, 1),
-(35, 'Mona', 'Oraon', 'mona123@gmail.com', 'f', 21, '8663320123', 'Bangalore', '2017-07-03 05:39:35', '4af5cab77c62eaec5f87b570f2d2b127', 0, 1),
-(36, 'Meghna', 'Nayak', 'meghnanayak@gmail.com', 'f', 22, '9886482233', 'Bangalore', '2017-07-03 05:39:35', 'ef5d369314eb5b845bd6f520a2eaee68', 0, 1),
-(37, 'Sindhu', 'R', 'sindhunmit@gmail.com', 'f', 21, '9663620012', 'Bangalore', '2017-07-03 05:39:35', 'cb626e8cb0e7d26c8bcbe8a7d31f980e', 0, 1),
-(38, 'Arpitha', 'Yadav', 'arpithayadav@gmail.com', 'f', 23, '9031146469', 'Bangalore', '2017-07-03 05:39:35', '94d96d6e3fe6914bd1c7451236173dde', 0, 1),
-(39, 'Namitha', 'Mn', 'namithamn@gmail.com', 'f', 21, '9663322030', 'Bangalore', '2017-07-03 05:39:35', '4d6c57324bebe9e244be3e1faf150a97', 0, 1),
-(40, 'Suwan', 'Shrestha', 'suwanshrestha@gmail.com', 'f', 22, '9523012503', 'Bangalore', '2017-07-03 05:39:35', 'c8be6f443c63cdbd592755e11c71991a', 0, 1);
-
 
 -- --------------------------------------------------------
 
@@ -101,18 +27,16 @@ INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phon
 --
 
 CREATE TABLE `attendance` (
-  `attendanceId` int(11) NOT NULL AUTO_INCREMENT,
+  `attendanceId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `classId` int(11) NOT NULL,
   `sectionId` int(11) NOT NULL,
-  `subjectId` int(11) NOT NULL,  
+  `subjectId` int(11) NOT NULL,
   `presentdays` int(5) DEFAULT '0',
   `absentdays` int(5) NOT NULL DEFAULT '0',
   `totaldays` int(6) NOT NULL DEFAULT '0',
-  `attendancePercentage` int(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`attendanceId`)  
+  `attendancePercentage` int(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Dumping data for table `attendance`
@@ -217,17 +141,17 @@ INSERT INTO `attendance` (`attendanceId`, `studentId`, `classId`, `sectionId`, `
 (96, 37, 5, 2, 5003, 0, 0, 0, 0),
 (97, 37, 5, 2, 5004, 0, 0, 0, 0),
 (98, 37, 5, 2, 5005, 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `classes`
 --
 
-CREATE TABLE IF NOT EXISTS `classes` (
-  `classId` int(11) NOT NULL AUTO_INCREMENT,
-  `classesName` varchar(128) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`classId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `classes` (
+  `classId` int(11) NOT NULL,
+  `classesName` varchar(128) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classes`
@@ -244,21 +168,19 @@ INSERT INTO `classes` (`classId`, `classesName`) VALUES
 (8, '8th Standard'),
 (9, '9th Standard');
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `feedback`
 --
 
-CREATE TABLE IF NOT EXISTS `feedback` (
-  `feedbackId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `feedback` (
+  `feedbackId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
-  `feedbackText` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`feedbackId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `feedbackText` text CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -266,13 +188,12 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 -- Table structure for table `homework`
 --
 
-CREATE TABLE IF NOT EXISTS `homework` (
-  `homeworkId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `homework` (
+  `homeworkId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
-  `homeworkText` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`homeworkId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `homeworkText` text CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -280,11 +201,10 @@ CREATE TABLE IF NOT EXISTS `homework` (
 -- Table structure for table `section`
 --
 
-CREATE TABLE IF NOT EXISTS `section` (
-  `sectionIds` int(11) NOT NULL AUTO_INCREMENT,
-  `sectionName` varchar(128) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`sectionIds`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `section` (
+  `sectionIds` int(11) NOT NULL,
+  `sectionName` varchar(128) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `section`
@@ -297,19 +217,17 @@ INSERT INTO `section` (`sectionIds`, `sectionName`) VALUES
 (4, 'D'),
 (5, 'E');
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
-  `studentId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student` (
+  `studentId` int(11) NOT NULL,
   `classId` int(11) NOT NULL,
-  `sectionId` int(11) NOT NULL,
-  PRIMARY KEY (`studentId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `sectionId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
@@ -348,12 +266,11 @@ INSERT INTO `student` (`studentId`, `classId`, `sectionId`) VALUES
 -- Table structure for table `subject`
 --
 
-CREATE TABLE IF NOT EXISTS `subject` (
-  `subjectId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject` (
+  `subjectId` int(11) NOT NULL,
   `subjectName` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `classId` int(11) NOT NULL,
-  PRIMARY KEY (`subjectId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `classId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject`
@@ -406,34 +323,19 @@ INSERT INTO `subject` (`subjectId`, `subjectName`, `classId`) VALUES
 (9006, 'Environment and health', 9),
 (9007, 'Optional Math', 9);
 
-
 -- --------------------------------------------------------
 
---
--- Table structure for table `test`
---
-
-CREATE TABLE IF NOT EXISTS `test` (
-  `testId` int(11) NOT NULL AUTO_INCREMENT,
-  `subjectId` int(11) NOT NULL,
-  `teacherId` int(11) NOT NULL,
-  `marks` int(4) NOT NULL,
-  PRIMARY KEY (`testId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- ----------------------------------------------------------
 --
 -- Table structure for table `teacher_subject`
 --
 
-CREATE TABLE IF NOT EXISTS `teacher_subject` (
-  `teacher_subjectId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teacher_subject` (
+  `teacher_subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `classId` int(11) NOT NULL,
   `sectionId` int(11) NOT NULL,
-  `subjectId` int(11) NOT NULL,
-  PRIMARY KEY (`teacher_subjectId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `subjectId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher_subject`
@@ -538,27 +440,317 @@ INSERT INTO `teacher_subject` (`teacher_subjectId`, `teacherId`, `classId`, `sec
 (101, 22, 9, 3, 9006),
 (102, 22, 9, 3, 9007);
 
--- ---------------------------------------------------------
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `testId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
+  `subjectId` int(11) NOT NULL,
+  `teacherId` int(11) NOT NULL,
+  `marks` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`testId`, `testType`, `subjectId`, `teacherId`, `marks`) VALUES
+(1, 1, 1001, 8, 100),
+(2, 1, 1002, 9, 100),
+(3, 1, 1003, 10, 100),
+(4, 1, 1004, 11, 100),
+(5, 1, 2001, 8, 100),
+(6, 1, 2002, 9, 100),
+(7, 1, 2003, 10, 100),
+(8, 1, 2004, 11, 100),
+(9, 1, 3001, 8, 100),
+(10, 1, 3002, 9, 100),
+(11, 1, 3003, 10, 100),
+(12, 1, 3004, 11, 100),
+(13, 1, 4001, 12, 100),
+(14, 1, 4002, 13, 100),
+(15, 1, 4003, 14, 100),
+(16, 1, 4004, 15, 100),
+(17, 1, 5001, 12, 100),
+(18, 1, 5002, 13, 100),
+(19, 1, 5003, 14, 100),
+(20, 1, 5004, 15, 100),
+(21, 1, 5005, 16, 100),
+(22, 1, 6001, 12, 100),
+(23, 1, 6002, 13, 100),
+(24, 1, 6003, 14, 100),
+(25, 1, 6004, 15, 100),
+(26, 1, 6005, 16, 100),
+(27, 1, 7001, 12, 100),
+(28, 1, 7002, 13, 100),
+(29, 1, 7003, 14, 100),
+(30, 1, 7004, 15, 100),
+(31, 1, 7005, 16, 100),
+(32, 1, 7006, 17, 100),
+(33, 1, 8001, 12, 100),
+(34, 1, 8002, 13, 100),
+(35, 1, 8003, 14, 100),
+(36, 1, 8004, 15, 100),
+(37, 1, 8005, 16, 100),
+(38, 1, 8006, 17, 100),
+(39, 1, 9001, 17, 100),
+(40, 1, 9002, 18, 100),
+(41, 1, 9003, 19, 100),
+(42, 1, 9004, 20, 100),
+(43, 1, 9005, 21, 100),
+(44, 1, 9006, 22, 100),
+(45, 1, 9007, 22, 100),
+(46, 2, 1001, 8, 100),
+(47, 2, 1002, 9, 100),
+(48, 2, 1003, 10, 100),
+(49, 2, 1004, 11, 100),
+(50, 2, 2001, 8, 100),
+(51, 2, 2002, 9, 100),
+(52, 2, 2003, 10, 100),
+(53, 2, 2004, 11, 100);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testtype`
+--
+
+CREATE TABLE `testtype` (
+  `testTypeId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
+  `testTypeName` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testtype`
+--
+
+INSERT INTO `testtype` (`testTypeId`, `testType`, `testTypeName`) VALUES
+(1, 1, 'Term 1'),
+(2, 2, 'Term 2'),
+(3, 3, 'Term 3');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `test_marks`
 --
 
-CREATE TABLE IF NOT EXISTS `test_marks` (
-  `test_marksId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `test_marks` (
+  `test_marksId` int(11) NOT NULL,
   `testId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
-  `obtanedMarks` int(4) NOT NULL,
-  `result` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`test_marksId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `obtainedMarks` int(4) NOT NULL,
+  `result` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
- 
- 
+--
+-- Table structure for table `user`
+--
 
+CREATE TABLE `user` (
+  `userId` int(11) NOT NULL,
+  `fName` varchar(128) DEFAULT NULL,
+  `lName` varchar(128) DEFAULT NULL,
+  `mailId` varchar(128) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL COMMENT 'm-male,f-female',
+  `age` int(4) DEFAULT NULL,
+  `phoneNo` varchar(14) NOT NULL,
+  `address` varchar(512) DEFAULT NULL,
+  `createdTs` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `password` varchar(128) DEFAULT NULL,
+  `isTeacher` tinyint(1) DEFAULT '0',
+  `isStudent` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userId`, `fName`, `lName`, `mailId`, `gender`, `age`, `phoneNo`, `address`, `createdTs`, `password`, `isTeacher`, `isStudent`) VALUES
+(1, 'Raushan', 'Kumar', 'raushan.kumar@sakhatech.com', 'm', 28, '7815048200', 'Bangalore', '2017-06-11 22:54:32', '40be4e59b9a2a2b5dffb918c0e86b3d7', 0, 1),
+(2, 'Tejash', 'Shrestha', 'shrestha.tejash@gmail.com', 'm', 21, '9620539938', 'Bangalore', '2017-06-20 06:54:32', '4a315d707428056419bbb4aafd3ad620', 0, 1),
+(3, 'Supreetha', 'Achar', 'supreethaachar09@gmail.com', 'f', 20, '9740712402', 'Bangalore', '2017-06-11 22:54:32', '696321967550f9bd9397e1f44bdaa8a2', 0, 1),
+(4, 'Suruchi', 'kumari', 'suruchirai.022@gmail.com', 'f', 21, '8951218781', 'Bangalore', '2017-06-11 22:54:32', 'b1758d8657f2b3eed3dd6bd44cad2f64', 0, 1),
+(5, 'Prerana', 'Rani', 'prerana.rani1996@gmail.com', 'f', 32, '7353175506', 'Bangalore', '2017-06-11 22:54:32', '48b0169ca96683601f39c554bf934311', 0, 1),
+(6, 'Medha', 'Mishra', 'medha009@gmail.com', 'f', 21, '9025614203', 'Bangalore', '2017-06-29 09:23:50', 'a61a55363ec35ed74b617f342352b96c', 0, 1),
+(7, 'Priti', 'Kumari', 'pritijee6@gmail.com', 'f', 21, '8951119168', 'Bangalore', '2017-06-29 09:17:39', '03087548757591325c25a6161986b7f8', 0, 1),
+(8, 'Vijaya', 'Shetty', 'vijaya100@gmail.com', 'f', 40, '7852364102', 'Bangalore', '2017-06-29 09:28:25', 'db8834197077287186e8c7524ca43d6f', 1, 0),
+(9, 'Archana', 'Nayak', 'archana123@gmail.com', 'f', 36, '9536842078', 'Bangalore', '2017-06-29 09:28:25', '46ff90e8e3c3c1cb6cae3a539082ffc9', 1, 0),
+(10, 'Pratibha', 'Ballal', 'pratibha123@gmail.com', 'f', 40, '8562486520', 'Bangalore', '2017-06-29 09:32:07', 'e4c75152da2adb01d664c1d5a236431f', 1, 0),
+(11, 'Afroz', 'Pasha', 'afroz345@gmail.com', 'm', 42, '7469523140', 'Bangalore', '2017-06-29 09:32:07', '268db804a1ac71cbc437fabaa7752622', 1, 0),
+(12, 'Mohan', 'BA', 'mohanba@gmail.com', 'm', 50, '7865239550', 'Bangalore', '2017-06-29 09:34:53', 'e9206237def4b4ef46fd933ed0f5a08f', 1, 0),
+(13, 'Kavita', 'Sooda', 'kavita001@gmail.com', 'f', 35, '9620539920', 'Bangalore', '2017-06-29 09:34:53', '38bd642af5cc5256b92aca4c6bc35cf5', 1, 0),
+(14, 'Ganesh', 'Panth', 'gannubaba@gmail.com', 'm', 30, '8562485502', 'Bangalore', '2017-06-29 09:38:32', 'fa1d87bc7f85769ea9dee2e4957321ae', 1, 0),
+(15, 'Saumya', 'R', 'saumya123@gmail.com', 'f', 35, '8625936522', 'Bangalore', '2017-07-03 04:38:03', '5b2aaf7ba5628ded9ada39a5c9a2c46e', 1, 0),
+(16, 'Shobhana', 'Rao', 'shobhana716@gmail.com', 'f', 30, '7458263910', 'Bangalore', '2017-07-03 04:38:03', '0226d5b6d5f7fc7b38cbe5b52a62c815', 1, 0),
+(17, 'Ashwini', 'Jp', 'ashwini800@gmail.com', 'f', 32, '7584422036', 'Bangalopre', '2017-07-03 04:40:43', 'ff0eef605a66301097c87d2724025384', 1, 0),
+(18, 'Sanketh', 'Salvi', 'sankethnmit@gmail.com', 'm', 31, '9563320115', 'Bangalore', '2017-07-03 04:40:43', 'ab34b9e99074ad38ebb49d130c3d8198', 1, 0),
+(19, 'Sujatha', 'Joshi', 'sujatha011@gmail.com', 'f', 40, '7541120036', 'Bangalore', '2017-07-03 04:44:39', 'a456d9b63119588568e98cb27a5e2a52', 1, 0),
+(20, 'Nagaraj', 'Rao', 'nagarajnmit@gmail.com', 'm', 36, '9886482255', 'Bangalore', '2017-07-03 04:44:39', '306208cbd8906746df9ecb0316b71ad2', 1, 0),
+(21, 'Mansa', 'Gowda', 'mansagowda2gmail.com', 'f', 30, '9682033025', 'Bangalore', '2017-07-03 04:48:48', '8aab326bd2c6be65b978b4131dee6848', 1, 0),
+(22, 'Vidya', 'Kumari', 'vidya022@gmail.com', 'f', 40, '9482073990', 'Bangalore', '2017-07-03 04:48:48', '4dc13c8aa6371cbcb715d66f351ca293', 1, 0),
+(23, 'Nigam', 'Paudel', 'nigampaudel@gmail.com', 'm', 21, '9620529985', 'Bangalore', '2017-07-03 04:54:30', '6d7e8664505010dc18f6d3c3f31b585a', 0, 1),
+(24, 'Nitish', 'Kafle', 'nitish123@gmail.com', 'm', 21, '9886485533', 'Bangalore', '2017-07-03 04:54:30', 'fde62956f023ab40685ecceee22c402e', 0, 1),
+(25, 'Akshatha', 'Nayak', 'nayakakshatha@gmail.com', 'f', 21, '9480737110', 'Bangalore', '2017-07-03 04:59:03', 'a56eaad23c8319b792617c10861c0015', 0, 1),
+(26, 'Nathasha', 'Ramesh', 'nathasharamesh@gmail.com', 'f', 20, '7845120369', 'Bangalore', '2017-07-03 04:59:03', 'ddce7a0ea584f242f473cde80e0fbe84', 0, 1),
+(27, 'Megha', 'Poojari', 'meghabvr@gmail.com', 'f', 21, '8552663300', 'Bangalore', '2017-07-03 05:01:58', '13e96516ed6773efbe6c51dadb8e2856', 0, 1),
+(28, 'Pratiksha', 'Rai', 'pratiksha123@gmail.com', 'f', 22, '9663356440', 'Bangalore', '2017-07-03 05:01:58', 'acf48cde9806f74929606d54f1730005', 0, 1),
+(29, 'Prasuna', 'Reddy', 'prasunanmit@gmail.com', 'f', 21, '7445622003', 'Bangalore', '2017-07-03 05:06:13', '26370e25a698a435463b7d9dcbd0b8b1', 0, 1),
+(30, 'Anisha', 'Shrestha', 'shresthaanisha@gmail.com', 'f', 20, '8556622330', 'Bangalore', '2017-07-03 05:06:13', '759adfcf909ea2f9bd083e8b60cbb6d4', 0, 1),
+(31, 'Shashi', 'Shrestha', 'shashi123@gmail.com', 'f', 20, '9480839938', 'Bangalore', '2017-07-03 05:39:35', '11eba10d3544ac6d881143c0ecb59852', 0, 1),
+(32, 'Trishan', 'Shrestha', 'trishan033@gmail.com', 'm', 15, '7123002560', 'Bangalore', '2017-07-03 05:39:35', '38086dcb8cc56c14a8b2285439e208c4', 0, 1),
+(33, 'Sushma', 'Achar', 'sushmaachar@gmail.com', 'f', 22, '9782053992', 'Bangalore', '2017-07-03 05:39:35', 'e41e25979bc909c51157039ec1b2b2a3', 0, 1),
+(34, 'Shrisha', 'Vaidya', 'shrish123@gmail.com', 'm', 20, '8552663300', 'Bangalore', '2017-07-03 05:39:35', 'd90e13bd7052ada74d0ac1ddbe177360', 0, 1),
+(35, 'Mona', 'Oraon', 'mona123@gmail.com', 'f', 21, '8663320123', 'Bangalore', '2017-07-03 05:39:35', '4af5cab77c62eaec5f87b570f2d2b127', 0, 1),
+(36, 'Meghna', 'Nayak', 'meghnanayak@gmail.com', 'f', 22, '9886482233', 'Bangalore', '2017-07-03 05:39:35', 'ef5d369314eb5b845bd6f520a2eaee68', 0, 1),
+(37, 'Sindhu', 'R', 'sindhunmit@gmail.com', 'f', 21, '9663620012', 'Bangalore', '2017-07-03 05:39:35', 'cb626e8cb0e7d26c8bcbe8a7d31f980e', 0, 1),
+(38, 'Arpitha', 'Yadav', 'arpithayadav@gmail.com', 'f', 23, '9031146469', 'Bangalore', '2017-07-03 05:39:35', '94d96d6e3fe6914bd1c7451236173dde', 0, 1),
+(39, 'Namitha', 'Mn', 'namithamn@gmail.com', 'f', 21, '9663322030', 'Bangalore', '2017-07-03 05:39:35', '4d6c57324bebe9e244be3e1faf150a97', 0, 1),
+(40, 'Suwan', 'Shrestha', 'suwanshrestha@gmail.com', 'f', 22, '9523012503', 'Bangalore', '2017-07-03 05:39:35', 'c8be6f443c63cdbd592755e11c71991a', 0, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`attendanceId`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`classId`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedbackId`);
+
+--
+-- Indexes for table `homework`
+--
+ALTER TABLE `homework`
+  ADD PRIMARY KEY (`homeworkId`);
+
+--
+-- Indexes for table `section`
+--
+ALTER TABLE `section`
+  ADD PRIMARY KEY (`sectionIds`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`studentId`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`subjectId`);
+
+--
+-- Indexes for table `teacher_subject`
+--
+ALTER TABLE `teacher_subject`
+  ADD PRIMARY KEY (`teacher_subjectId`);
+
+--
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`testId`);
+
+--
+-- Indexes for table `testtype`
+--
+ALTER TABLE `testtype`
+  ADD PRIMARY KEY (`testTypeId`);
+
+--
+-- Indexes for table `test_marks`
+--
+ALTER TABLE `test_marks`
+  ADD PRIMARY KEY (`test_marksId`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `attendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `classId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedbackId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `homework`
+--
+ALTER TABLE `homework`
+  MODIFY `homeworkId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `section`
+--
+ALTER TABLE `section`
+  MODIFY `sectionIds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `studentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+--
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9008;
+--
+-- AUTO_INCREMENT for table `teacher_subject`
+--
+ALTER TABLE `teacher_subject`
+  MODIFY `teacher_subjectId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+--
+-- AUTO_INCREMENT for table `testtype`
+--
+ALTER TABLE `testtype`
+  MODIFY `testTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `test_marks`
+--
+ALTER TABLE `test_marks`
+  MODIFY `test_marksId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

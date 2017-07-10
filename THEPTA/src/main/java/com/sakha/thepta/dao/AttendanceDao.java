@@ -2,6 +2,7 @@ package com.sakha.thepta.dao;
 
 import java.util.List;
 
+import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.model.AttendanceModel;
 import com.sakha.thepta.model.StudentModel;
 
@@ -14,4 +15,6 @@ public interface AttendanceDao {
 	public List<AttendanceModel> getStudentIdByClassIdAndSectionId(int classId, int sectionId, int subjectId);
 
 	public List<AttendanceModel> getStudentAttendanceDetailByStudentId(int studentId);
+
+	public int updateStudentAttendance(List<AttendanceDto> newattendance);
 }

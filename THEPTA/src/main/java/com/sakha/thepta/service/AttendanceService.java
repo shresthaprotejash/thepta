@@ -14,4 +14,6 @@ public interface AttendanceService {
 	public List<AttendanceDto> getStudentbyClassIdAndSectionIdAndSubjectId(int classId, int sectionId, int subjectId);
 
 	public List<AttendanceDto> getAttendanceDetailsByStudentId(int studentId);
+
+	public int putattendance(String present_student, String absent_student);
 }
