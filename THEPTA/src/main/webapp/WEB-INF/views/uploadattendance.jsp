@@ -491,8 +491,7 @@ $(document).ready(function(){
 function submit() {
 	var present= new Array();
 	var  absent= new Array();
-	var formdata = new FormData();
-	
+		
 	
 	$("input:checkbox[name=mark]:checked").each(function(){
 	    present.push($(this).val());
@@ -501,11 +500,17 @@ function submit() {
 	    absent.push($(this).val());
 	});
 	
-	formdata.append("present", present);
-	formdata.append("absent", absent);
-	console.log(formdata);
+	var formData = new FormData;
+	for (var i = 0; i < present.length; i++) {
+		console.log(present[i]);
+	    formData.append('present[]', present[i]);
+	}
+	for (var i = 0; i < absent.length; i++) {
+	    formData.append('absent[]', absent[i]);
+	}
+	console.log(formData);
 	var url = "${pageContext.request.contextPath}/dashboard/submitAttendance";
-	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formData, function(result){
 		result = JSON.parse(result);
 		var output=[];
 		var sn=1
