@@ -12,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.sakha.thepta.dao.AttendanceDao;
+import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.model.AttendanceModel;
 import com.sakha.thepta.model.StudentModel;
 
@@ -46,5 +47,11 @@ public class AttendanceDaoImpl implements AttendanceDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AttendanceModel.class);
 		criteria.add(Restrictions.eq("studentId", studentId));
 		return criteria.list();
+	}
+
+	@Override
+	public int updateStudentAttendance(List<AttendanceDto> newattendance) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

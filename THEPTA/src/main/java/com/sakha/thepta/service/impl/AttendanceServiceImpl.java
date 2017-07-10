@@ -1,6 +1,7 @@
 package com.sakha.thepta.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 		return studentAttendanceList;
 
 	}
+	
 
 	@Override
 	@Transactional
@@ -99,6 +101,60 @@ public class AttendanceServiceImpl implements AttendanceService{
 	}
 		return studentAttendanceList;
 
+	}
+
+	@Override
+	@Transactional
+	public int putattendance(String present_student, String absent_student) {
+		List<String> studentPresentIds = Arrays.asList(present_student.split("\\s*,\\s*"));
+		System.out.println(studentPresentIds);
+		List<Integer> studentPIdno= new ArrayList<Integer>();
+		List<AttendanceDto> newattendance =new ArrayList<AttendanceDto>();
+		AttendanceDto newAttendanceDto = null;
+		for(String studentid : studentPresentIds){
+			studentPIdno.add(Integer.parseInt(studentid));
+		}
+		for(int studentid : studentPIdno){
+			System.out.println(studentid);			
+			List<AttendanceDto> studentList=getAttendanceDetailsByStudentId(studentid);
+			for(AttendanceDto attendanceModel : studentList){
+				newAttendanceDto = new AttendanceDto();
+				newAttendanceDto.setStudentId(attendanceModel.getStudentId());
+				newAttendanceDto.setClassId(attendanceModel.getClassId());
+				newAttendanceDto.setSectionId(attendanceModel.getSectionId());
+				newAttendanceDto.setSubjectId(attendanceModel.getSubjectId());
+				newAttendanceDto.setPresentDays(attendanceModel.getPresentDays()+1);
+				newAttendanceDto.setAbsentDays(attendanceModel.getAbsentDays());
+				newAttendanceDto.setTotalDays(attendanceModel.getTotalDays()+1);				
+				newAttendanceDto.setPercentage((newAttendanceDto.getPresentDays()/newAttendanceDto.getTotalDays())/100);
+				newattendance.add(newAttendanceDto);
+			}
+		}
+		
+		List<String> studentAbsentIds = Arrays.asList(absent_student.split("\\s*,\\s*"));
+		System.out.println(studentAbsentIds);
+		List<Integer> studentAIdno= new ArrayList<Integer>();
+		for(String studentid : studentAbsentIds){
+			studentAIdno.add(Integer.parseInt(studentid));
+		}
+		for(int studentid : studentAIdno){
+			System.out.println(studentid);			
+			List<AttendanceDto> studentList=getAttendanceDetailsByStudentId(studentid);
+			for(AttendanceDto attendanceModel : studentList){
+				newAttendanceDto = new AttendanceDto();
+				newAttendanceDto.setStudentId(attendanceModel.getStudentId());
+				newAttendanceDto.setClassId(attendanceModel.getClassId());
+				newAttendanceDto.setSectionId(attendanceModel.getSectionId());
+				newAttendanceDto.setSubjectId(attendanceModel.getSubjectId());
+				newAttendanceDto.setPresentDays(attendanceModel.getPresentDays());
+				newAttendanceDto.setAbsentDays(attendanceModel.getAbsentDays()+1);
+				newAttendanceDto.setTotalDays(attendanceModel.getTotalDays()+1);				
+				newAttendanceDto.setPercentage((newAttendanceDto.getPresentDays()/newAttendanceDto.getTotalDays())/100);
+				newattendance.add(newAttendanceDto);
+			}
+		}
+		int result= attendanceDao.updateStudentAttendance(newattendance);
+		return 1;
 	}
 
 }

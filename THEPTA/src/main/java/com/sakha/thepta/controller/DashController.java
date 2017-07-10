@@ -67,16 +67,16 @@ public class DashController {
 	
 	@RequestMapping(value = "/submitAttendance", method = RequestMethod.POST)
 	@ResponseBody
-	public String putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession){
+	public int putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession){
 		
 		JSONObject mainObj = new JSONObject();
 		String present_student = request.getParameter("present_student");
 		String absent_student = request.getParameter("absent_student");
 		System.out.println("present_student > " + present_student);
 		System.out.println("absent_student > " + absent_student);
-		//List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
+		int result = attendanceService.putattendance(present_student,absent_student);
 		//mainObj.put("studentList", studentList);
-		return mainObj.toString();
+		return result;
 	}
 	
 	@RequestMapping("/viewattendance")
