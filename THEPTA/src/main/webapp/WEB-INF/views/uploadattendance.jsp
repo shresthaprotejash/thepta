@@ -446,7 +446,7 @@ $(document).ready(function(){
         	document.getElementById("sectionListSelectId").disabled = true;
             document.getElementById("subjectListSelect").disabled = true;
             document.getElementById("attandanceDate").disabled = true;
-            $('.showme').addClass('disabled');
+            $('.showme').hide(1000);
             
             var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId+"/"+sectionId+"/"+subjectId;
             if (classId!="none" && sectionId!="none"){
