@@ -86,6 +86,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 		for(AttendanceModel attendanceModel : studentAttendanceDetailList){
 			newAttendanceDto = new AttendanceDto();
 			newAttendanceDto.setStudentId(attendanceModel.getStudentId());
+			newAttendanceDto.setAttendaceId(attendanceModel.getAttendanceId());
 			newAttendanceDto.setSubjectName(subjectDao.getSubjectBySubjectId(attendanceModel.getSubjectId()));
 			newAttendanceDto.setClassId(attendanceModel.getClassId());
 			newAttendanceDto.setClassName(classesDao.getClassesByClassId(attendanceModel.getClassId()));
@@ -105,12 +106,13 @@ public class AttendanceServiceImpl implements AttendanceService{
 
 	@Override
 	@Transactional
-	public int putattendance(String present_student, String absent_student) {
-		List<String> studentPresentIds = Arrays.asList(present_student.split("\\s*,\\s*"));
-		System.out.println(studentPresentIds);
-		List<Integer> studentPIdno= new ArrayList<Integer>();
+	public int putattendance(String present_student, String absent_student, int subjectId) {	
 		List<AttendanceDto> newattendance =new ArrayList<AttendanceDto>();
 		AttendanceDto newAttendanceDto = null;
+		if(present_student.length()>0) {
+		List<String> studentPresentIds = Arrays.asList(present_student.split("\\s*,\\s*"));
+		List<Integer> studentPIdno= new ArrayList<Integer>();
+		System.out.println(studentPresentIds);	
 		for(String studentid : studentPresentIds){
 			studentPIdno.add(Integer.parseInt(studentid));
 		}
@@ -118,19 +120,18 @@ public class AttendanceServiceImpl implements AttendanceService{
 			System.out.println(studentid);			
 			List<AttendanceDto> studentList=getAttendanceDetailsByStudentId(studentid);
 			for(AttendanceDto attendanceModel : studentList){
+				if (attendanceModel.getSubjectId()==subjectId) {
 				newAttendanceDto = new AttendanceDto();
-				newAttendanceDto.setStudentId(attendanceModel.getStudentId());
-				newAttendanceDto.setClassId(attendanceModel.getClassId());
-				newAttendanceDto.setSectionId(attendanceModel.getSectionId());
-				newAttendanceDto.setSubjectId(attendanceModel.getSubjectId());
+				newAttendanceDto.setAttendaceId(attendanceModel.getAttendaceId());
 				newAttendanceDto.setPresentDays(attendanceModel.getPresentDays()+1);
 				newAttendanceDto.setAbsentDays(attendanceModel.getAbsentDays());
 				newAttendanceDto.setTotalDays(attendanceModel.getTotalDays()+1);				
-				newAttendanceDto.setPercentage((newAttendanceDto.getPresentDays()/newAttendanceDto.getTotalDays())/100);
+				newAttendanceDto.setPercentage(((float)newAttendanceDto.getPresentDays()*100/(float)newAttendanceDto.getTotalDays()));
 				newattendance.add(newAttendanceDto);
+				}
 			}
 		}
-		
+		}
 		List<String> studentAbsentIds = Arrays.asList(absent_student.split("\\s*,\\s*"));
 		System.out.println(studentAbsentIds);
 		List<Integer> studentAIdno= new ArrayList<Integer>();
@@ -141,19 +142,23 @@ public class AttendanceServiceImpl implements AttendanceService{
 			System.out.println(studentid);			
 			List<AttendanceDto> studentList=getAttendanceDetailsByStudentId(studentid);
 			for(AttendanceDto attendanceModel : studentList){
+				if (attendanceModel.getSubjectId()==subjectId) {
 				newAttendanceDto = new AttendanceDto();
-				newAttendanceDto.setStudentId(attendanceModel.getStudentId());
-				newAttendanceDto.setClassId(attendanceModel.getClassId());
-				newAttendanceDto.setSectionId(attendanceModel.getSectionId());
-				newAttendanceDto.setSubjectId(attendanceModel.getSubjectId());
+				newAttendanceDto.setAttendaceId(attendanceModel.getAttendaceId());
 				newAttendanceDto.setPresentDays(attendanceModel.getPresentDays());
 				newAttendanceDto.setAbsentDays(attendanceModel.getAbsentDays()+1);
 				newAttendanceDto.setTotalDays(attendanceModel.getTotalDays()+1);				
-				newAttendanceDto.setPercentage((newAttendanceDto.getPresentDays()/newAttendanceDto.getTotalDays())/100);
+				newAttendanceDto.setPercentage(((float)newAttendanceDto.getPresentDays()*100/(float)newAttendanceDto.getTotalDays()));
 				newattendance.add(newAttendanceDto);
+				}
 			}
 		}
-		int result= attendanceDao.updateStudentAttendance(newattendance);
+		for(AttendanceDto students : newattendance){
+			int result= attendanceDao.updateStudentAttendance(students);
+			if (result==0){
+				return 0;
+			}
+		}
 		return 1;
 	}
 

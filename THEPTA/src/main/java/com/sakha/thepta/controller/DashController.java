@@ -65,17 +65,16 @@ public class DashController {
 		return mainObj.toString();
 	}
 	
-	@RequestMapping(value = "/submitAttendance", method = RequestMethod.POST)
+	@RequestMapping(value = "/{subjectid}/submitAttendance", method = RequestMethod.POST)
 	@ResponseBody
-	public int putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession){
+	public int putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession, @PathVariable("subjectid") int subjectId){
 		
 		JSONObject mainObj = new JSONObject();
 		String present_student = request.getParameter("present_student");
 		String absent_student = request.getParameter("absent_student");
 		System.out.println("present_student > " + present_student);
 		System.out.println("absent_student > " + absent_student);
-		int result = attendanceService.putattendance(present_student,absent_student);
-		//mainObj.put("studentList", studentList);
+		int result = attendanceService.putattendance(present_student,absent_student,subjectId);
 		return result;
 	}
 	
@@ -93,10 +92,10 @@ public class DashController {
 	public ModelAndView uploadMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadmarks");
-		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		/*int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
-		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());*/
 		return mv;
 	}
 	

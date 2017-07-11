@@ -7,7 +7,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -50,8 +52,16 @@ public class AttendanceDaoImpl implements AttendanceDao {
 	}
 
 	@Override
-	public int updateStudentAttendance(List<AttendanceDto> newattendance) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateStudentAttendance(AttendanceDto newattendance) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "update AttendanceModel set presentdays = ?, absentdays = ?, totaldays = ?, attendancePercentage = ? where attendanceId = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, newattendance.getPresentDays());
+		query.setParameter(1, newattendance.getAbsentDays());
+		query.setParameter(2, newattendance.getTotalDays());
+		query.setParameter(3, newattendance.getPercentage());
+		query.setParameter(4, newattendance.getAttendaceId());
+		int result = (Integer)query.executeUpdate();
+		return result;
 	}
 }

@@ -386,9 +386,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>    
   
   <script>
-$(document).ready(function(){
-	$('#teachers').hide();
 	$('#students').hide();
+	$('#teachers').hide();	
 	var user=${userType};
 	if (user==0)
 		{
@@ -398,6 +397,8 @@ $(document).ready(function(){
 		{
 			$('#students').show();
 		}
+	
+	$(document).ready(function(){
     $(".showme").click(function(){
         $("#after-click").show();
     });

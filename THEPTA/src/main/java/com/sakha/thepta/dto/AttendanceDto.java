@@ -1,6 +1,7 @@
 package com.sakha.thepta.dto;
 
 public class AttendanceDto {
+	private int attendaceId;
 	private int studentId;
 	private String studentName;
 	private int classId;
@@ -86,6 +87,12 @@ public class AttendanceDto {
 	}
 	public void setSectionName(String sectionName) {
 		this.sectionName = sectionName;
+	}
+	public int getAttendaceId() {
+		return attendaceId;
+	}
+	public void setAttendaceId(int attendaceId) {
+		this.attendaceId = attendaceId;
 	}
 
 }

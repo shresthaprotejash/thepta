@@ -255,10 +255,10 @@
 									<TH width="80">Absent</TH>
 									<TH width="80">Total</TH>
 									<TH width="80">Percent</TH>
-									
+									<% int x = 1; %>
 									<c:forEach items="${studentAttendanceList}" var="studentList">
 									<TR>
-										<TD>1</TD>
+										<TD><% out.println("" + String.valueOf(x));x=x+1; %></TD>
 										<TD>${studentList.subjectName}</TD>
 										<TD>${studentList.presentDays}</TD>
 										<TD>${studentList.absentDays}</TD>

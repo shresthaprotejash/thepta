@@ -16,5 +16,5 @@ public interface AttendanceDao {
 
 	public List<AttendanceModel> getStudentAttendanceDetailByStudentId(int studentId);
 
-	public int updateStudentAttendance(List<AttendanceDto> newattendance);
+	public int updateStudentAttendance(AttendanceDto students);
 }

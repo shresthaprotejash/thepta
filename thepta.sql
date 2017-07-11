@@ -109,7 +109,7 @@ CREATE TABLE `attendance` (
   `presentdays` int(5) DEFAULT '0',
   `absentdays` int(5) NOT NULL DEFAULT '0',
   `totaldays` int(6) NOT NULL DEFAULT '0',
-  `attendancePercentage` int(4) NOT NULL DEFAULT '0',
+  `attendancePercentage` float(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`attendanceId`)  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

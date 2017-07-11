@@ -188,8 +188,8 @@
 								</ul>
 						</ul>
 
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/THEPTA/login">
+						<ul class="nav navbar-nav navbar-right" id="logout">
+							<li><a href="/THEPTA/logout">
 									<p>
 										<span class="glyphicon glyphicon-off"></span>Log out
 									</p>
@@ -371,8 +371,7 @@
 <!-- ajax utility file -->
 <script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
-$(document).ready(function(){
-    
+$(document).ready(function(){	
     $('#teachers').hide();
 	$('#students').hide();
 	
@@ -504,12 +503,17 @@ function submit() {
 	var formdata = new FormData();
 	formdata.append("present_student", present);
 	formdata.append("absent_student", absent);
-
-	var url = "${pageContext.request.contextPath}/dashboard/submitAttendance";
+	var subjectId=$("#subjectListSelect").val();
+	var url = "${pageContext.request.contextPath}/dashboard/"+subjectId+"/submitAttendance";
 	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
-		result = JSON.parse(result);
-		var output=[];
-		var sn=1
+		if (result==1) {
+			alert("Records updated sucessfully!!!");
+			location.reload();
+		}
+		else {
+			alert("Opps!Error encountered. Please try again");
+		}
+			
 	});
 
 }

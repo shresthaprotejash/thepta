@@ -31,7 +31,7 @@ public class AttendanceModel {
 	@Column(name="totaldays")
 	private int totaldays;
 	@Column(name="attendancePercentage")
-	private int attendancePercentage;
+	private float attendancePercentage;
 	
 	public int getSectionId() {
 		return sectionId;
@@ -81,10 +81,10 @@ public class AttendanceModel {
 	public void setClassId(int classId) {
 		this.classId = classId;
 	}
-	public int getAttendancePercentage() {
+	public float getAttendancePercentage() {
 		return attendancePercentage;
 	}
-	public void setAttendancePercentage(int attendancePercentage) {
+	public void setAttendancePercentage(float attendancePercentage) {
 		this.attendancePercentage = attendancePercentage;
 	}
 	
