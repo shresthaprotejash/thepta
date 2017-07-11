@@ -34,9 +34,21 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		if(requestUrl.contains("/login") || requestUrl.contains("/resources")){
+		if(requestUrl.contains("/login") || requestUrl.contains("/resources")
+				 || requestUrl.contains("/validatelogin")){
 			filterChain.doFilter(request, response);
-		}else if (session == null) {
+		}else if(session != null && session.getAttribute("userId") != null 
+				&& Integer.parseInt(session.getAttribute("userId").toString()) > 0) {
+			//System.out.println("userId > "+Integer.parseInt(session.getAttribute("userId").toString()));
+			try {
+				filterChain.doFilter(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				dispatcher = request.getRequestDispatcher("/login");
+				dispatcher.forward(request, response);
+			}
+		} else if(session == null || session.getAttribute("userId") == null) {
+
 			if ("XMLHttpRequest".equals(ajaxHeader)) {
 				HttpServletResponse resp = (HttpServletResponse) response;
 				resp.sendError(901);
@@ -49,8 +61,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 					filterChain.doFilter(request, response);
 				}
 			}
-		}else if(session != null){
-			filterChain.doFilter(request, response);
+		
 		}
 	}
 
