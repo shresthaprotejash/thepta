@@ -24,9 +24,7 @@ public class HomeController {
 	public ModelAndView showMessage(ModelMap map) {
  
 		ModelAndView mv = new ModelAndView("login");
-		return mv;
-		
-		
+		return mv;		
 	}
 
 	@RequestMapping(value = "/validatelogin", method = RequestMethod.POST)
@@ -65,4 +63,9 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping("/logout")
+	public String logout( HttpSession session) {
+			session.invalidate();	        
+	        return "redirect:/login";
+	}
 }

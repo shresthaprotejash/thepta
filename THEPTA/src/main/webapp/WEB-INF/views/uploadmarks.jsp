@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +8,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>THEPTA Dashboard</title>
+<!-- ajax utility file -->
+<script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -224,63 +228,56 @@
                                             </div>
                                         </div>
                                         <div class="col-md-7">                                          
-                                            <select name="Class" id="small">
-                                                    <option value="none" selected>none</option>
-                                                    <option value="Class1">Class1</option>
-                                                    <option value="Class2">Class2</option>
-                                                    <option value="Class3">Class3</option>
-                                                    <option value="Class4">Class4</option>
-                                            </select>
+                                            <select name="Class" id="classListSelectBox">										
+												<option value="none" selected>none</option>
+
+												<c:forEach items="${teacherSubjectList}" var="teacherSubject">
+													<option value="${teacherSubject.classId}" id="${teacherSubject.classId}">${teacherSubject.className}</option>
+												</c:forEach>
+											</select>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Section </label>                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">                                          
-                                            <select name="Section" id="small">
-                                                    <option value="none" selected>none</option>
-                                                    <option value="Section1">Section1</option>
-                                                    <option value="Section2">Section2</option>
-                                                    <option value="Section3">Section3</option>
-                                                    <option value="Section4">Section4</option>
-                                            </select>
-                                        </div>
-                                    </div>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Section </label>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<select name="Section" id="sectionListSelectId">
+												<option value="none" selected>none</option>									
+											</select>
+										</div>
+									</div>
 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Subject </label>                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">                                          
-                                            <select name="Subject">
-                                                    <option value="Subject1" selected>none</option>
-                                                    <option value="Subject1">Maths</option>
-                                                    <option value="Subject2">Science</option>
-                                                    <option value="Subject3">Hindi</option>
-                                                    <option value="Subject4">English</option>
-                                            </select>
-                                        </div>
-                                    </div>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Subject </label>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<select name="Subject" id="subjectListSelect">
+												<option value="none" selected>none</option>												
+												</select>
+										</div>
+									</div>
+										
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Marks for </label>                                                
                                             </div>
                                         </div>
-                                        <div class="col-md-7">                                          
-                                            <select name="Section" id="small">
-                                                    <option value="none" selected>none</option>
-                                                    <option value="Section1">1st Term</option>
-                                                    <option value="Section2">2nd Term</option>
-                                                    <option value="Section3">3rd Term</option>
-                                                    <option value="Section4">Final</option>
-                                            </select>
+                                        <div class="col-md-7">  
+                                        	<select name="Class" id="testTypeListSelectBox">										
+												<option value="none" selected>none</option>
+
+												<c:forEach items="${testTypeList}" var="testTypeobject">
+													<option value="${testTypeobject.testType}">${testTypeobject.testTypeName}</option>
+												</c:forEach>
+											</select>                                        
                                         </div>
                                     </div>
 
@@ -389,15 +386,8 @@
 	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>    
   
   <script>
-$(document).ready(function(){
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
-});
-
-$(document).ready(function(){
-	$('#teachers').hide();
 	$('#students').hide();
+	$('#teachers').hide();	
 	var user=${userType};
 	if (user==0)
 		{
@@ -407,6 +397,54 @@ $(document).ready(function(){
 		{
 			$('#students').show();
 		}
+	
+	$(document).ready(function(){
+    $(".showme").click(function(){
+        $("#after-click").show();
+    });
+    
+    $("#classListSelectBox").change(function(){    	 
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("sectionListSelectId").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			output.push('<option value="'+ item.sectionId +'">'+ item.sectionName +'</option>');
+    		});
+    		$('#sectionListSelectId').html(output.join(''));
+
+		});
+    	}
+    });
+    
+    $("#sectionListSelectId").change(function(){
+    	document.getElementById("subjectListSelect").disabled = false;
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none" && sectionId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("subjectListSelect").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			if(item.sectionId==sectionId)
+    			output.push('<option value="'+ item.subjectId +'">'+ item.subjectName +'</option>');
+    		});
+    		$('#subjectListSelect').html(output.join(''));
+
+    	});
+    	}
+    });
 });
 </script> 
 

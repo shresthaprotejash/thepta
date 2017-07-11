@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.stereotype.Component;
 
+import com.sakha.thepta.model.UserModel;
+
 @Component
 public class Util {
 
@@ -27,5 +29,16 @@ public class Util {
 			e.printStackTrace();
 		}
 		return md5Content;
+	}
+
+	public String getUserFullName(UserModel userModel) {
+
+		if (userModel.getfName() != null && userModel.getlName() != null) {
+			return userModel.getfName() + " " + userModel.getlName();
+		} else if (userModel.getfName() != null) {
+			return userModel.getfName();
+		} else {
+			return userModel.getlName();
+		}
 	}
 }

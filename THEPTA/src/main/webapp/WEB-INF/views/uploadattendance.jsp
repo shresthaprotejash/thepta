@@ -188,8 +188,8 @@
 								</ul>
 						</ul>
 
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/THEPTA/login">
+						<ul class="nav navbar-nav navbar-right" id="logout">
+							<li><a href="/THEPTA/logout">
 									<p>
 										<span class="glyphicon glyphicon-off"></span>Log out
 									</p>
@@ -292,84 +292,24 @@
 								<br> <br>
 								<div id="after-click">
 									<hr>
-									<TABLE BORDER="3" align="center">
-
+									<form action="${pageContext.request.contextPath}/submitattendance" method="post">
+									<TABLE BORDER="3" align="center" id ="studentsAttendanceList">
 										<TH width="50">S.N.</TH>
-										<TH width="300">Name</TH>
-										<TH width="80">Present</TH>
-										<TH width="80">Absent</TH>
-										<TH width="80">Total</TH>
-										<TH width="80">Percent</TH>
+										<TH width="300">Students Name</TH>	
+										<TH width="80">Present</TH>	
+										<TH width="80">Absent</TH>				
+										<TH width="80">Total</TH>				
+										<TH width="80">Percent</TH>				
 										<TH width="80">Mark</TH>
-										<TR>
-											<TD>1</TD>
-											<TD>Tejash Shrestha</TD>
-											<TD>121</TD>
-											<TD>21</TD>
-											<TD>142</TD>
-											<TD>75</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" style="margin-left: auto; margin-right: auto;"></td>
-										</TR>
-										<TR>
-
-											<TD>2</TD>
-											<TD>Supreetha Achar K</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-
-										</TR>
-										<TR>
-											<TD>3</TD>
-											<TD>Medha Mishra</TD>
-											<TD>221</TD>
-											<TD>32</TD>
-											<TD>421</TD>
-											<TD>61</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>4</TD>
-											<TD>Prerana Rani</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>5</TD>
-											<TD>Preeti Kumari</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
-										<TR>
-											<TD>6</TD>
-											<TD>Suruchi Rai</TD>
-											<TD>21</TD>
-											<TD>52</TD>
-											<TD>21</TD>
-											<TD>13</TD>
-											<td style="text-align: center;"><input type="checkbox"
-												name="name1" />&nbsp;</td>
-										</TR>
+										
+											
 
 									</TABLE>
-
+									</form>
 									<br>
 									<br>									
-									<div class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
-									<div class="btn btn-danger pull-right">Cancel</div>
+									<div onclick="submit();" class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
+									<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
 									<br>
 									<br>
 								</div>
@@ -431,8 +371,7 @@
 <!-- ajax utility file -->
 <script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
-$(document).ready(function(){
-    
+$(document).ready(function(){	
     $('#teachers').hide();
 	$('#students').hide();
 	
@@ -484,7 +423,7 @@ $(document).ready(function(){
     		document.getElementById("subjectListSelect").disabled = false;
     		result.teacherSubjectSectionList.forEach(function(item) {
     			if(item.sectionId==sectionId)
-    			output.push('<option value="'+ item.subjectName +'">'+ item.subjectName +'</option>');
+    			output.push('<option value="'+ item.subjectId +'">'+ item.subjectName +'</option>');
     		});
     		$('#subjectListSelect').html(output.join(''));
 
@@ -492,19 +431,52 @@ $(document).ready(function(){
     	}
     });
     
+    
     $(".showme").click(function(){
+    	var teacherId = ${userId};
     	var classId = $("#classListSelectBox").val();
     	var sectionId=$("#sectionListSelectId").val();
-        var subjectName=$("#subjectListSelect").val();
+        var subjectId=$("#subjectListSelect").val();
         var date=$("#attandanceDate").val();
-    	if (classId!="none" && sectionId!="none" && subjectName!="none" && date!=""){
+    	if (classId!="none" && sectionId!="none" && subjectId!="none" && date!=""){
         	$("#after-click").show();
         	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
         	document.getElementById("classListSelectBox").disabled = true;
         	document.getElementById("sectionListSelectId").disabled = true;
             document.getElementById("subjectListSelect").disabled = true;
             document.getElementById("attandanceDate").disabled = true;
-            $('.showme').addClass('disabled');
+            $('.showme').hide(1000);
+            
+            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId+"/"+sectionId+"/"+subjectId;
+            if (classId!="none" && sectionId!="none"){
+        	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+        		result = JSON.parse(result);
+        		var output=[];
+        		var sn=1
+        		result.studentList.forEach(function(item) {
+        			if(item.classId==classId && item.sectionId==sectionId )
+        			var table = document.getElementById("studentsAttendanceList");
+        			var row = table.insertRow();
+				    var cell1 = row.insertCell(0);
+				    var cell2 = row.insertCell(1);
+				    var cell3 = row.insertCell(2);
+				    var cell4 = row.insertCell(3);
+				    var cell5 = row.insertCell(4);
+				    var cell6 = row.insertCell(5);
+				    var cell7 = row.insertCell(6);
+				    cell1.innerHTML = sn;
+				    cell2.innerHTML = item.studentName;
+				    cell3.innerHTML = item.presentDays;
+				    cell4.innerHTML = item.absentDays;
+				    cell5.innerHTML = item.totalDays;
+				    cell6.innerHTML = item.percentage;
+				    cell7.innerHTML = '<input type="checkbox" name="mark" value="'+item.studentId+'" />';
+				    cell7.style.textAlign = "center";  	
+        					      				  
+        			sn=sn+1;
+        		});     		
+        	});
+    	}
     	}
     	else
     	{
@@ -514,6 +486,41 @@ $(document).ready(function(){
     });
 	
 });
+
+function submit() {
+	var present= new Array();
+	var  absent= new Array();	
+
+	
+	$("input:checkbox[name=mark]:checked").each(function(){
+	    present.push($(this).val());
+	});
+ 	$("input:checkbox[name=mark]:not(:checked)").each(function(){
+	    absent.push($(this).val());
+	});
+
+
+	var formdata = new FormData();
+	formdata.append("present_student", present);
+	formdata.append("absent_student", absent);
+	var subjectId=$("#subjectListSelect").val();
+	var url = "${pageContext.request.contextPath}/dashboard/"+subjectId+"/submitAttendance";
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
+		if (result==1) {
+			alert("Records updated sucessfully!!!");
+			location.reload();
+		}
+		else {
+			alert("Opps!Error encountered. Please try again");
+		}
+			
+	});
+
+}
+
+function reload() {
+	 location.reload();
+}
 </script>
 
 </html>

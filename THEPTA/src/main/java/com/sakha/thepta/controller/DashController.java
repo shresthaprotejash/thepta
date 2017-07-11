@@ -2,11 +2,9 @@ package com.sakha.thepta.controller;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.sakha.thepta.dto.FeedbackDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.service.FeedbackService;
+import com.sakha.thepta.dto.AttendanceDto;
+import com.sakha.thepta.dto.TeacherSubjectDto;
+import com.sakha.thepta.service.AttendanceService;
 import com.sakha.thepta.service.Teacher_subjectService;
+import com.sakha.thepta.service.TestTypeService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -31,13 +32,16 @@ public class DashController {
 	@Autowired
 	private FeedbackService feedbackService;
 
+	private AttendanceService attendanceService;
 	
+	@Autowired
+	private TestTypeService testTypeService; 
 	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadattendance");
-		int teacherId = (int) session.getAttribute("userId");
+		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
 		return mv;
@@ -54,27 +58,58 @@ public class DashController {
 		return mainObj.toString();
 	}
 	
-
+	@RequestMapping(value = "/getsectionlistbyteacheridandclassid/{teacherid}/{classid}/{sectionid}/{subjectid}", method = RequestMethod.GET)
+	@ResponseBody
+	public String getStudentListByClassidAndSectionidAndSubjectid(@PathVariable("classid") int classId, 
+			@PathVariable("sectionid") int sectionId, @PathVariable("subjectid") int subjectId){
+		JSONObject mainObj = new JSONObject();
+		List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
+		mainObj.put("studentList", studentList);
+		return mainObj.toString();
+	}
 	
+	@RequestMapping(value = "/{subjectid}/submitAttendance", method = RequestMethod.POST)
+	@ResponseBody
+	public int putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession, @PathVariable("subjectid") int subjectId){
+		
+		JSONObject mainObj = new JSONObject();
+		String present_student = request.getParameter("present_student");
+		String absent_student = request.getParameter("absent_student");
+		System.out.println("present_student > " + present_student);
+		System.out.println("absent_student > " + absent_student);
+		int result = attendanceService.putattendance(present_student,absent_student,subjectId);
+		return result;
+	}
 	
 	@RequestMapping("/viewattendance")
-	public ModelAndView fetchAttendance() {
+	public ModelAndView fetchAttendance(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewattendance");
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
+		mv.addObject("studentAttendanceList", studentAttendanceList);
 		return mv;
 	}
 	
 	@RequestMapping("/uploadmarks")
-	public ModelAndView uploadMarks() {
+	public ModelAndView uploadMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadmarks");
+		/*int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		mv.addObject("teacherSubjectList", teacherSubjectList);
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());*/
 		return mv;
 	}
 	
 	@RequestMapping("/viewmarks")
-	public ModelAndView fetchMarks() {
+	public ModelAndView fetchMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewmarks");
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
+		mv.addObject("studentAttendanceList", studentAttendanceList);
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
 		return mv;
 	}
 
@@ -206,6 +241,4 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("uploadtest");
 		return mv;
 	}
-	
-
 }

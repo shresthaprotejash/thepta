@@ -8,5 +8,7 @@ public interface UserDao {
 	
 	public UserModel validateUser(String mailIdOrPhoneNo, String password);
 
-	public UserModel getUserByUserId(int userId);	
+	public UserModel getUserByUserId(int userId);
+
+	public UserModel getStudentNameByStudentId(int studentId);	
 }
