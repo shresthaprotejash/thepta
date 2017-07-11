@@ -1,3 +1,6 @@
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -210,22 +213,22 @@
 			<div class="content">
 				<div class="container-fluid">
 					<div class="u-card">
-						<form>
+						<form method="get">
 							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>Subject </label>
-									</div>
-								</div>
-								<div class="col-md-5">
-									<select name="Subject" id="subject">
-										<option value="Subject1" selected>none</option>
-										<c:forEach items="${teacherSubjectList}" var="teacherSubjectList">
-											<option value="Class1"><c:out value="${teacherSubjectList.subjectName}"/></option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Subject </label>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<select name="Subject" id="subjectListSelect">
+													<option value="none" selected>none</option>	
+													<c:forEach items="${teacherSubjectList}" var="item">
+													 	<option value="${item.subjectId}">${item.subjectId}-${item.subjectName}</option>
+													</c:forEach>   											
+													</select>
+											</div>
+										</div>
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
@@ -234,7 +237,7 @@
 								</div>
 								<div class="col-md-7">
 									<div class="form-group">
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="studentId" id="studentId"
 											placeholder="student id">
 									</div>
 								</div>
@@ -243,7 +246,7 @@
 							<div class="form-group">
 								<label for="feedback">Feedback</label>
 								<textarea class="form-control" rows="6" id="feedback"></textarea>
-								<br> <br> <a href="#" class="btn btn-info pull-right "
+								<br> <br> <a onclick="submit();" class="btn btn-info pull-right "
 									value="Submit">Submit</a>
 							</div>
 						</form>
@@ -300,24 +303,10 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>ss
-
+<!-- ajax utility file -->
+<script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
-$(document).ready(function(){
 
-    $(".showme").click(function(){
-        $("#after-click").show();
-    });
-    
-    $("#classListSelectBox").change(function(){
-    	var teacherId = 0;
-    	var classId = $("#classListSelectBox").value();
-     	alert(teacherId)
-    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacherid/"+teacherId;
-    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
-			console.log(JSON.stringify(result));
-		});
-    });
-});
 
 $(document).ready(function(){
 	$('#teachers').hide();
@@ -330,8 +319,19 @@ $(document).ready(function(){
 	else
 		{
 			$('#students').show();
-		}
-});
+		}	
+	});
+function submit() {
+	var url = "${pageContext.request.contextPath}/dashboard/submitfeedback";
+    callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+   	//result = JSON.parse(result);
+    console.log(result);
+   	});
+
+}	
+
+	    
+
 </script>
 
 

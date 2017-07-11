@@ -10,6 +10,7 @@ public class TeacherSubjectDto {
 	private String className;
 	private int sectionId;
 	private String sectionName;
+	private int subjectId;
 	private String subjectName;
 	public int getTeacher_subjectId() {
 		return teacher_subjectId;
@@ -58,6 +59,12 @@ public class TeacherSubjectDto {
 	}
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
+	}
+	public int getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
 	}
 	
 	

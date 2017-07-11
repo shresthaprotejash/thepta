@@ -210,6 +210,7 @@
 				<div class="container-fluid">
 					<br>
 					<div class="u-card">
+						<form>
 						<ul class="nav nav-tabs nav-justified">
 							<li class="active"><a data-toggle="tab" href="#Subject1">Subject1</a></li>
 							<li><a data-toggle="tab" href="#Subject2">Subject2</a></li>
@@ -223,7 +224,6 @@
 						<div class="tab-content">
 							<div id="Subject1"
 								class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
-								<h3>Teacher:Tejash Shrestha</h3>
 								<br>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur <br>adipisicing
@@ -269,6 +269,7 @@
 							</div>
 
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>

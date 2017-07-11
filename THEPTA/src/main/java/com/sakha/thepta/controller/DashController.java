@@ -1,7 +1,10 @@
 package com.sakha.thepta.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sakha.thepta.dto.FeedbackDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
+import com.sakha.thepta.service.FeedbackService;
 import com.sakha.thepta.service.Teacher_subjectService;
 
 @Controller
@@ -22,6 +27,11 @@ public class DashController {
 	
 	@Autowired
 	private Teacher_subjectService teacherSubjectService;
+	
+	@Autowired
+	private FeedbackService feedbackService;
+
+	
 	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -43,6 +53,9 @@ public class DashController {
 		mainObj.put("teacherSubjectSectionList", teacherSubjectList);
 		return mainObj.toString();
 	}
+	
+
+	
 	
 	@RequestMapping("/viewattendance")
 	public ModelAndView fetchAttendance() {
@@ -126,17 +139,39 @@ public class DashController {
 		return mv;
 	}
 	
-	@RequestMapping("/feedback")
-	public ModelAndView feedback() {
- 
+	
+		
+	@RequestMapping(value="/feedback",method=RequestMethod.GET)
+	public ModelAndView feedback(HttpSession session) { 
 		ModelAndView mv = new ModelAndView("feedback");
+		int teacherId = (int) session.getAttribute("userId");
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getSubjectListByTeacherid(teacherId);
+		mv.addObject("teacherSubjectList",teacherSubjectList);
 		return mv;
 	}
 	
+	@RequestMapping(value = "/submitfeedback", method = RequestMethod.GET)
+	@ResponseBody
+	public int submitfeedback(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+		int teacherId = (int) session.getAttribute("userId");
+		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
+		int studentId = Integer.parseInt(request.getParameter("studentId"));
+		String feedText = request.getParameter("feedback");
+		System.out.println(teacherId);
+		System.out.println(subjectId);
+		System.out.println(studentId);
+		int success = feedbackService.postFeedbackBySubjectIdAndStudentId(teacherId,subjectId,studentId,feedText);
+		return success;
+	}
+	
+
 	@RequestMapping("/viewfeedback")
-	public ModelAndView view() {
- 
+	public ModelAndView viewfeedback(HttpSession session) {
+		 
 		ModelAndView mv = new ModelAndView("viewfeedback");
+		int studentId = (int) session.getAttribute("userId");
+		List<FeedbackDto> feedbackList = feedbackService.getSubjectListByStudentId(studentId);
+		mv.addObject("feedbackList", feedbackList);
 		return mv;
 	}
 

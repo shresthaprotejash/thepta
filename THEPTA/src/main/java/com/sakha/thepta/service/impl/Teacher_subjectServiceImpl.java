@@ -107,4 +107,26 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 		return teacherSujectDtoList;
 	}
 	
+	@Override
+	@Transactional
+	public List<TeacherSubjectDto> getSubjectListByTeacherid(int teacherId) {
+
+		TeacherSubjectDto newTeacherSubjectDto = null;
+		List<TeacherSubjectDto> teacherSujectDtoList = new ArrayList<TeacherSubjectDto>();
+		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getTeacherSubjectListByTeacherId(teacherId);
+		List<Integer> uniqueSubjectIdList = new ArrayList<Integer>();
+		
+		for(TeacherSubjectModel teacherModel : teacherSubjectModelList){
+			
+			if(!uniqueSubjectIdList.contains(teacherModel.getSubjectId())){
+				uniqueSubjectIdList.add(teacherModel.getSubjectId());
+				newTeacherSubjectDto = new TeacherSubjectDto();		
+				newTeacherSubjectDto.setSubjectId(teacherModel.getSubjectId());
+				newTeacherSubjectDto.setSubjectName(subjectDao.getSubjectBySubjectId(teacherModel.getSubjectId()));				
+				teacherSujectDtoList.add(newTeacherSubjectDto);
+			}
+		}
+		return teacherSujectDtoList;
+	}
+	
 }
