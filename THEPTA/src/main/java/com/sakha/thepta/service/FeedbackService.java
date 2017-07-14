@@ -10,8 +10,8 @@ public interface FeedbackService {
 
     public FeedbackModel getFeedbackByStudentIdandSubjectId(int StudentId, int SubjectId);
 
-	public int postFeedbackBySubjectIdAndStudentId(int teacherId, int subjectId, int studentId, String feedText);
+	public List<FeedbackDto> getFeedbackDetailsByStudentId(int studentId);
 
-	public List<FeedbackDto> getSubjectListByStudentId(Object studentId);
+	public int saveFeedbackBySubjectIdAndStudentId(int teacherId, int subjectId, int studentId, String feedText);
 	}
 

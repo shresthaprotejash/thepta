@@ -35,7 +35,9 @@ public class DashController {
 	private AttendanceService attendanceService;
 	
 	@Autowired
-	private TestTypeService testTypeService; 
+	private TestTypeService testTypeService;
+
+	private int  classId; 
 	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -63,6 +65,10 @@ public class DashController {
 	public String getStudentListByClassidAndSectionidAndSubjectid(@PathVariable("classid") int classId, 
 			@PathVariable("sectionid") int sectionId, @PathVariable("subjectid") int subjectId){
 		JSONObject mainObj = new JSONObject();
+		System.out.println(classId);
+		System.out.println(sectionId);
+		System.out.println(subjectId);
+		
 		List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
 		mainObj.put("studentList", studentList);
 		return mainObj.toString();
@@ -180,33 +186,37 @@ public class DashController {
 	public ModelAndView feedback(HttpSession session) { 
 		ModelAndView mv = new ModelAndView("feedback");
 		int teacherId = (int) session.getAttribute("userId");
-		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getSubjectListByTeacherid(teacherId);
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList",teacherSubjectList);
 		return mv;
 	}
 	
-	@RequestMapping(value = "/submitfeedback", method = RequestMethod.GET)
-	@ResponseBody
-	public int submitfeedback(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+	@RequestMapping(value = "/submitfeedback", method = RequestMethod.POST)
+	public String submitfeedback(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+		System.out.println("hello");
 		int teacherId = (int) session.getAttribute("userId");
-		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
+		int classId = Integer.parseInt(request.getParameter("Class"));
+		int sectionId = Integer.parseInt(request.getParameter("Section"));
+		int subjectId = Integer.parseInt(request.getParameter("Subject"));
 		int studentId = Integer.parseInt(request.getParameter("studentId"));
 		String feedText = request.getParameter("feedback");
-		System.out.println(teacherId);
-		System.out.println(subjectId);
-		System.out.println(studentId);
-		int success = feedbackService.postFeedbackBySubjectIdAndStudentId(teacherId,subjectId,studentId,feedText);
-		return success;
+		int success = feedbackService.saveFeedbackBySubjectIdAndStudentId(teacherId,subjectId,studentId,feedText);
+		if(success>0) {
+			session.setAttribute("status", "ok");
+		}
+		else {
+			session.setAttribute("status", "Error Occured!!! Please Try again.");
+		}
+		return "redirect:/dashboard/feedback";
 	}
-	
 
 	@RequestMapping("/viewfeedback")
-	public ModelAndView viewfeedback(HttpSession session) {
+	public ModelAndView fetchFeedback(HttpSession session) {
 		 
 		ModelAndView mv = new ModelAndView("viewfeedback");
-		int studentId = (int) session.getAttribute("userId");
-		List<FeedbackDto> feedbackList = feedbackService.getSubjectListByStudentId(studentId);
-		mv.addObject("feedbackList", feedbackList);
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<FeedbackDto> studentFeedbackList =feedbackService.getFeedbackDetailsByStudentId(studentId);
+		mv.addObject("studentFeedbackList", studentFeedbackList);
 		return mv;
 	}
 

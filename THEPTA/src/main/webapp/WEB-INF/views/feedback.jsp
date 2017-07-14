@@ -213,41 +213,67 @@
 			<div class="content">
 				<div class="container-fluid">
 					<div class="u-card">
-						<form method="get">
-							<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Subject </label>
-												</div>
-											</div>
-											<div class="col-md-5">
-												<select name="Subject" id="subjectListSelect">
-													<option value="none" selected>none</option>	
-													<c:forEach items="${teacherSubjectList}" var="item">
-													 	<option value="${item.subjectId}">${item.subjectId}-${item.subjectName}</option>
-													</c:forEach>   											
-													</select>
-											</div>
-										</div>
+						<form action="${pageContext.request.contextPath}/dashboard/submitfeedback" method="post">
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<label>Student Id </label>
+										<label>Class </label>
 									</div>
 								</div>
+
 								<div class="col-md-7">
-									<div class="form-group">
-										<input type="text" class="form-control" name="studentId" id="studentId"
-											placeholder="student id">
-									</div>
+									<select name="Class" id="classListSelectBox">										
+										<option value="none" selected>none</option>
+											<c:forEach items="${teacherSubjectList}" var="teacherSubject">
+												<option value="${teacherSubject.classId}">${teacherSubject.className}</option>
+											</c:forEach>
+									</select>
 								</div>
-							</div>
+								</div>
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Section </label>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<select name="Section" id="sectionListSelectId">
+												<option value="none" selected>none</option>									
+											</select>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Subject </label>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<select name="Subject" id="subjectListSelect">
+												<option value="none" selected>none</option>												
+												</select>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Student Id </label>
+											</div>
+										</div>
+										<div class="col-md-7">
+											<select name="Student" id="studentListSelect">
+												<option value="none" selected>none</option>												
+												</select>
+										</div>
+									</div>
 
 							<div class="form-group">
 								<label for="feedback">Feedback</label>
-								<textarea class="form-control" rows="6" id="feedback"></textarea>
-								<br> <br> <a onclick="submit();" class="btn btn-info pull-right "
-									value="Submit">Submit</a>
+								<textarea class="form-control" rows="6" name="feedback" id="feedback"></textarea>
+								<br> <br> <input type="submit" class="btn btn-info pull-right "
+									value="Submit">
 							</div>
 						</form>
 					</div>
@@ -319,16 +345,95 @@ $(document).ready(function(){
 	else
 		{
 			$('#students').show();
-		}	
-	});
-function submit() {
-	var url = "${pageContext.request.contextPath}/dashboard/submitfeedback";
-    callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
-   	//result = JSON.parse(result);
-    console.log(result);
-   	});
+		}
+	
+	document.getElementById("sectionListSelectId").disabled = true;
+    document.getElementById("subjectListSelect").disabled = true;
+    document.getElementById("studentListSelect").disabled = true;
+    
+    $("#classListSelectBox").change(function(){    	 
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("sectionListSelectId").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			output.push('<option value="'+ item.sectionId +'">'+ item.sectionName +'</option>');
+    		});
+    		$('#sectionListSelectId').html(output.join(''));
 
-}	
+		});
+    	}
+    });
+    
+    $("#sectionListSelectId").change(function(){
+    	document.getElementById("subjectListSelect").disabled = false;
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none" && sectionId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("subjectListSelect").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			if(item.sectionId==sectionId)
+    			output.push('<option value="'+ item.subjectId +'">'+ item.subjectName +'</option>');
+    		});
+    		$('#subjectListSelect').html(output.join(''));
+
+    	});
+    	}
+    });
+    $("#subjectListSelect").change(function(){    
+    	document.getElementById("studentListSelect").disabled = false;
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	var subjectId=$("#subjectListSelect").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId+"/"+sectionId+"/"+subjectId;
+    	if (classId!="none" && sectionId!="none" && subjectId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.studentList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		
+    		result.studentList.forEach(function(item) {
+    			if(item.sectionId==sectionId)
+    			output.push('<option value="'+ item.studentId +'">'+ item.studentName +'</option>');
+    		});
+    		$('#studentListSelect').html(output.join(''));
+
+    	});
+    	}
+    });
+    
+    
+    
+    
+	
+	if (value!="nok"){
+	value = "${status}";
+	console.log(value);
+	if(value=="ok"){
+		alert("Feedback Updated.");
+	}
+	else {
+		alert(value);		
+		}
+	value="nok";
+	}
+	});
+	
 
 	    
 

@@ -18,7 +18,7 @@ public class FeedbackServiceImpl implements FeedbackService{
 	private FeedbackDao feedbackDao;
 
 	@Override
-	@Transactional
+	
 	public FeedbackModel giveFeedbackByStudentIdandSubjectId(int StudentId, int SubjectId) {
 		// TODO Auto-generated method stub
 		return null;
@@ -31,8 +31,14 @@ public class FeedbackServiceImpl implements FeedbackService{
 	}
 
 	@Override
+	public List<FeedbackDto> getFeedbackDetailsByStudentId(int studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	@Transactional
-	public int postFeedbackBySubjectIdAndStudentId(int teacherId, int subjectId, int studentId, String feedText) {
+	public int saveFeedbackBySubjectIdAndStudentId(int teacherId, int subjectId, int studentId, String feedText) {
 		FeedbackModel studentFeedback = new FeedbackModel();
 		studentFeedback.setTeacherId(teacherId);
 		studentFeedback.setSubjectId(subjectId);
@@ -40,12 +46,6 @@ public class FeedbackServiceImpl implements FeedbackService{
 		studentFeedback.setFeedbackText(feedText);
 		int success = feedbackDao.saveFeedback(studentFeedback);
 		return success;
-	}
-
-	@Override
-	public List<FeedbackDto> getSubjectListByStudentId(Object studentId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	
