@@ -271,6 +271,7 @@ CREATE TABLE IF NOT EXISTS `homework` (
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `homeworkText` text CHARACTER SET utf8 NOT NULL,
+  `homeworkFileContent` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`homeworkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
