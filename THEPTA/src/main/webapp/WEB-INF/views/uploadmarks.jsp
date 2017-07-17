@@ -327,6 +327,8 @@
 								<div id="after-click">
 									<hr>
 									<form action="${pageContext.request.contextPath}/dashboard/submitmarks" method="post">
+										<input type="hidden" name = "studentId" id="studentId"  />
+       									<input type="hidden" name = "testType" id="testType"  /> 
 										<TABLE BORDER="3" align="center" id ="studentMarksList">
 											<TH width="50">S.N.</TH>
 											<TH width="300">Name</TH>
@@ -465,6 +467,8 @@ $(document).ready(function(){
         var subjectId=$("#subjectListSelect").val();
         var testType=$("#testTypeListSelectBox").val();
         var date=$("#attandanceDate").val();
+        $("#studentId").val(teacherId);
+        $("#testType").val(testType);
     	if (classId!="none" && sectionId!="none" && subjectId!="none" && date!="" && testType!="none" ){
         	$("#after-click").show();
         	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');

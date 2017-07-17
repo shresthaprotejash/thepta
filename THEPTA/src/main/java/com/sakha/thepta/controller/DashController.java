@@ -291,5 +291,14 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("uploadtest");
 		return mv;
 	}
-
+	
+	@RequestMapping(value = "/submitmarks", method = RequestMethod.POST)
+	public ModelAndView submitMarks(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+ 
+		ModelAndView mv = new ModelAndView("dashboard");
+		System.out.println();
+		System.out.println();
+		return mv;
+	}
+	
 }
