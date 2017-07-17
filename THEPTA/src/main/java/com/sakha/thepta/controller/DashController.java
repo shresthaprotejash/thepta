@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.service.AttendanceService;
+import com.sakha.thepta.service.HomeworkService;
 import com.sakha.thepta.service.Teacher_subjectService;
 import com.sakha.thepta.service.TestTypeService;
 
@@ -33,6 +35,9 @@ public class DashController {
 	
 	@Autowired
 	private TestTypeService testTypeService; 
+	
+	@Autowired
+	private HomeworkService homeworkService;
 	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -111,9 +116,12 @@ public class DashController {
 	}
 
 	@RequestMapping("/viewhomework")
-	public ModelAndView fetchviewhomework() {
+	public ModelAndView fetchHomework(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("viewhomework");
+		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
+		mv.addObject("studentAttendanceList", studentAttendanceList);
 		return mv;
 	}
 	@RequestMapping("/viewhwandtest")
@@ -199,11 +207,28 @@ public class DashController {
 	}
 	
 	@RequestMapping("/uploadhomework")
-	public ModelAndView uploadhomework() {
+	public ModelAndView uploadHomework(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadhomework");
+		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		mv.addObject("teacherSubjectList", teacherSubjectList);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/submithomework", method = RequestMethod.POST)
+	public ModelAndView submitHomework(MultipartHttpServletRequest req, HttpServletResponse res, HttpSession session) {
+ 
+		ModelAndView mv = new ModelAndView("uploadtestandhomework");
+		int homeWorkId = homeworkService.giveHomeworkBysubjectId(req);
+		if(homeWorkId > 0){
+			System.out.println("successful!!!");
+		}else{
+			System.out.println("failed!!");
+		}
+		return mv;
+	}
+	
 	@RequestMapping("/uploadtestandhomework")
 	public ModelAndView uploadtestandhomework() {
  
