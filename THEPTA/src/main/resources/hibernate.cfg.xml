@@ -20,6 +20,7 @@
 		<mapping class="com.sakha.thepta.model.TestModel" />
 		<mapping class="com.sakha.thepta.model.UserModel" />
 		<mapping class="com.sakha.thepta.model.TestTypeModel" />
+		<mapping class="com.sakha.thepta.model.TestDetailModel" />
 
 	</session-factory>
 

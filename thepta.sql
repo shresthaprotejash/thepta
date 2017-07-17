@@ -271,6 +271,7 @@ CREATE TABLE IF NOT EXISTS `homework` (
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `homeworkText` text CHARACTER SET utf8 NOT NULL,
+  `homeworkFileContent` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`homeworkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -413,13 +414,131 @@ INSERT INTO `subject` (`subjectId`, `subjectName`, `classId`) VALUES
 -- Table structure for table `test`
 --
 
-CREATE TABLE IF NOT EXISTS `test` (
-  `testId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `test` (
+  `testId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
-  `marks` int(4) NOT NULL,
-  PRIMARY KEY (`testId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `marks` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`testId`, `testType`, `subjectId`, `teacherId`, `marks`) VALUES
+(1, 1, 1001, 8, 100),
+(2, 1, 1002, 9, 100),
+(3, 1, 1003, 10, 100),
+(4, 1, 1004, 11, 100),
+(5, 1, 2001, 8, 100),
+(6, 1, 2002, 9, 100),
+(7, 1, 2003, 10, 100),
+(8, 1, 2004, 11, 100),
+(9, 1, 3001, 8, 100),
+(10, 1, 3002, 9, 100),
+(11, 1, 3003, 10, 100),
+(12, 1, 3004, 11, 100),
+(13, 1, 4001, 12, 100),
+(14, 1, 4002, 13, 100),
+(15, 1, 4003, 14, 100),
+(16, 1, 4004, 15, 100),
+(17, 1, 5001, 12, 100),
+(18, 1, 5002, 13, 100),
+(19, 1, 5003, 14, 100),
+(20, 1, 5004, 15, 100),
+(21, 1, 5005, 16, 100),
+(22, 1, 6001, 12, 100),
+(23, 1, 6002, 13, 100),
+(24, 1, 6003, 14, 100),
+(25, 1, 6004, 15, 100),
+(26, 1, 6005, 16, 100),
+(27, 1, 7001, 12, 100),
+(28, 1, 7002, 13, 100),
+(29, 1, 7003, 14, 100),
+(30, 1, 7004, 15, 100),
+(31, 1, 7005, 16, 100),
+(32, 1, 7006, 17, 100),
+(33, 1, 8001, 12, 100),
+(34, 1, 8002, 13, 100),
+(35, 1, 8003, 14, 100),
+(36, 1, 8004, 15, 100),
+(37, 1, 8005, 16, 100),
+(38, 1, 8006, 17, 100),
+(39, 1, 9001, 17, 100),
+(40, 1, 9002, 18, 100),
+(41, 1, 9003, 19, 100),
+(42, 1, 9004, 20, 100),
+(43, 1, 9005, 21, 100),
+(44, 1, 9006, 22, 100),
+(45, 1, 9007, 22, 100),
+(46, 2, 1001, 8, 100),
+(47, 2, 1002, 9, 100),
+(48, 2, 1003, 10, 100),
+(49, 2, 1004, 11, 100),
+(50, 2, 2001, 8, 100),
+(51, 2, 2002, 9, 100),
+(52, 2, 2003, 10, 100),
+(53, 2, 2004, 11, 100);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`testId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `test`
+--
+ALTER TABLE `test`
+  MODIFY `testId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- Table structure for table `testtype`
+--
+
+CREATE TABLE `testtype` (
+  `testTypeId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
+  `testTypeName` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testtype`
+--
+
+INSERT INTO `testtype` (`testTypeId`, `testType`, `testTypeName`) VALUES
+(1, 1, 'Term 1'),
+(2, 2, 'Term 2'),
+(3, 3, 'Term 3');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `testtype`
+--
+ALTER TABLE `testtype`
+  ADD PRIMARY KEY (`testTypeId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `testtype`
+--
+ALTER TABLE `testtype`
+  MODIFY `testTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 -- ----------------------------------------------------------
 --
@@ -547,13 +666,83 @@ INSERT INTO `teacher_subject` (`teacher_subjectId`, `teacherId`, `classId`, `sec
 
 CREATE TABLE IF NOT EXISTS `test_marks` (
   `test_marksId` int(11) NOT NULL AUTO_INCREMENT,
-  `testId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `obtanedMarks` int(4) NOT NULL,
-  `result` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`test_marksId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `test_marks`
+--
+
+INSERT INTO `test_marks` (`test_marksId`, `testType`, `studentId`, `subjectId`, `obtanedMarks`) VALUES
+(1, 1, 5, 3001, 30),
+(2, 1, 5, 3002, 40),
+(3, 1, 6, 3003, 20),
+(4, 2, 5, 3001, 50);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test_marks`
+--
+ALTER TABLE `test_marks`
+  ADD PRIMARY KEY (`test_marksId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `test_marks`
+--
+ALTER TABLE `test_marks`
+  MODIFY `test_marksId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Table structure for table `testdetails`
+--
+
+CREATE TABLE `testdetails` (
+  `viewTestId` int(11) NOT NULL,
+  `testType` int(11) NOT NULL,
+  `subjectId` int(11) NOT NULL,
+  `studentId` int(11) NOT NULL,
+  `examdate` date NOT NULL,
+  `examtime` varchar(20) NOT NULL,
+  `roomNo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testdetails`
+--
+
+INSERT INTO `testdetails` (`viewTestId`, `testType`, `subjectId`, `studentId`, `examdate`, `examtime`, `roomNo`) VALUES
+(1, 1, 3001, 5, '2017-07-10', '20:10am', '243');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `testdetails`
+--
+ALTER TABLE `testdetails`
+  ADD PRIMARY KEY (`viewTestId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `testdetails`
+--
+ALTER TABLE `testdetails`
+  MODIFY `viewTestId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 
  

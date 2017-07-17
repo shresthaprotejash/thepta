@@ -23,6 +23,9 @@ public class HomeworkModel {
 	private int teacherId;
 	@Column(name="homeworkText")
 	private String homeworkText;
+	@Column(name="homeworkFileContent")
+	private String homeworkFileContent;
+	
 	public int getHomeworkId() {
 		return homeworkId;
 	}
@@ -48,6 +51,11 @@ public class HomeworkModel {
 		this.homeworkText = homeworkText;
 	}
 	
-	
+	public String getHomeworkFileContent() {
+		return homeworkFileContent;
+	}
+	public void setHomeworkFileContent(String homeworkFileContent) {
+		this.homeworkFileContent = homeworkFileContent;
+	}
 	
 }

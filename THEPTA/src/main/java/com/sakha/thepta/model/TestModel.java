@@ -15,19 +15,20 @@ public class TestModel {
 
 	@Id
 	@GeneratedValue
-	@Column(name="testId")
-	private int testId;
+	@Column(name="testType")
+	private int testType;
 	@Column(name="subjectId")
 	private int subjectId;
 	@Column(name="teacherId")
 	private int teacherId;
 	@Column(name="marks")
 	private int marks;
-	public int getTestId() {
-		return testId;
+	
+	public int getTestType() {
+		return testType;
 	}
-	public void setTestId(int testId) {
-		this.testId = testId;
+	public void setTestType(int testType) {
+		this.testType = testType;
 	}
 	public int getSubjectId() {
 		return subjectId;

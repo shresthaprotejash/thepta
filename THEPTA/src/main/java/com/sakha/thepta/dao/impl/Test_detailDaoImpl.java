@@ -9,22 +9,23 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.sakha.thepta.dao.Test_marksDao;
-
-import com.sakha.thepta.model.Test_marksModel;
+import com.sakha.thepta.dao.Test_detailDao;
+import com.sakha.thepta.model.TestDetailModel;
 
 @Repository
-public class Test_marksDaoImpl implements Test_marksDao {
+public class Test_detailDaoImpl implements Test_detailDao {
 
 	@Resource
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<Test_marksModel> getMarksDetailByStudentId(int studentId, int testType) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Test_marksModel.class);
+	public List<TestDetailModel> getTestDetailByStudentId(int studentId, int testType) {
+
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TestDetailModel.class);
 		criteria.add(Restrictions.eq("studentId", studentId));
 		criteria.add(Restrictions.eq("testType", testType));
 		return criteria.list();
+
 	}
 
 }
