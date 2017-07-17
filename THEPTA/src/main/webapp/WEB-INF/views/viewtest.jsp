@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -123,97 +125,107 @@
                 <h5><span class="glyphicon glyphicon-chevron-left"></span></a>View Test</h5>              
         </div>
 
-     	<div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-10  col-md-offset-1">
-                        <div class="u-card">
-                            <div class="content">
-                                <form>
-								<p id="demo"></p>
-									<script>
-										var d = new Date();
-                                        document.getElementById("demo").innerHTML = d.toDateString(); 
-									</script>
-									<br>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Exam Type </label>                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">                                          
-                                            <div class="dropdown">
-                                               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" >Select<span class="caret"></span></button>
-                                                   <ul class="dropdown-menu">
-                                                       <li class="active"><a href="/THEPTA/dashboard/term">Term I</a></li>
-                                                       <li><a href="/THEPTA/dashboard/term">Term II</a></li>
-                                                       <li><a href="/THEPTA/dashboard/term">Periodic Assessment</a></li>
-													   <li><a href="/THEPTA/dashboard/classtest">Class Test/Mock Test</a>
-													   <li><a href="/THEPTA/dashboard/assignments">Assignments</a>
-                                                    </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+     <div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-10  col-md-offset-1">
+							<div class="u-card">
+								<div class="content">
+									<div class="row">
+										<div class="col-md-2">
+											<label>Name </label>
+										</div>
+
+										<div class="col-md-7">
+
+											<input type="text" class="form-control" disabled
+												placeholder="Name" value='${fName} ${lName}'>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-2">
+
+										<label>Class </label>
+
+									</div>
+
+									<div class="col-md-2">
+										<input type="text" class="form-control" disabled
+											placeholder="Class"
+											value="${studentAttendanceList[0].className}"
+											style="width: 111px;">
+									</div>
+									<div class="col-md-2 col-md-offset-1">
+										<label>Section </label>
+
+									</div>
+									<div class="col-md-2">
+										<input type="text" class="form-control" disabled
+											placeholder="Section"
+											value="${studentAttendanceList[0].sectionName}">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-2">
+										<div class="form-group">
+											<label>Marks for </label>
+										</div>
+									</div>
+									<div class="col-md-7">
+										<select name="Class" id="testTypeListSelectBox">
+											<option value="none" selected>none</option>
+
+											<c:forEach items="${testTypeList}" var="testTypeobject">
+												<option value="${testTypeobject.testType}">${testTypeobject.testTypeName}</option>
+											</c:forEach>
+										</select>
+
+									</div>
+								</div>
+								<br>
+								<div class="showme btn btn-info pull-right ">Get</div>
+								<br> <br>
+								
+								<hr>
 
                                
-                            <hr>
-							<div class="w3-card-4">
+                           
+                            <br>
+							<div class="w3-card-4" id="card">
 
                                <header class="w3-container w3-light-grey">
-                               <h3>EXAMINATION PATTERN OF MID TERM</h3>
+                               <h3>EXAMINATION PATTERN</h3>
                                </header>
 
                             <div class="w3-container">
-                            <p>TERM I examination Total marks : 80</p>
-							<p>TERM I examination DATE : AUG</p>
+                            <p>TERM I examination Total marks : 100</p>
+							<p>TERM I examination DATE :MAY </p>
 							<hr>
-							<p>Periodic Assement I total marks : 20</p>
-							<p>Periodic  Assement I DATE : JUNE,OCTOBER</p>
+							 <p>TERM II examination Total marks : 100</p>
+							<p>TERM II examination DATE :OCT </p>
 							<hr>
-							<p>Class test/Mock Test total marks: 5</p>
-							<p>Class test/Mock Test DATE: every FRIDAY</p>
-							<hr>
-							<p>Assignments marks : 5</p>
-							<p>Assignments DATE : provide by teachers</p>
+							 <p>TERM III examination Total marks : 100</p>
+							<p>TERM III examination DATE : MARCH</p>
+							
 							</div>
-							</div>
-							<br>
-							<hr>
-							<div class="w3-card-4">
-
-                               <header class="w3-container w3-light-grey">
-                               <h3>EXAMINATION PATTERN OF FINAL EXAM</h3>
-                               </header>
-
-                            <div class="w3-container">
-                            <p>TERM II examination Total marks : 80</p>
-							<p>TERM II examination DATE : MARCH</p>
-							<hr>
-							<p>Periodic Assement II total marks : 20</p>
-							<p>Periodic  Assement II DATE : DECEMBER,FEBRUARY</p>
-							<hr>
-							<p>Class test/Mock Test total marks: 5</p>
-							<p>Class test/Mock Test DATE: every FRIDAY</p>
-							<hr>
-							<p>Assignments marks : 5</p>
-							<p>Assignments DATE : provide by teachers</p>
 							</div>
 							
-                              
-                            </div>
-							<hr>
-							<div class="w3-card">
-							<br>
-                            <p>TERM I, TERM II average marks will be considered as final marks out of 80.</p>
-							<p>Periodic Assesments I,Periodic Assements II average marks will be considereed as final marks out of 10</p>
-							<p>Class tests/Mock Tests and Assignments average marks will be considered as final marks out of 10</p>
-							<br>
-                            </div>
+							<div id="after-click">
+										<TABLE BORDER="3" align="center" id="TestList">
+
+											<TH width="50">S.N.</TH>
+											<TH width="300">Subject Name</TH>
+											<TH width="100">Date</TH>
+											<TH width="100">Time</TH>
+											<TH width="100">Room No</TH>
+												</TABLE>
+							
                             
                             <br><br>
                             
-                            <br><br>
+                          
                             </div>
                         </div>
                     </div>
@@ -265,7 +277,65 @@
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>    
-  
- 
+	
+	<!-- ajax utility file -->
+<script
+	src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
+	<script>
+	$(document).ready(function() {
+		$('#teachers').hide();
+		$('#students').hide();
+		var user = ${userType};
+		if (user == 0) {
+			$('#teachers').show();
+		} else {
+			$('#students').show();
+		}
+	});
+	
+	$(".showme").click(function(){
+		
+		var studentId = ${userId};
+    	var testTypeId = $("#testTypeListSelectBox").val();
+		
+		if(testTypeId != "none"){
+			$("#after-click").show();
+			$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
+			document.getElementById("testTypeListSelectBox").disabled = true;
+			$('.showme').hide(1000);
+			$('#card').hide(1000);
+			
+			var url = "${pageContext.request.contextPath}/dashboard/getTestDetails/"+studentId+"/"+testTypeId;
+			callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+        		result = JSON.parse(result);
+        		console.log(result);
+	        		var output=[];
+        		var sn=1
+        		result.testDetailList.forEach(function(item) {
+        			var table = document.getElementById("TestList");
+        			var row = table.insertRow();
+				    var cell1 = row.insertCell(0);
+				    var cell2 = row.insertCell(1);
+				    var cell3 = row.insertCell(2);
+				    var cell4 = row.insertCell(3);
+				    var cell5 = row.insertCell(4);
+				  
+				    cell1.innerHTML = sn;
+				    cell2.innerHTML = item.subjectName;
+				    cell3.innerHTML = item.examdate;
+				    cell4.innerHTML = item.examtime;
+				    cell5.innerHTML = item.roomNo;
+				    
+				    sn=sn+1;
+        		});   
+        	});
+		}
+			else
+			{
+				$('.showme').addClass('btn-danger').removeClass('btn-info').removeClass('btn-success');
+				$('.showme').fadeOut(100).fadeIn(1500);
+			}
+			});
+		</script>
 
 </html>

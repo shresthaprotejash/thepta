@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sakha.thepta.dao.TestTypeDao;
+import com.sakha.thepta.dto.SubjectAndMarksDto;
 import com.sakha.thepta.model.TestTypeModel;
 import com.sakha.thepta.service.TestTypeService;
 
@@ -21,5 +22,7 @@ public class TestTypeServiceImpl implements TestTypeService{
 	public List<TestTypeModel> getListOfTestTypes() {
 		return testTypeDao.getTestTypeList();
 	}
+
+	
 
 }

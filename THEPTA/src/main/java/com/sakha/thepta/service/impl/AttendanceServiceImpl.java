@@ -12,6 +12,7 @@ import com.sakha.thepta.dao.AttendanceDao;
 import com.sakha.thepta.dao.ClassesDao;
 import com.sakha.thepta.dao.SectionDao;
 import com.sakha.thepta.dao.SubjectDao;
+import com.sakha.thepta.dao.Test_marksDao;
 import com.sakha.thepta.dao.UserDao;
 import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.model.AttendanceModel;
@@ -39,6 +40,8 @@ public class AttendanceServiceImpl implements AttendanceService{
 	@Autowired
 	private SectionDao sectionDao;
 
+	@Autowired
+	private Test_marksDao testMarksDao;
 	@Override
 	@Transactional
 	public AttendanceModel putAttendanceByStudentIdSubjectIdandClassId(int studentId, int subjectId, int classId) {
@@ -92,7 +95,6 @@ public class AttendanceServiceImpl implements AttendanceService{
 			newAttendanceDto.setClassName(classesDao.getClassesByClassId(attendanceModel.getClassId()));
 			newAttendanceDto.setSectionId(attendanceModel.getSectionId());
 			newAttendanceDto.setSectionName(sectionDao.getSectionBysectionId(attendanceModel.getSectionId()));
-			newAttendanceDto.setSubjectName(subjectDao.getSubjectBySubjectId(attendanceModel.getSubjectId()));
 			newAttendanceDto.setSubjectId(attendanceModel.getSubjectId());
 			newAttendanceDto.setPresentDays(attendanceModel.getPresentdays());
 			newAttendanceDto.setAbsentDays(attendanceModel.getAbsentdays());

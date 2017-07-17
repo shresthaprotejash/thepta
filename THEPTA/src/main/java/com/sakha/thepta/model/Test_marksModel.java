@@ -17,28 +17,22 @@ public class Test_marksModel {
 	@GeneratedValue
 	@Column(name="test_marksId")
 	private int test_marksId;
-	@Column(name="testId")
-	private int testId;
+	@Column(name="testType")
+	private int testType;
 	@Column(name="studentId")
 	private int studentId;
 	@Column(name="subjectId")
 	private int subjectId;
-	@Column(name="obtainedMarks")
-	private int obtainedMarks;
-	@Column(name="result")
-	private int result;
+	@Column(name="obtanedMarks")
+	private int obtanedMarks;
+	
 	public int getTest_marksId() {
 		return test_marksId;
 	}
 	public void setTest_marksId(int test_marksId) {
 		this.test_marksId = test_marksId;
 	}
-	public int getTestId() {
-		return testId;
-	}
-	public void setTestId(int testId) {
-		this.testId = testId;
-	}
+	
 	public int getStudentId() {
 		return studentId;
 	}
@@ -51,18 +45,19 @@ public class Test_marksModel {
 	public void setSubjectId(int subjectId) {
 		this.subjectId = subjectId;
 	}
-	public int getObtainedMarks() {
-		return obtainedMarks;
+	public int getTestType() {
+		return testType;
 	}
-	public void setObtainedMarks(int obtainedMarks) {
-		this.obtainedMarks = obtainedMarks;
+	public void setTestType(int testType) {
+		this.testType = testType;
 	}
-	public int getResult() {
-		return result;
+	public int getObtanedMarks() {
+		return obtanedMarks;
 	}
-	public void setResult(int result) {
-		this.result = result;
+	public void setObtanedMarks(int obtanedMarks) {
+		this.obtanedMarks = obtanedMarks;
 	}
+
 	
 	
 	
