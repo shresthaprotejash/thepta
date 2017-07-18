@@ -1,6 +1,10 @@
 package com.sakha.thepta.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +46,8 @@ public class DashController {
 
 	@Autowired
 	private HomeworkService homeworkService;
-	
+
+	@Autowired
 	private Test_marksService testMarksService;
 
 	@Autowired
@@ -293,12 +298,10 @@ public class DashController {
 	}
 	
 	@RequestMapping(value = "/submitmarks", method = RequestMethod.POST)
-	public ModelAndView submitMarks(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+	@ResponseBody
+	public int submitMarks(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
  
-		ModelAndView mv = new ModelAndView("dashboard");
-		System.out.println();
-		System.out.println();
-		return mv;
+		return testMarksService.submitMarks(request, response);
 	}
 	
 }

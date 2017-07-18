@@ -1,21 +1,21 @@
 package com.sakha.thepta.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sakha.thepta.dao.SubjectDao;
-import com.sakha.thepta.dao.TestTypeDao;
 import com.sakha.thepta.dao.Test_marksDao;
-import com.sakha.thepta.dto.AttendanceDto;
 import com.sakha.thepta.dto.SubjectAndMarksDto;
-import com.sakha.thepta.model.AttendanceModel;
 import com.sakha.thepta.model.Test_marksModel;
 import com.sakha.thepta.service.Test_marksService;
-import com.sakha.thepta.util.Util;
 
 @Service
 public class Test_marksServiceImpl implements Test_marksService {
@@ -49,6 +49,41 @@ public class Test_marksServiceImpl implements Test_marksService {
 		}
 		return obtainedMarksList;
 
+	}
+
+	@Override
+	@Transactional
+	public int submitMarks(HttpServletRequest request, HttpServletResponse response) {
+		
+		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
+		int testType = Integer.parseInt(request.getParameter("testType"));
+		String studentIdAndMarks = request.getParameter("studentIdAndMarks");
+		ArrayList<String> studentListWithMarks = new ArrayList<String>(Arrays.asList(studentIdAndMarks.split(",")));
+		int studentId = 0, obtainedMarks = 0;
+		Test_marksModel newTest_marksModel = null;
+		int result = 0;
+		
+		for(String studentObj : studentListWithMarks){
+			
+			if( studentObj.split("_")[0] != null && !"".equals(studentObj.split("_")[0]) &&
+					 studentObj.split("_")[1] != null && !"".equals(studentObj.split("_")[1])){
+
+				studentId = Integer.parseInt(studentObj.split("_")[0]);
+				obtainedMarks = Integer.parseInt(studentObj.split("_")[1]);
+				if(studentId > 0){
+					
+					newTest_marksModel = new Test_marksModel();
+					newTest_marksModel.setTestType(testType);
+					newTest_marksModel.setSubjectId(subjectId);
+					newTest_marksModel.setStudentId(studentId);
+					newTest_marksModel.setObtanedMarks(obtainedMarks);
+					
+					result = test_marksDao.saveTestMarks(newTest_marksModel);
+				}
+			}
+		}
+		
+		return result;
 	}
 
 }

@@ -326,18 +326,14 @@
 								<br> <br>
 								<div id="after-click">
 									<hr>
-									<form action="${pageContext.request.contextPath}/dashboard/submitmarks" method="post">
-										<input type="hidden" name = "studentId" id="studentId"  />
-       									<input type="hidden" name = "testType" id="testType"  /> 
 										<TABLE BORDER="3" align="center" id ="studentMarksList">
 											<TH width="50">S.N.</TH>
 											<TH width="300">Name</TH>
 											<TH width="150">Mark</TH>
 										</TABLE>
-									</form>
 									<br>
 									<br>
-									<div onclick="submit();" class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
+									<div onclick="uploadMarkSheet();" class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
 									<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
 									<br>
 									<br>
@@ -494,7 +490,7 @@ $(document).ready(function(){
 				    var cell3 = row.insertCell(2);
 				    cell1.innerHTML = sn;
 				    cell2.innerHTML = item.studentName;
-				    cell3.innerHTML = '<input type="textbox" name="marks" value=" " />';
+				    cell3.innerHTML = '<input type="text" id="studentid_'+item.studentId+'" name="marks" value=" " />';
 				    cell3.style.textAlign = "center"; 
 					sn=sn+1;
         		});     		
@@ -510,15 +506,26 @@ $(document).ready(function(){
 	
 });
 
-function submit() {
-	var studentMarks= new Array();
+function uploadMarkSheet() {
+	
+	var studentIdAndMarks= new Array();
 	var formdata = new FormData();
-	formdata.append("present_student", present);
-	formdata.append("absent_student", absent);
-	var subjectId=$("#subjectListSelect").val();
-	var url = "${pageContext.request.contextPath}/dashboard/"+subjectId+"/submitAttendance";
+    var subjectId = $("#subjectListSelect").val();
+    var testType = $("#testTypeListSelectBox").val();
+    formdata.append("subjectId", subjectId);
+	formdata.append("testType", testType);
+	var studentId = 0, marks = 0;
+	
+	$("input:text[name=marks]").each(function(){
+		studentId = $(this).attr('id').split('_')[1].replace(/^\s*/, "").replace(/\s*$/, "");
+		marks = $(this).val().replace(/^\s*/, "").replace(/\s*$/, "");
+		studentIdAndMarks.push(studentId+"_"+marks);
+	});
+	formdata.append("studentIdAndMarks", studentIdAndMarks);
+
+ 	var url = "${pageContext.request.contextPath}/dashboard/submitmarks";
 	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
-		if (result==1) {
+		if (result > 0) {
 			alert("Records updated sucessfully!!!");
 			location.reload();
 		}
@@ -526,7 +533,7 @@ function submit() {
 			alert("Opps!Error encountered. Please try again");
 		}
 			
-	});
+	}); 
 
 }
 
