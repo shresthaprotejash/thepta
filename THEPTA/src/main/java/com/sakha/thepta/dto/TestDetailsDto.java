@@ -1,6 +1,7 @@
 package com.sakha.thepta.dto;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 public class TestDetailsDto {
 	private int testType;
@@ -8,8 +9,7 @@ public class TestDetailsDto {
 	private String subjectName;
 	
 	private int studentId;
-	private String examtime;
-	private Date examdate;
+	private Timestamp examDateAndTime;
 	private String roomNo;
 	
 	public int getTestType() {
@@ -38,17 +38,13 @@ public class TestDetailsDto {
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
-	public String getExamtime() {
-		return examtime;
+
+
+	public Timestamp getExamDateAndTime() {
+		return examDateAndTime;
 	}
-	public void setExamtime(String examtime) {
-		this.examtime = examtime;
-	}
-	public Date getExamdate() {
-		return examdate;
-	}
-	public void setExamdate(Date examdate) {
-		this.examdate = examdate;
+	public void setExamDateAndTime(Timestamp examDateAndTime) {
+		this.examDateAndTime = examDateAndTime;
 	}
 	public String getRoomNo() {
 		return roomNo;

@@ -36,8 +36,8 @@ public class Test_detailServiceImpl implements Test_DetailService {
 			newTestDetailsDto.setSubjectName(subjectDao.getSubjectBySubjectId(testDetailModel.getSubjectId()));
 			newTestDetailsDto.setSubjectId(testDetailModel.getSubjectId());
 			newTestDetailsDto.setTestType(testDetailModel.getTestType());
-			newTestDetailsDto.setExamtime(testDetailModel.getExamtime());
-			newTestDetailsDto.setExamdate(testDetailModel.getExamdate());
+			
+			newTestDetailsDto.setExamDateAndTime(testDetailModel.getExamDateAndTime());
 			newTestDetailsDto.setRoomNo(testDetailModel.getRoomNo());
 			testDetailList.add(newTestDetailsDto);
 		}

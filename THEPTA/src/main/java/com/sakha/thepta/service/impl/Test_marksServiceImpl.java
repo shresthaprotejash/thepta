@@ -27,13 +27,6 @@ public class Test_marksServiceImpl implements Test_marksService {
 
 	@Override
 	@Transactional
-	public Test_marksModel getMarksBytestIdandsubjectIdandstudentId(String testId, String subjectId, String studentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional
 	public List<SubjectAndMarksDto> getobtainedMarksList(int studentId, int testType) {
 		SubjectAndMarksDto newSubjectAndMarksDto = null;
 		List<Test_marksModel> obtainedMarksDetailList = test_marksDao.getMarksDetailByStudentId(studentId, testType);

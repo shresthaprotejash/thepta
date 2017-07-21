@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,9 +22,14 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet" />
+	
+	<!-- Date Time Picker Bootstrap CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/inner-style.css"
 	rel="stylesheet" />
+	
+	<!-- Date Time Picker Bootstrap CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/timepicker.css">
 
 <!-- Animation library for notifications   -->
 <link
@@ -168,16 +175,17 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Class" id="small">
+												<select name="Class" id="classListSelectBox">
 													<option value="none" selected>none</option>
-													<option value="Class1">Class1</option>
-													<option value="Class2">Class2</option>
-													<option value="Class3">Class3</option>
-													<option value="Class4">Class4</option>
+
+													<c:forEach items="${teacherSubjectList}"
+														var="teacherSubject">
+														<option value="${teacherSubject.classId}"
+															id="${teacherSubject.classId}">${teacherSubject.className}</option>
+													</c:forEach>
 												</select>
 											</div>
 										</div>
-
 										<div class="row">
 											<div class="col-md-3">
 												<div class="form-group">
@@ -185,16 +193,11 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Section" id="small">
+												<select name="Section" id="sectionListSelectId">
 													<option value="none" selected>none</option>
-													<option value="Section1">Section1</option>
-													<option value="Section2">Section2</option>
-													<option value="Section3">Section3</option>
-													<option value="Section4">Section4</option>
 												</select>
 											</div>
 										</div>
-
 
 										<div class="row">
 											<div class="col-md-3">
@@ -203,16 +206,16 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Subject">
+												<select name="Class" id="testTypeListSelectBox">
 													<option value="none" selected>none</option>
-													<option value="Term1">TermI</option>
-													<option value="term2">TermII</option>
-													<option value="periodictest">PeriodicTest</option>
-													<option value="classtest">ClassTest</option>
-													<option value="assignments">Assignments</option>
+
+													<c:forEach items="${testTypeList}" var="testTypeobject">
+														<option value="${testTypeobject.testType}">${testTypeobject.testTypeName}</option>
+													</c:forEach>
 												</select>
 											</div>
 										</div>
+
 
 										<div class="row">
 											<div class="col-md-3">
@@ -221,7 +224,7 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<input type="date" name="bday" min="2017-01-02">
+												<input type="date" name="bday"  id ="attandanceDate" min="2017-01-02">
 											</div>
 										</div>
 
@@ -233,48 +236,14 @@
 								<br> <br>
 								<div id="after-click">
 									<hr>
-									<TABLE BORDER="3" align="center">
+									
+									<TABLE BORDER="3" align="center" id="uploadTestTable">
 
 										<TH width="50">S.N.</TH>
 										<TH width="100">SUBJECT</TH>
-										<TH width="50">DATE</TH>
-										<TH width="50">TIME</TH>
+										<TH width="200">DATE</TH>
+										<TH width="200">TIME</TH>
 										<TH width="50">ROOM NO</TH>
-										<TR>
-											<TD>1</TD>
-											<TD>English</TD>
-											<td style="text-align: center;"><input type="textarea"
-												name="date" /></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="time" /></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="roomno" /></td>
-
-										</TR>
-										<TR>
-											<TD>2</TD>
-											<TD>Mathematics</TD>
-											<td style="text-align: center;"><input type="textarea"
-												name="date" id="date1"/></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="time" id="time1" /></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="roomno" id="room"/></td>
-
-										</TR>
-										<TR>
-											<TD>3</TD>
-											<TD>Computer Science</TD>
-											<td style="text-align: center;"><input type="textarea"
-												name="date" /></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="time" /></td>
-											<td style="text-align: center;"><input type="textarea"
-												name="roomno" /></td>
-
-										</TR>
-										
-
 									</TABLE>
 									<br> <br>
 									<div class="btn btn-info pull-right">Submit</div>
@@ -319,10 +288,12 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
 	type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
+	
+	<!-- ajax utility file -->
 <script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap-checkbox-radio-switch.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
+
+
 
 <!--  Charts Plugin -->
 <script
@@ -339,12 +310,119 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
+<!-- Date Time Picker JS  -->
+<script src="${pageContext.request.contextPath}/resources/js/timepicker.js"></script>
+
 <script>
-	$(document).ready(function() {
-		$(".showme").click(function() {
-			$("#after-click").show();
+$(document).ready(function(){	
+    $('#teachers').hide();
+	$('#students').hide();
+	
+	var user=${userType};
+	if (user==0)
+		{
+			$('#teachers').show();
+		}
+	else
+		{
+			$('#students').show();
+		}
+    
+	document.getElementById("sectionListSelectId").disabled = true;
+    
+    $("#classListSelectBox").change(function(){    	 
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("sectionListSelectId").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			output.push('<option value="'+ item.sectionId +'">'+ item.sectionName +'</option>');
+    		});
+    		$('#sectionListSelectId').html(output.join(''));
+
 		});
-	});
+    	}
+    });
+    
+    
+    
+    $(".showme").click(function(){
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+        var testType=$("#testTypeListSelectBox").val();
+        var date=$("#attandanceDate").val();
+        console.log(teacherId);
+        console.log(classId);
+        console.log(sectionId);
+        console.log(testType);
+        console.log(date);
+        
+        $("#studentId").val(teacherId);
+        $("#classId").val(classId);
+        $("#testType").val(testType);
+    	if (classId!="none" && sectionId!="none" && date!="" && testType!="none" ){
+        	$("#after-click").show();
+        	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
+        	document.getElementById("classListSelectBox").disabled = true;
+        	document.getElementById("sectionListSelectId").disabled = true;
+            document.getElementById("testTypeListSelectBox").disabled = true;
+            document.getElementById("attandanceDate").disabled = true;
+            $('.showme').hide(1000);
+            
+            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+            if (teacherId!="none" && classId!="none"){
+        	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+        		result = JSON.parse(result);
+        		console.log(result.teacherSubjectSectionList);
+        		var output=[];
+        		var sn=1
+        		result.teacherSubjectSectionList.forEach(function(item) {
+        			if(item.sectionId==sectionId)
+        				 var table = document.getElementById("uploadTestTable");
+        		    
+        			console.log(item);
+        			console.log(table);
+        			
+        			var row = table.insertRow();
+        			console.log("hello");
+				    var cell1 = row.insertCell(0);
+				    var cell2 = row.insertCell(1);
+				    var cell3 = row.insertCell(2);
+				    var cell4 = row.insertCell(3);
+				    var cell5 = row.insertCell(4);
+				    cell1.innerHTML = sn;
+				    cell2.innerHTML = item.subjectName;
+				    cell3.innerHTML = '<input type="date" name="Examdate" value=" "/>';
+				    cell3.style.textAlign = "center"; 
+				    cell4.innerHTML = '<input type="text" class="form-control" name="ExamTime"  value=" "/>';
+				    cell4.style.textAlign = "center"; 
+				    cell5.innerHTML = '<input type="textbox" name="roomNo" value=" "/>';
+				    cell5.style.textAlign = "center"; 
+					sn=sn+1;
+        		});     		
+        	});
+        	
+    	}
+    	}
+    	else
+    	{
+    		$('.showme').addClass('btn-danger').removeClass('btn-info').removeClass('btn-success');
+    		$('.showme').fadeOut(100).fadeIn(1500);
+    	}
+    });
+   
+	
+});
+
+$('input').timepicker();
+
 </script>
 
 </html>
