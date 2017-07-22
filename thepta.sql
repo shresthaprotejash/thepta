@@ -268,10 +268,13 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 
 CREATE TABLE IF NOT EXISTS `homework` (
   `homeworkId` int(11) NOT NULL AUTO_INCREMENT,
+  `classId` int(11) NOT NULL,
+  `sectionId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `homeworkText` text CHARACTER SET utf8 NOT NULL,
   `homeworkFileContent` text CHARACTER SET utf8 NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`homeworkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
