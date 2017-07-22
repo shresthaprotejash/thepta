@@ -5,12 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.sakha.thepta.dao.Test_marksDao;
-
 import com.sakha.thepta.model.Test_marksModel;
 
 @Repository
@@ -25,6 +25,13 @@ public class Test_marksDaoImpl implements Test_marksDao {
 		criteria.add(Restrictions.eq("studentId", studentId));
 		criteria.add(Restrictions.eq("testType", testType));
 		return criteria.list();
+	}
+
+	@Override
+	public int saveTestMarks(Test_marksModel newTest_marksModel) {
+		Session session  = sessionFactory.getCurrentSession();
+		int result = (Integer)session.save(newTest_marksModel);
+		return result;
 	}
 
 }

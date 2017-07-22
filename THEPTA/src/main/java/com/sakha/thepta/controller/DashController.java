@@ -1,6 +1,10 @@
 package com.sakha.thepta.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +47,8 @@ public class DashController {
 
 	@Autowired
 	private HomeworkService homeworkService;
-	
+
+	@Autowired
 	private Test_marksService testMarksService;
 
 	@Autowired
@@ -133,7 +138,7 @@ public class DashController {
 	@RequestMapping(value = "/getmarksAndSubjectName/{userId}/{testType}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getmarksAndSubjectName(@PathVariable("userId") int studentId,
-			@PathVariable("testType") int testType) {
+			@PathVariable("testType") int testType, HttpSession session) {
 
 		JSONObject mainObj = new JSONObject();
 		List<SubjectAndMarksDto> obtainedMarksList = testMarksService.getobtainedMarksList(studentId, testType);
@@ -155,6 +160,16 @@ public class DashController {
 	public ModelAndView fetchviewhwandtest() {
 
 		ModelAndView mv = new ModelAndView("viewhwandtest");
+		return mv;
+	}
+	
+	@RequestMapping("/uploadtest")
+	public ModelAndView uploadtest(HttpSession session) {
+        ModelAndView mv = new ModelAndView("uploadtest");
+        int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
+		mv.addObject("teacherSubjectList", teacherSubjectList);
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
 		return mv;
 	}
 
@@ -267,6 +282,7 @@ public class DashController {
 		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
+		
 		return mv;
 	}
 	
@@ -290,20 +306,14 @@ public class DashController {
 		return mv;
 	}
 
-	@RequestMapping("/uploadtest")
-	public ModelAndView uploadtest() {
-
-		ModelAndView mv = new ModelAndView("uploadtest");
-		return mv;
-	}
+	
 	
 	@RequestMapping(value = "/submitmarks", method = RequestMethod.POST)
-	public ModelAndView submitMarks(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
+	@ResponseBody
+	public int submitMarks(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
  
-		ModelAndView mv = new ModelAndView("dashboard");
-		System.out.println();
-		System.out.println();
-		return mv;
+		return testMarksService.submitMarks(request, response);
 	}
+
 	
 }

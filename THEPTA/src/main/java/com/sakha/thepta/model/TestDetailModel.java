@@ -1,6 +1,7 @@
 package com.sakha.thepta.model;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,12 +26,12 @@ public class TestDetailModel {
 	private int subjectId;
 	@Column(name="studentId")
 	private int studentId;
-	@Column(name="examtime")
-	private String examtime;
-	@Column(name="examdate")
-	private Date examdate;
+	
+	@Column(name="examDateAndTime")
+	private Timestamp examDateAndTime;
 	@Column(name="roomNo")
 	private String roomNo;
+	
 	public int getViewTestId() {
 		return viewTestId;
 	}
@@ -55,18 +56,13 @@ public class TestDetailModel {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public String getExamtime() {
-		return examtime;
+	public Timestamp getExamDateAndTime() {
+		return examDateAndTime;
 	}
-	public void setExamtime(String examtime) {
-		this.examtime = examtime;
+	public void setExamDateAndTime(Timestamp examDateAndTime) {
+		this.examDateAndTime = examDateAndTime;
 	}
-	public Date getExamdate() {
-		return examdate;
-	}
-	public void setExamdate(Date examdate) {
-		this.examdate = examdate;
-	}
+	
 	public String getRoomNo() {
 		return roomNo;
 	}

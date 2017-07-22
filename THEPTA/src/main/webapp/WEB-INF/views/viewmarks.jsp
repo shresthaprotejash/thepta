@@ -285,7 +285,10 @@
 								
 									
 										</TABLE>
+										<br><br>
 									
+									<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
+									<br><br>
 								</div>
 							</div>
 						</div>
@@ -395,6 +398,10 @@
 		$('.showme').fadeOut(100).fadeIn(1500);
 	}
 	});
+	
+	function reload() {
+		 location.reload();
+	}
 </script>
 
 
