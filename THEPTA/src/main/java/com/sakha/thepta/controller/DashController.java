@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sakha.thepta.dto.AttendanceDto;
+import com.sakha.thepta.dto.HomeworkDto;
 import com.sakha.thepta.dto.SubjectAndMarksDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.dto.TestDetailsDto;
@@ -47,6 +48,7 @@ public class DashController {
 
 	@Autowired
 	private Test_DetailService testDetailService;
+	
 
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -144,8 +146,8 @@ public class DashController {
 	public ModelAndView fetchHomework(HttpSession session) {
 		ModelAndView mv = new ModelAndView("viewhomework");
 		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
-		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
-		mv.addObject("studentAttendanceList", studentAttendanceList);
+		List<HomeworkDto> homeworklist = homeworkService.getHomeworkListBystudentId(studentId);
+		mv.addObject("homeworklist", homeworklist);
 		return mv;
 	}
 
@@ -180,9 +182,12 @@ public class DashController {
 	}
 
 	@RequestMapping("/menu")
-	public ModelAndView fetchmenu() {
+	public ModelAndView fetchmenu(HttpSession session) {
 
 		ModelAndView mv = new ModelAndView("menu");
+		/*int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		List<HomeworkDto> homeworklist = homeworkService.getHomeworkListBystudentId(studentId);
+		mv.addObject("homeworkList", homeworklist);*/
 		return mv;
 	}
 

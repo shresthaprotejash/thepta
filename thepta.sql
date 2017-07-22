@@ -687,11 +687,6 @@ INSERT INTO `test_marks` (`test_marksId`, `testType`, `studentId`, `subjectId`, 
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `test_marks`
---
-ALTER TABLE `test_marks`
-  ADD PRIMARY KEY (`test_marksId`);
 
 --
 -- AUTO_INCREMENT for dumped tables

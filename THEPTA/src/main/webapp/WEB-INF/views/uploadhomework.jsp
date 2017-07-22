@@ -368,6 +368,7 @@ $(document).ready(function(){
     	var teacherId = ${userId};
     	$("#teacherId").val(teacherId);
     	$("#subjectId").val($("#subjectListSelect").val());
+    	
     });
 	
     $(".showme").click(function(){
@@ -429,10 +430,6 @@ function submit() {
 function reload() {
 	 location.reload();
 }
-</script>
-
-</html>
-        
 </script>
 
 </html>

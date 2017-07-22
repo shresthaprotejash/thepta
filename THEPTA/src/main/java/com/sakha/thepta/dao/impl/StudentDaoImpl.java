@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sakha.thepta.dao.StudentDao;
 import com.sakha.thepta.model.StudentModel;
+import com.sakha.thepta.model.UserModel;
 
 
 @Repository
@@ -24,6 +25,13 @@ public class StudentDaoImpl implements StudentDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(StudentModel.class);
 		criteria.add(Restrictions.eq("classId", classId)).add(Restrictions.eq("sectionId", sectionId));
 		return criteria.list();
+	}
+
+	@Override
+	public StudentModel getStudentModelByStudentId(int studentId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(StudentModel.class);
+		criteria.add(Restrictions.eq("studentId", studentId));
+		return (StudentModel) criteria.uniqueResult();
 	}
 
 }
