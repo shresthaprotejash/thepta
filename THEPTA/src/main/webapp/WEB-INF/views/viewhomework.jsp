@@ -161,7 +161,7 @@
 											</div>
 										</div>
 										<div class="col-md-7">
-											<input type="date" name="bday" min="2017-01-02">
+											<input type="date" name="sDate" min="2017-01-02">
 										</div>
 									</div>
 
@@ -178,10 +178,9 @@
 										<TABLE BORDER="3" align="center" class="table">
 
 											<TH width="400">Subject Name</TH>
-											<TH width="100">Description</TH>
-
-
+											<TH width="100">Description</TH>																			
 											<c:forEach items="${homeworklist}" var="homeworkList">
+											
 												<TR>
 													<TD>${homeworkList.subjectName}</TD>
 													<TD>
@@ -231,7 +230,7 @@
 										<br> <br>
 
 										<div class="w3-container">
-											<div class="w3-card-4" style="width: 100%">
+											<div class="w3-card-4" style='width: 100%'>
 												<header class="w3-container w3-light-grey">
 													<h3>${homeworkList.teacherName}</h3>
 												</header>
@@ -247,6 +246,9 @@
 														</a>
 													</div>
 													<p>${homeworkList.homeworktext}</p>
+													<br>
+													<hr>
+													<p>${homeworkList.homeworkFileContent}</p>
 													<br> <br>
 												</div>
 												<button class="w3-button w3-block w3-dark-grey">+
@@ -255,6 +257,7 @@
 										</div>
 
 									</div>
+									
 								</c:forEach>
 							</div>
 						</div>
@@ -336,5 +339,4 @@ function unswitch() {
 
 
 </script>
-
 </html>

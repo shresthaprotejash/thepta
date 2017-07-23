@@ -60,11 +60,15 @@ public class HomeworkServiceImpl implements HomeworkService{
 			
 			int teacherId = Integer.parseInt(request.getParameter("teacherId").toString());
 			int subjectId = Integer.parseInt(request.getParameter("subjectId").toString());
+			int classId = Integer.parseInt(request.getParameter("classId").toString());
+			int sectionId = Integer.parseInt(request.getParameter("sectionId").toString());
 			String homeworkText = request.getParameter("homeworkText").toString();
 			
 			HomeworkModel newHomeworkModel = new HomeworkModel();
 			newHomeworkModel.setSubjectId(subjectId);
 			newHomeworkModel.setTeacherId(teacherId);
+			newHomeworkModel.setClassId(classId);
+			newHomeworkModel.setSectionId(sectionId);
 			newHomeworkModel.setHomeworkText(homeworkText);
 			newHomeworkModel.setHomeworkFileContent(fileContent);
 			newHomeworkModel.setDate(new Date(new java.util.Date().getTime()));

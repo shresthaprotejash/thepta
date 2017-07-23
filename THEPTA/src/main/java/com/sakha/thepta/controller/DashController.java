@@ -196,15 +196,7 @@ public class DashController {
 		return mainObj.toString();
 	}
 
-	@RequestMapping("/menu")
-	public ModelAndView fetchmenu(HttpSession session) {
-
-		ModelAndView mv = new ModelAndView("menu");
-		/*int studentId = Integer.parseInt(session.getAttribute("userId").toString());
-		List<HomeworkDto> homeworklist = homeworkService.getHomeworkListBystudentId(studentId);
-		mv.addObject("homeworkList", homeworklist);*/
-		return mv;
-	}
+	
 
 	@RequestMapping("/english")
 	public ModelAndView fetchenglish() {
@@ -289,7 +281,7 @@ public class DashController {
 	@RequestMapping(value = "/submithomework", method = RequestMethod.POST)
 	public ModelAndView submitHomework(MultipartHttpServletRequest req, HttpServletResponse res, HttpSession session) {
  
-		ModelAndView mv = new ModelAndView("uploadtestandhomework");
+		ModelAndView mv = new ModelAndView("uploadhomework");
 		int homeWorkId = homeworkService.giveHomeworkBysubjectId(req);
 		if(homeWorkId > 0){
 			System.out.println("successful!!!");

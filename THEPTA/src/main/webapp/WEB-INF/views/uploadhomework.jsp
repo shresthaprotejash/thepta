@@ -226,10 +226,12 @@
 								<div class="showme btn btn-info pull-right ">Get</div>
 								<br> <br>
 								<div id="after-click">
-									<hr>
+									<hr>									
 									<form action="${pageContext.request.contextPath}/dashboard/submithomework" method="post" enctype="multipart/form-data">
        									<input type="hidden" name = "teacherId" id="teacherId"  />
        									<input type="hidden" name = "subjectId" id="subjectId"  />  
+       									<input type="hidden" name = "classId" id="classId"  />
+       									<input type="hidden" name = "sectionId" id="sectionId"  />       									
        									<div class="form-group">
 											<label for="comment">Comment:</label>
 											<textarea class="form-control" rows="5" name="homeworkText"
@@ -367,7 +369,11 @@ $(document).ready(function(){
     $("#subjectListSelect").change(function(){
     	var teacherId = ${userId};
     	$("#teacherId").val(teacherId);
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
     	$("#subjectId").val($("#subjectListSelect").val());
+    	$("#classId").val(classId);
+    	$("#sectionId").val(sectionId);
     	
     });
 	
@@ -397,6 +403,9 @@ $(document).ready(function(){
         		});     		
         	});
     	}
+            
+                document.getElementById('classId').value = $("#classListSelectBox").val();
+                document.getElementById('sectionId').value = $("#sectionListSelectId").val();
     	}
     	else
     	{
@@ -413,7 +422,7 @@ function submit() {
 
 	var formdata = new FormData();
 		var subjectId=$("#subjectListSelect").val();
-	var url = "${pageContext.request.contextPath}/dashboard/"+subjectId+"/submitHomework";
+	var url = "${pageContext.request.contextPath}/dashboard/submitHomework";
 	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
 		if (result==1) {
 			alert("Records updated sucessfully!!!");
