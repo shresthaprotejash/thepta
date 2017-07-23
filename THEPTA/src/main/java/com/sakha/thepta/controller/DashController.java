@@ -310,5 +310,11 @@ public class DashController {
 		return testMarksService.submitMarks(request, response);
 	}
 
+	@RequestMapping(value = "/submitTest", method = RequestMethod.POST)
+	@ResponseBody
+	public int submitTest(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+ 
+		return testDetailService.submitTest(request, response);
+	}
 	
 }
