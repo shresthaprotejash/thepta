@@ -65,4 +65,10 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 
+	@Override
+	public UserModel getStudentNameByStudentId(int studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

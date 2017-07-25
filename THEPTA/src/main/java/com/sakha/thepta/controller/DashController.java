@@ -135,7 +135,6 @@ public class DashController {
 		List<AttendanceDto> studentAttendanceList = attendanceService.getAttendanceDetailsByStudentId(studentId);
 		mv.addObject("studentAttendanceList", studentAttendanceList);
 		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
-
 		return mv;
 	}
 
