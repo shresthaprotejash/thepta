@@ -215,21 +215,6 @@
 												</select>
 											</div>
 										</div>
-
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Date </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<input type="date" name="bday"  id ="attandanceDate" min="2017-01-02">
-											</div>
-										</div>
-
-
-
 									</form>
 								</div>
 								<div class="showme btn btn-info pull-right ">Get</div>
@@ -246,7 +231,8 @@
 										<TH width="50">ROOM NO</TH>
 									</TABLE>
 									<br> <br>
-									<div class="btn btn-info pull-right">Submit</div>
+								<div onclick="uploadTestSheet();" class="btn btn-info pull-right" style="margin-left:10px">Submit</div>
+								<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
 									<br> <br>
 								</div>
 							</div>
@@ -337,7 +323,6 @@ $(document).ready(function(){
     	if (classId!="none"){
     	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
     		result = JSON.parse(result);
-    		console.log(result.teacherSubjectSectionList);
     		var output = [];
     		output.push('<option value="none">none</option>');
     		document.getElementById("sectionListSelectId").disabled = false;
@@ -353,45 +338,33 @@ $(document).ready(function(){
     
     
     $(".showme").click(function(){
+    	
     	var teacherId = ${userId};
     	var classId = $("#classListSelectBox").val();
     	var sectionId=$("#sectionListSelectId").val();
         var testType=$("#testTypeListSelectBox").val();
         var date=$("#attandanceDate").val();
-        console.log(teacherId);
-        console.log(classId);
-        console.log(sectionId);
-        console.log(testType);
-        console.log(date);
-        
         $("#studentId").val(teacherId);
         $("#classId").val(classId);
         $("#testType").val(testType);
-    	if (classId!="none" && sectionId!="none" && date!="" && testType!="none" ){
+    	if (classId!="none" && sectionId!="none" && testType!="none" ){
         	$("#after-click").show();
         	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
-        	document.getElementById("classListSelectBox").disabled = true;
+         	document.getElementById("classListSelectBox").disabled = true;
         	document.getElementById("sectionListSelectId").disabled = true;
             document.getElementById("testTypeListSelectBox").disabled = true;
-            document.getElementById("attandanceDate").disabled = true;
             $('.showme').hide(1000);
             
-            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;alert(url);
             if (teacherId!="none" && classId!="none"){
         	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
         		result = JSON.parse(result);
-        		console.log(result.teacherSubjectSectionList);
+        		console.log(result);
         		var output=[];
-        		var sn=1
+        		var sn=1;
+				var table = document.getElementById("uploadTestTable");
         		result.teacherSubjectSectionList.forEach(function(item) {
-        			if(item.sectionId==sectionId)
-        				 var table = document.getElementById("uploadTestTable");
-        		    
-        			console.log(item);
-        			console.log(table);
-        			
         			var row = table.insertRow();
-        			console.log("hello");
 				    var cell1 = row.insertCell(0);
 				    var cell2 = row.insertCell(1);
 				    var cell3 = row.insertCell(2);
@@ -399,11 +372,11 @@ $(document).ready(function(){
 				    var cell5 = row.insertCell(4);
 				    cell1.innerHTML = sn;
 				    cell2.innerHTML = item.subjectName;
-				    cell3.innerHTML = '<input type="date" name="Examdate" value=" "/>';
+				    cell3.innerHTML = '<input type="date" id="studentid_'+item.studentId+'" name="Examdate" value=" "/>';
 				    cell3.style.textAlign = "center"; 
-				    cell4.innerHTML = '<input type="text" class="form-control" name="ExamTime"  value=" "/>';
+				    cell4.innerHTML = '<input type="text" class="form-control testTime" id="studentid_'+item.studentId+' " name="ExamTime"  value=" "/>';
 				    cell4.style.textAlign = "center"; 
-				    cell5.innerHTML = '<input type="textbox" name="roomNo" value=" "/>';
+				    cell5.innerHTML = '<input type="textbox" id="studentid_'+item.studentId+'" name="roomNo" value=" "/>';
 				    cell5.style.textAlign = "center"; 
 					sn=sn+1;
         		});     		
@@ -421,7 +394,34 @@ $(document).ready(function(){
 	
 });
 
-$('input').timepicker();
+function uploadTestSheet() {
+	
+	var studentIdAndDate= new Array();
+	var studentIdAndTime= new Array();
+	var studentIdAndRoomNO= new Array();
+	var formdata = new FormData();
+	
+	var teacherId = ${userId};
+	var classId = $("#classListSelectBox").val();
+	var sectionId=$("#sectionListSelectId").val();
+    var testType=$("#testTypeListSelectBox").val();
+
+    formdata.append("teacherId", teacherId);
+	formdata.append("classId", classId);
+    formdata.append("sectionId", sectionId);
+	formdata.append("testType", testType);
+    console.log(teacherId);
+    console.log(classId);
+    console.log(sectionId);
+    console.log(testType);
+
+}
+
+function reload() {
+	 location.reload();
+}
+
+$('.examTime').timepicker();
 
 </script>
 

@@ -1,8 +1,5 @@
 package com.sakha.thepta.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +25,8 @@ import com.sakha.thepta.service.AttendanceService;
 import com.sakha.thepta.service.HomeworkService;
 import com.sakha.thepta.service.Teacher_subjectService;
 import com.sakha.thepta.service.TestTypeService;
-import com.sakha.thepta.service.Test_marksService;
 import com.sakha.thepta.service.Test_DetailService;
+import com.sakha.thepta.service.Test_marksService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -329,4 +326,12 @@ public class DashController {
 		return testMarksService.submitMarks(request, response);
 	}
 
+
+	@RequestMapping(value = "/submitTest", method = RequestMethod.POST)
+	@ResponseBody
+	public int submitTest(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+ 
+		return testDetailService.submitTest(request, response);
+	}
+	
 }
