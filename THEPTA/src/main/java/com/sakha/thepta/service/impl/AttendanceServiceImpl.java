@@ -21,8 +21,6 @@ import com.sakha.thepta.util.Util;
 @Service
 public class AttendanceServiceImpl implements AttendanceService{
 	
-	@Autowired
-	private AttendanceDao attendanceDao;
 	
 	@Autowired
 	private Util util;
@@ -38,6 +36,9 @@ public class AttendanceServiceImpl implements AttendanceService{
 	
 	@Autowired
 	private SectionDao sectionDao;
+	
+	@Autowired
+	private AttendanceDao attendanceDao;
 
 	@Override
 	@Transactional

@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,16 +71,19 @@
 				</div>
 
 				<ul class="nav" id="teachers">
-				
-					<li>
-						<a href="/THEPTA/dashboard/uploadattendance">
-							<p><span class="glyphicon glyphicon-chevron-right"></span>Update Attendance</p>
-						</a>
-					</li>
+
+					<li><a href="/THEPTA/dashboard/uploadattendance">
+							<p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Attendance
+							</p>
+					</a></li>
 
 					<li><a href="/THEPTA/dashboard/uploadmarks">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Update Marks</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>Update
+								Marks
+							</p>
 					</a></li>
 
 					<li><a href="/THEPTA/dashboard/">
@@ -94,22 +99,23 @@
 								Test/Homework
 							</p>
 					</a></li>
-					
-					<li ><a href="/THEPTA/dashboard/feedback">
+
+					<li><a href="/THEPTA/dashboard/feedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>Feedback
 							</p>
 					</a></li>
-					
+
 					<li><a href="/THEPTA/dashboard/uploadcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>Upload Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>Upload
+								Circular
 							</p>
 					</a></li>
-					
-					</ul>
-					
-					<ul class="nav" id="students">
+
+				</ul>
+
+				<ul class="nav" id="students">
 					<li><a href="/THEPTA/dashboard/viewattendance">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -137,7 +143,7 @@
 								Test/Homework
 							</p>
 					</a></li>
-					
+
 					<li class="active"><a href="/THEPTA/dashboard/viewfeedback">
 							<p>
 								<span class="glyphicon glyphicon-chevron-right"></span>View
@@ -145,14 +151,13 @@
 							</p>
 					</a></li>
 
-					
+
 					<li><a href="/THEPTA/dashboard/viewcircular">
 							<p>
-								<span class="glyphicon glyphicon-chevron-right"></span>View Circular
+								<span class="glyphicon glyphicon-chevron-right"></span>View
+								Circular
 							</p>
 					</a></li>
-					
-					
 
 				</ul>
 
@@ -199,11 +204,12 @@
 			</nav>
 
 			<div class="sub-nav">
-				
-					<h5>
-					<a href="../dashboard">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>View Feedback</h5>
+
+				<h5>
+					<a href="../dashboard"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</a>View Feedback
+				</h5>
 			</div>
 			<br> <br>
 			<div class="panel">
@@ -211,64 +217,22 @@
 					<br>
 					<div class="u-card">
 						<form>
-						<ul class="nav nav-tabs nav-justified">
-							<li class="active"><a data-toggle="tab" href="#Subject1">Subject1</a></li>
-							<li><a data-toggle="tab" href="#Subject2">Subject2</a></li>
-							<li><a data-toggle="tab" href="#Subject3">Subject3</a></li>
-							<li><a data-toggle="tab" href="#Subject4">Subject4</a></li>
-							<li><a data-toggle="tab" href="#Subject5">Subject5</a></li>
-							<li><a data-toggle="tab" href="#Subject6">Subject6</a></li>
-						</ul>
-						<br> <br>
+							<ul class="nav nav-tabs nav-justified" id="feedme">
+								<c:forEach items="${studentFeedbackList}" var="studentList">
+									<li><a data-toggle="tab" href="#${studentList.subjectId}">${studentList.subjectName}</a></li>
+								</c:forEach>
+							</ul>
+							<br> <br>
 
-						<div class="tab-content">
-							<div id="Subject1"
-								class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
-								<br>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur <br>adipisicing
-									elit, sed do eiusmod tempor <br>incididunt ut labore et
-									dolore magna aliqua.
-								</p>
+							<div class="tab-content">
+								<c:forEach items="${studentFeedbackList}" var="studentList">
+									<div id="${studentList.subjectId}"
+										class="tab-pane fade in active w3-panel w3-blue w3-round-xlarg">
+										<br>
+										<p>${studentList.feedbackText}</p>
+									</div>
+								</c:forEach>
 							</div>
-
-							<div id="Subject2"
-								class="tab-pane fade in w3-panel w3-green w3-round-xlarg">
-								<h3>Subject2</h3>
-								<p>Ut enim ad minim veniam, quis nostrud exercitation
-									ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							</div>
-
-							<div id="Subject3"
-								class="tab-pane fade w3-panel w3-yellow w3-round-xlarg">
-								<h3>Subject3</h3>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit
-									voluptatem accusantium doloremque laudantium, totam rem
-									aperiam.</p>
-							</div>
-
-							<div id="Subject4"
-								class="tab-pane fade  w3-panel w3-orange w3-round-xlarg">
-								<h3>Subject4</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
-							<div id="Subject5"
-								class="tab-pane fade  w3-panel w3-black w3-round-xlarg">
-								<h3>Subject5</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
-							<div id="Subject6"
-								class="tab-pane fade  w3-panel w3-pink w3-round-xlarg">
-								<h3>Subject6</h3>
-								<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-									architecto beatae vitae dicta sunt explicabo.</p>
-							</div>
-
-						</div>
 						</form>
 					</div>
 				</div>
@@ -338,9 +302,14 @@ $(document).ready(function(){
 		{
 			$('#students').show();
 		}
+
+	/*$('#feedme li:first').addClass('active');
+	$('#feedme li:first').removeClass('active'); */
+	setTimeout($('#feedme li:first').addClass('active').click(), 100);
+	
+
+    
 });
 </script>
-
-
 
 </html>

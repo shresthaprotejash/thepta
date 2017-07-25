@@ -409,7 +409,7 @@ $(document).ready(function(){
     		
     		result.studentList.forEach(function(item) {
     			if(item.sectionId==sectionId)
-    			output.push('<option value="'+ item.studentId +'">'+ item.studentName +'</option>');
+    			output.push('<option value="'+ item.studentId +'">'+item.studentId +"-"+ item.studentName +'</option>');
     		});
     		$('#studentListSelect').html(output.join(''));
 
@@ -420,14 +420,14 @@ $(document).ready(function(){
     
     
     
-	
+	var value = "null";
 	if (value!="nok"){
 	value = "${status}";
 	console.log(value);
 	if(value=="ok"){
 		alert("Feedback Updated.");
 	}
-	else {
+	else if(value!="null"){
 		alert(value);		
 		}
 	value="nok";

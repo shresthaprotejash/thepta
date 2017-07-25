@@ -1,7 +1,6 @@
 package com.sakha.thepta.controller;
 
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +16,6 @@ import com.sakha.thepta.dto.FeedbackDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.service.FeedbackService;
 import com.sakha.thepta.dto.AttendanceDto;
-import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.service.AttendanceService;
 import com.sakha.thepta.service.Teacher_subjectService;
 import com.sakha.thepta.service.TestTypeService;
@@ -31,14 +29,13 @@ public class DashController {
 	
 	@Autowired
 	private FeedbackService feedbackService;
-
+	
+	@Autowired
 	private AttendanceService attendanceService;
 	
 	@Autowired
 	private TestTypeService testTypeService;
 
-	private int  classId; 
-	
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
  
@@ -65,10 +62,6 @@ public class DashController {
 	public String getStudentListByClassidAndSectionidAndSubjectid(@PathVariable("classid") int classId, 
 			@PathVariable("sectionid") int sectionId, @PathVariable("subjectid") int subjectId){
 		JSONObject mainObj = new JSONObject();
-		System.out.println(classId);
-		System.out.println(sectionId);
-		System.out.println(subjectId);
-		
 		List<AttendanceDto> studentList = attendanceService.getStudentbyClassIdAndSectionIdAndSubjectId(classId, sectionId, subjectId);
 		mainObj.put("studentList", studentList);
 		return mainObj.toString();
@@ -77,8 +70,6 @@ public class DashController {
 	@RequestMapping(value = "/{subjectid}/submitAttendance", method = RequestMethod.POST)
 	@ResponseBody
 	public int putStudentAttendanceByClassidAndSectionidAndSubjectid(HttpServletRequest request, HttpServletResponse response, HttpSession httpsession, @PathVariable("subjectid") int subjectId){
-		
-		JSONObject mainObj = new JSONObject();
 		String present_student = request.getParameter("present_student");
 		String absent_student = request.getParameter("absent_student");
 		System.out.println("present_student > " + present_student);
@@ -101,10 +92,10 @@ public class DashController {
 	public ModelAndView uploadMarks(HttpSession session) {
  
 		ModelAndView mv = new ModelAndView("uploadmarks");
-		/*int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
+		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
-		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());*/
+		mv.addObject("testTypeList", testTypeService.getListOfTestTypes());
 		return mv;
 	}
 	
@@ -193,12 +184,9 @@ public class DashController {
 	
 	@RequestMapping(value = "/submitfeedback", method = RequestMethod.POST)
 	public String submitfeedback(HttpServletRequest request, HttpServletResponse response,HttpSession session){
-		System.out.println("hello");
 		int teacherId = (int) session.getAttribute("userId");
-		int classId = Integer.parseInt(request.getParameter("Class"));
-		int sectionId = Integer.parseInt(request.getParameter("Section"));
 		int subjectId = Integer.parseInt(request.getParameter("Subject"));
-		int studentId = Integer.parseInt(request.getParameter("studentId"));
+		int studentId = Integer.parseInt(request.getParameter("Student"));
 		String feedText = request.getParameter("feedback");
 		int success = feedbackService.saveFeedbackBySubjectIdAndStudentId(teacherId,subjectId,studentId,feedText);
 		if(success>0) {
@@ -214,7 +202,7 @@ public class DashController {
 	public ModelAndView fetchFeedback(HttpSession session) {
 		 
 		ModelAndView mv = new ModelAndView("viewfeedback");
-		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
+		int studentId = (int) session.getAttribute("userId");
 		List<FeedbackDto> studentFeedbackList =feedbackService.getFeedbackDetailsByStudentId(studentId);
 		mv.addObject("studentFeedbackList", studentFeedbackList);
 		return mv;

@@ -233,9 +233,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-2">
-
 										<label>Class </label>
-
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
@@ -244,16 +242,16 @@
 											 style="width: 106px;">
 									</div>
 									<br>
-									<div class="col-md-2 col-md-offset-1">
+									
+									<div class="col-md-2">
 										<label>Section </label>
-
 									</div>
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
 											placeholder="Section"
-											value="${studentAttendanceList[0].sectionName}">
+											value="${studentAttendanceList[0].sectionName}"
+											 style="width: 106px;">
 									</div>
-								</div>
 								<hr>
 
 								<TABLE BORDER="3" align="center">
