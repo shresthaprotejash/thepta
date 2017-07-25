@@ -1,10 +1,6 @@
 package com.sakha.thepta.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,8 +25,8 @@ import com.sakha.thepta.service.AttendanceService;
 import com.sakha.thepta.service.HomeworkService;
 import com.sakha.thepta.service.Teacher_subjectService;
 import com.sakha.thepta.service.TestTypeService;
-import com.sakha.thepta.service.Test_marksService;
 import com.sakha.thepta.service.Test_DetailService;
+import com.sakha.thepta.service.Test_marksService;
 
 @Controller
 @RequestMapping("/dashboard")
@@ -274,7 +270,7 @@ public class DashController {
 		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
-		
+		session.setAttribute("hwStatus", "");
 		return mv;
 	}
 	
@@ -284,9 +280,9 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("uploadhomework");
 		int homeWorkId = homeworkService.giveHomeworkBysubjectId(req);
 		if(homeWorkId > 0){
-			System.out.println("successful!!!");
+			session.setAttribute("hwStatus", "ok");
 		}else{
-			System.out.println("failed!!");
+			session.setAttribute("hwstatus", "Error Occured!!! Please try again.");
 		}
 		return mv;
 	}

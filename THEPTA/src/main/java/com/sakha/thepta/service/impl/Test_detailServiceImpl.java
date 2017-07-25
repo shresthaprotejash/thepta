@@ -1,7 +1,6 @@
 package com.sakha.thepta.service.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sakha.thepta.dao.SubjectDao;
 import com.sakha.thepta.dao.Test_detailDao;
-
 import com.sakha.thepta.dto.TestDetailsDto;
 import com.sakha.thepta.model.TestDetailModel;
-import com.sakha.thepta.model.Test_marksModel;
 import com.sakha.thepta.service.Test_DetailService;
 
 @Service
@@ -35,14 +32,19 @@ public class Test_detailServiceImpl implements Test_DetailService {
 		List<TestDetailModel> TestInfoDetailList = test_detailDao.getTestDetailByStudentId(studentId, testType);
 		List<TestDetailsDto> testDetailList = new ArrayList<TestDetailsDto>();
 		List<Integer> uniqueSubjectId = new ArrayList<Integer>();
-		
+
 		for (TestDetailModel testDetailModel : TestInfoDetailList) {
-			if(!uniqueSubjectId.contains(testDetailModel.getSubjectId())){
+			
+			if(!uniqueSubjectId.contains(testDetailModel.getStudentId())){
 				newTestDetailsDto = new TestDetailsDto();
 				newTestDetailsDto.setStudentId(testDetailModel.getStudentId());
 				newTestDetailsDto.setSubjectName(subjectDao.getSubjectBySubjectId(testDetailModel.getSubjectId()));
 				newTestDetailsDto.setSubjectId(testDetailModel.getSubjectId());
 				newTestDetailsDto.setTestType(testDetailModel.getTestType());
+				newTestDetailsDto.setExamDateAndTime(testDetailModel.getExamDateAndTime());
+				newTestDetailsDto.setRoomNo(testDetailModel.getRoomNo());
+				testDetailList.add(newTestDetailsDto);
+				uniqueSubjectId.add(testDetailModel.getSubjectId());	
 				newTestDetailsDto.setExamDateAndTime(testDetailModel.getExamDateAndTime());
 				newTestDetailsDto.setRoomNo(testDetailModel.getRoomNo());
 				testDetailList.add(newTestDetailsDto);

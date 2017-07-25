@@ -215,21 +215,6 @@
 												</select>
 											</div>
 										</div>
-
-
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label>Date </label>
-												</div>
-											</div>
-											<div class="col-md-7">
-												<input type="date" name="bday"  id ="attandanceDate" min="2017-01-02">
-											</div>
-										</div>
-
-
-
 									</form>
 								</div>
 								<div class="showme btn btn-info pull-right ">Get</div>
@@ -338,7 +323,6 @@ $(document).ready(function(){
     	if (classId!="none"){
     	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
     		result = JSON.parse(result);
-    		console.log(result.teacherSubjectSectionList);
     		var output = [];
     		output.push('<option value="none">none</option>');
     		document.getElementById("sectionListSelectId").disabled = false;
@@ -354,6 +338,7 @@ $(document).ready(function(){
     
     
     $(".showme").click(function(){
+    	
     	var teacherId = ${userId};
     	var classId = $("#classListSelectBox").val();
     	var sectionId=$("#sectionListSelectId").val();
@@ -362,16 +347,15 @@ $(document).ready(function(){
         $("#studentId").val(teacherId);
         $("#classId").val(classId);
         $("#testType").val(testType);
-    	if (classId!="none" && sectionId!="none" && date!="" && testType!="none" ){
+    	if (classId!="none" && sectionId!="none" && testType!="none" ){
         	$("#after-click").show();
         	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
          	document.getElementById("classListSelectBox").disabled = true;
         	document.getElementById("sectionListSelectId").disabled = true;
             document.getElementById("testTypeListSelectBox").disabled = true;
-            document.getElementById("attandanceDate").disabled = true;
             $('.showme').hide(1000);
             
-            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;alert(url);
             if (teacherId!="none" && classId!="none"){
         	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
         		result = JSON.parse(result);
@@ -380,12 +364,7 @@ $(document).ready(function(){
         		var sn=1;
 				var table = document.getElementById("uploadTestTable");
         		result.teacherSubjectSectionList.forEach(function(item) {
-        		    
-        			console.log(item);
-        			console.log(table);
-        			
         			var row = table.insertRow();
-        			console.log("hello");
 				    var cell1 = row.insertCell(0);
 				    var cell2 = row.insertCell(1);
 				    var cell3 = row.insertCell(2);
