@@ -268,12 +268,24 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 
 CREATE TABLE IF NOT EXISTS `homework` (
   `homeworkId` int(11) NOT NULL AUTO_INCREMENT,
+  `classId` int(11) NOT NULL,
+  `sectionId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `homeworkText` text CHARACTER SET utf8 NOT NULL,
   `homeworkFileContent` text CHARACTER SET utf8 NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`homeworkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+--
+-- Dumping data for table `homework`
+--
+
+INSERT INTO `homework` (`homeworkId`, `classId`, `sectionId`, `subjectId`, `teacherId`, `homeworkText`, `homeworkFileContent`, `date`) VALUES
+(1, 3, 2, 3001, 8, 'folow tejash and complete ur hw', 'create table student(stud_no number(10) primary key,stud_name varchar(20));\ncreate table membership(mem_no number(10) primary key,student_no number(10) references student(stud_no));\ncreate table book(book_no number(10) primary key,book_name varchar(30),author varchar(30));\ncreate table iss_rec(iss_no number(10) primary key,iss_date date,member_no number(10) references membership(mem_no),book_number number(10) references book(book_no));\ninsert into student values(1,''chandan'');\ninsert into student values(2,''ranjan'');\ninsert into student values(3,''kundan'');\ninsert into student values(4,''ram'');\ninsert into student values(5,''shyam'');\nselect * from student\ninsert into membership values(10,1);\ninsert into membership values(11,2);\ninsert into membership values(12,3);\ninsert into membership values(13,4);\nselect * from membership\ninsert into book values(20,''c++'',''yeshwant'');\ninsert into book values(21,''c'',''hary'');\ninsert into book values(22,''c#'',''porter'');\ninsert into book values(23,''java'',''messi'');\ninsert into book values(24,''sql'',''lionel'');\ninsert into book values\ninsert into membership values(14,5);\nselect * from membership\nselect * from book\ninsert into iss_rec values(30,''21-aug-2016'',10,20);\ninsert into iss_rec values(31,''21-aug-2016'',10,21);\ninsert into iss_rec values(32,''21-aug-2016'',11,20);\ninsert into iss_rec values(33,''22-aug-2016'',12,22);\ninsert into iss_rec values(34,''22-aug-2016'',10,23);\ninsert into iss_rec values(35,''23-aug-2016'',13,24);\ninsert into iss_rec values(36,''25-aug-2016'',14,24);\nselect * from iss_rec\nselect stud_name,mem_no from student, membership\nselect iss_date,stud_name,book_name from iss_rec,student,book,membership where iss_rec.iss_date=''21-aug-2016'' AND iss_rec.book_number=book.book_no AND membership.student_no=student.stud_no AND iss_rec.member_no=membership.mem_no\nselect stud_name,mem_no from student, membership where student.stud_no=membership.student_no\n', '2017-07-23'),
+(2, 3, 1, 3001, 8, 'complete exercise 4.5 by tomorrow', '', '2017-07-23');
 
 -- --------------------------------------------------------
 
@@ -687,11 +699,6 @@ INSERT INTO `test_marks` (`test_marksId`, `testType`, `studentId`, `subjectId`, 
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `test_marks`
---
-ALTER TABLE `test_marks`
-  ADD PRIMARY KEY (`test_marksId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -708,13 +715,14 @@ ALTER TABLE `test_marks`
 --
 
 CREATE TABLE `testdetails` (
-  `viewTestId` int(11) NOT NULL,
+  `viewTestId` int(11) NOT NULL AUTO_INCREMENT,
   `testType` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `examdate` date NOT NULL,
   `examtime` varchar(20) NOT NULL,
-  `roomNo` varchar(20) NOT NULL
+  `roomNo` varchar(20) NOT NULL,
+   PRIMARY KEY (`viewTestId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -724,25 +732,9 @@ CREATE TABLE `testdetails` (
 INSERT INTO `testdetails` (`viewTestId`, `testType`, `subjectId`, `studentId`, `examdate`, `examtime`, `roomNo`) VALUES
 (1, 1, 3001, 5, '2017-07-10', '20:10am', '243');
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `testdetails`
---
-ALTER TABLE `testdetails`
-  ADD PRIMARY KEY (`viewTestId`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `testdetails`
---
-ALTER TABLE `testdetails`
-  MODIFY `viewTestId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 
  

@@ -10,5 +10,4 @@ public interface UserDao {
 
 	public UserModel getUserByUserId(int userId);
 
-	public UserModel getStudentNameByStudentId(int studentId);	
 }

@@ -65,7 +65,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 		for(AttendanceModel attendanceModel : studentList){
 			newAttendanceDto = new AttendanceDto();
 			newAttendanceDto.setStudentId(attendanceModel.getStudentId());
-			newAttendanceDto.setStudentName(util.getUserFullName(userDao.getStudentNameByStudentId(attendanceModel.getStudentId())));
+			newAttendanceDto.setStudentName(util.getUserFullName(userDao.getUserByUserId(attendanceModel.getStudentId())));
 			newAttendanceDto.setClassId(classId);
 			newAttendanceDto.setSectionId(sectionId);
 			newAttendanceDto.setSubjectId(subjectId);

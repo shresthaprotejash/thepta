@@ -1,13 +1,18 @@
 package com.sakha.thepta.dao.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.sakha.thepta.dao.HomeworkDao;
 import com.sakha.thepta.model.HomeworkModel;
+import com.sakha.thepta.model.UserModel;
 
 
 @Repository
@@ -27,6 +32,13 @@ public class HomeworkDaoImpl implements HomeworkDao {
 	public HomeworkModel viewHomeworkByteacherIdandsubjectId(int teacherId, int SubjectId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<HomeworkModel> getHomeworkListByClassIdAndSecionId(int classId, int sectionId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(HomeworkModel.class);
+		criteria.add(Restrictions.eq("classId", classId)).add(Restrictions.eq("sectionId", sectionId));
+		return criteria.list();
 	}
 
 }

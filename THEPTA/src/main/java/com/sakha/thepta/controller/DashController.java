@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sakha.thepta.dto.AttendanceDto;
+import com.sakha.thepta.dto.HomeworkDto;
 import com.sakha.thepta.dto.SubjectAndMarksDto;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.dto.TestDetailsDto;
@@ -52,6 +53,7 @@ public class DashController {
 
 	@Autowired
 	private Test_DetailService testDetailService;
+	
 
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {
@@ -149,8 +151,8 @@ public class DashController {
 	public ModelAndView fetchHomework(HttpSession session) {
 		ModelAndView mv = new ModelAndView("viewhomework");
 		int studentId = Integer.parseInt(session.getAttribute("userId").toString());
-		List<AttendanceDto> studentAttendanceList =attendanceService.getAttendanceDetailsByStudentId(studentId);
-		mv.addObject("studentAttendanceList", studentAttendanceList);
+		List<HomeworkDto> homeworklist = homeworkService.getHomeworkListBystudentId(studentId);
+		mv.addObject("homeworklist", homeworklist);
 		return mv;
 	}
 
@@ -194,12 +196,7 @@ public class DashController {
 		return mainObj.toString();
 	}
 
-	@RequestMapping("/menu")
-	public ModelAndView fetchmenu() {
-
-		ModelAndView mv = new ModelAndView("menu");
-		return mv;
-	}
+	
 
 	@RequestMapping("/english")
 	public ModelAndView fetchenglish() {
@@ -284,7 +281,7 @@ public class DashController {
 	@RequestMapping(value = "/submithomework", method = RequestMethod.POST)
 	public ModelAndView submitHomework(MultipartHttpServletRequest req, HttpServletResponse res, HttpSession session) {
  
-		ModelAndView mv = new ModelAndView("uploadtestandhomework");
+		ModelAndView mv = new ModelAndView("uploadhomework");
 		int homeWorkId = homeworkService.giveHomeworkBysubjectId(req);
 		if(homeWorkId > 0){
 			System.out.println("successful!!!");

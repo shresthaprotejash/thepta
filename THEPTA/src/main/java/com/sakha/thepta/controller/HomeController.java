@@ -20,6 +20,13 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 
+	@RequestMapping("/")
+	public ModelAndView showIndexPage(ModelMap map) {
+ 
+		ModelAndView mv = new ModelAndView("index");
+		return mv;		
+	}
+	
 	@RequestMapping("/login")
 	public ModelAndView showMessage(ModelMap map) {
  
