@@ -319,6 +319,19 @@ $(document).ready(function(){
 		{
 			$('#students').show();
 		}
+	
+	var value="";
+	if(value!="nok") {
+		value="${hwStatus}";
+	if (value=="ok"){
+		alert("Homework Uploaded !!!");
+		window.location = "${pageContext.request.contextPath}/dashboard/uploadhomework";
+	}
+	else if(value!=""){
+		alert(value);
+	}
+	value-"nok";
+	}
     
 	document.getElementById("sectionListSelectId").disabled = true;
     document.getElementById("subjectListSelect").disabled = true;
@@ -417,8 +430,6 @@ $(document).ready(function(){
 });
 
 function submit() {
-	
-
 
 	var formdata = new FormData();
 		var subjectId=$("#subjectListSelect").val();
