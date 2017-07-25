@@ -260,6 +260,16 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   PRIMARY KEY (`feedbackId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedbackId`, `teacherId`, `subjectId`, `studentId`, `feedbackText`) VALUES
+(1, 8, 3001, 1, 'good'),
+(2, 9, 3002, 1, 'wel done'),
+(3, 10, 3003, 1, 'nice');
+
+
 -- --------------------------------------------------------
 
 --
