@@ -297,7 +297,7 @@ public class DashController {
 		int teacherId = Integer.parseInt(session.getAttribute("userId").toString());
 		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService.getTeacherSubjectListByTeacherId(teacherId);
 		mv.addObject("teacherSubjectList", teacherSubjectList);
-		
+		session.setAttribute("hwStatus", "");
 		return mv;
 	}
 	
@@ -307,9 +307,9 @@ public class DashController {
 		ModelAndView mv = new ModelAndView("uploadhomework");
 		int homeWorkId = homeworkService.giveHomeworkBysubjectId(req);
 		if(homeWorkId > 0){
-			System.out.println("successful!!!");
+			session.setAttribute("hwStatus", "ok");
 		}else{
-			System.out.println("failed!!");
+			session.setAttribute("hwstatus", "Error Occured!!! Please try again.");
 		}
 		return mv;
 	}
