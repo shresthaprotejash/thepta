@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -168,29 +171,25 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Class" id="small">
+												<select name="Class" id="classListSelectBox">										
 													<option value="none" selected>none</option>
-													<option value="Class1">Class1</option>
-													<option value="Class2">Class2</option>
-													<option value="Class3">Class3</option>
-													<option value="Class4">Class4</option>
-												</select>
+
+													<c:forEach items="${teacherSubjectList}" var="teacherSubject">
+														<option value="${teacherSubject.classId}" id="${teacherSubject.classId}">${teacherSubject.className}</option>
+													</c:forEach>
+													</select>
 											</div>
 										</div>
 
-										<div class="row">
+											<div class="row">
 											<div class="col-md-3">
 												<div class="form-group">
 													<label>Section </label>
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Section" id="small">
-													<option value="none" selected>none</option>
-													<option value="Section1">Section1</option>
-													<option value="Section2">Section2</option>
-													<option value="Section3">Section3</option>
-													<option value="Section4">Section4</option>
+												<select name="Section" id="sectionListSelectId">
+													<option value="none" selected>none</option>									
 												</select>
 											</div>
 										</div>
@@ -202,15 +201,12 @@
 												</div>
 											</div>
 											<div class="col-md-7">
-												<select name="Subject">
-													<option value="Subject1" selected>none</option>
-													<option value="Subject1">Subject1</option>
-													<option value="Subject2">Subject2</option>
-													<option value="Subject3">Subject3</option>
-													<option value="Subject4">Subject4</option>
-												</select>
+												<select name="Subject" id="subjectListSelect">
+													<option value="none" selected>none</option>												
+													</select>
 											</div>
 										</div>
+
 
 										<div class="row">
 											<div class="col-md-3">
@@ -230,23 +226,24 @@
 								<div class="showme btn btn-info pull-right ">Get</div>
 								<br> <br>
 								<div id="after-click">
-									<hr>
-									<div class="container">
-
-
-										<form>
-											<div class="form-group">
-												<label for="comment">Comment:</label>
-												<textarea class="form-control" rows="5" id="comment"
+									<hr>									
+									<form action="${pageContext.request.contextPath}/dashboard/submithomework" method="post" enctype="multipart/form-data">
+       									<input type="hidden" name = "teacherId" id="teacherId"  />
+       									<input type="hidden" name = "subjectId" id="subjectId"  />  
+       									<input type="hidden" name = "classId" id="classId"  />
+       									<input type="hidden" name = "sectionId" id="sectionId"  />       									
+       									<div class="form-group">
+											<label for="comment">Comment:</label>
+											<textarea class="form-control" rows="5" name="homeworkText"
 													style="width: 676px; height: 218px;"></textarea>
-											</div>
-										</form>
-									</div>
-
-									<br> <br> <label class="control-label">Select File</label>
-<input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"> <br>
-									<div class="btn btn-info pull-right">Submit</div>
-									<br> <br>
+										</div>
+       									<br> <br> 
+       									<label class="control-label">Select File</label>
+										<input name="homeworkFile" type="file" class="file" data-show-upload="false" data-show-caption="true"> <br>
+										<input type = "submit" value = "Submit" class = "btn btn-info pull-right" style="margin-left:10px">
+										<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
+										<br> <br>
+       								</form>
 								</div>
 							</div>
 						</div>
@@ -306,18 +303,142 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-
+<!-- ajax utility file -->
+<script src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
 <script>
-	$(document).ready(function() {
-		$(".showme").click(function() {
-			$("#after-click").show();
+$(document).ready(function(){	
+    $('#teachers').hide();
+	$('#students').hide();
+	
+	var user=${userType};
+	if (user==0)
+		{
+			$('#teachers').show();
+		}
+	else
+		{
+			$('#students').show();
+		}
+    
+	document.getElementById("sectionListSelectId").disabled = true;
+    document.getElementById("subjectListSelect").disabled = true;
+    
+    $("#classListSelectBox").change(function(){    	 
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("sectionListSelectId").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			output.push('<option value="'+ item.sectionId +'">'+ item.sectionName +'</option>');
+    		});
+    		$('#sectionListSelectId').html(output.join(''));
+
 		});
+    	}
+    });
+    
+    $("#sectionListSelectId").change(function(){
+    	document.getElementById("subjectListSelect").disabled = false;
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;
+    	if (classId!="none" && sectionId!="none"){
+    	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+    		result = JSON.parse(result);
+    		console.log(result.teacherSubjectSectionList);
+    		var output = [];
+    		output.push('<option value="none">none</option>');
+    		document.getElementById("subjectListSelect").disabled = false;
+    		result.teacherSubjectSectionList.forEach(function(item) {
+    			if(item.sectionId==sectionId)
+    			output.push('<option value="'+ item.subjectId +'">'+ item.subjectName +'</option>');
+    		});
+    		$('#subjectListSelect').html(output.join(''));
+
+    	});
+    	}
+    });
+
+    $("#subjectListSelect").change(function(){
+    	var teacherId = ${userId};
+    	$("#teacherId").val(teacherId);
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+    	$("#subjectId").val($("#subjectListSelect").val());
+    	$("#classId").val(classId);
+    	$("#sectionId").val(sectionId);
+    	
+    });
+	
+    $(".showme").click(function(){
+    	var teacherId = ${userId};
+    	var classId = $("#classListSelectBox").val();
+    	var sectionId=$("#sectionListSelectId").val();
+        var subjectId=$("#subjectListSelect").val();
+        var date=$("#homeworkDate").val();
+    	if (classId!="none" && sectionId!="none" && subjectId!="none" && date!=""){
+        	$("#after-click").show();
+        	$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
+        	document.getElementById("classListSelectBox").disabled = true;
+        	document.getElementById("sectionListSelectId").disabled = true;
+            document.getElementById("subjectListSelect").disabled = true;
+            document.getElementById("homeworkDate").disabled = true;
+            $('.showme').hide(1000);
+            
+            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId+"/"+sectionId+"/"+subjectId;
+            if (classId!="none" && sectionId!="none"){
+        	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+        		result = JSON.parse(result);
+        		var output=[];
+        		result.studentList.forEach(function(item) {
+        			if(item.classId==classId && item.sectionId==sectionId )
+        			var table = document.getElementById("studentsAttendanceList");
+        		});     		
+        	});
+    	}
+            
+                document.getElementById('classId').value = $("#classListSelectBox").val();
+                document.getElementById('sectionId').value = $("#sectionListSelectId").val();
+    	}
+    	else
+    	{
+    		$('.showme').addClass('btn-danger').removeClass('btn-info').removeClass('btn-success');
+    		$('.showme').fadeOut(100).fadeIn(1500);
+    	}
+    });
+	
+});
+
+function submit() {
+	
+
+
+	var formdata = new FormData();
+		var subjectId=$("#subjectListSelect").val();
+	var url = "${pageContext.request.contextPath}/dashboard/submitHomework";
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
+		if (result==1) {
+			alert("Records updated sucessfully!!!");
+			location.reload();
+		}
+		else {
+			alert("Opps!Error encountered. Please try again");
+		}
+			
 	});
-	$(document).on('ready', function() {
-	    $("#input-folder-1").fileinput({
-	        browseLabel: 'Select Folder...'
-	    });
-	});
+
+}
+
+function reload() {
+	 location.reload();
+}
 </script>
 
 </html>

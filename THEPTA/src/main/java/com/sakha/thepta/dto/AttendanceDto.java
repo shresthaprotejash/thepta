@@ -14,6 +14,7 @@ public class AttendanceDto {
 	private int absentDays;
 	private int totalDays;
 	private float percentage;
+	private int obtanedMarks;
 	
 	public int getStudentId() {
 		return studentId;
@@ -93,6 +94,12 @@ public class AttendanceDto {
 	}
 	public void setAttendaceId(int attendaceId) {
 		this.attendaceId = attendaceId;
+	}
+	public int getObtanedMarks() {
+		return obtanedMarks;
+	}
+	public void setObtanedMarks(int obtanedMarks) {
+		this.obtanedMarks = obtanedMarks;
 	}
 
 }

@@ -7,6 +7,8 @@ import com.sakha.thepta.model.StudentModel;
 public interface StudentDao {
 
 	public List<StudentModel> getStudentIdByClassIdAndSectionId(int classId, int sectionId);
+
+	public StudentModel getStudentModelByStudentId(int studentId);
 	
 	
 }

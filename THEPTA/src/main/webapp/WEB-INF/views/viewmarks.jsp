@@ -252,8 +252,7 @@
 									<div class="col-md-2">
 										<input type="text" class="form-control" disabled
 											placeholder="Section"
-											value="${studentAttendanceList[0].sectionName}"
-											>
+											value="${studentAttendanceList[0].sectionName}">
 									</div>
 								</div>
 								<div class="row">
@@ -270,41 +269,33 @@
 												<option value="${testTypeobject.testType}">${testTypeobject.testTypeName}</option>
 											</c:forEach>
 										</select>
+
 									</div>
 								</div>
 								<hr>
+								<div class="showme btn btn-info pull-right ">Get</div>
+								<br> <br>
+								<div id="after-click">
+										<TABLE BORDER="3" align="center" id="marksList">
 
-								<TABLE BORDER="3" align="center">
-
-									<TH width="50">S.N.</TH>
-									<TH width="300">Subject Name</TH>
-									<TH width="80">1st Term</TH>
-									<TH width="80">2nd Term</TH>
-									<TH width="80">3rd Term</TH>
-									var sn=1
-									<c:forEach items="${studentAttendanceList}" var="studentList">
-										<TR>
-											<TD>${sn}</TD>
-											<TD>${studentList.subjectName}</TD>
-											<TD>${studentList.presentDays}</TD>
-											<TD>${studentList.absentDays}</TD>
-											<TD>${studentList.totalDays}</TD>
+											<TH width="50">S.N.</TH>
+											<TH width="300">Subject Name</TH>
+											<TH width="100">Obtained Marks</TH>
 											
-										</TR>
-										sn=sn+1
-									</c:forEach>
-									<TR>
-
-										
-										
-
-								</TABLE>
-
+								
+									
+										</TABLE>
+										<br><br>
+									
+									<div onclick="reload();" class="btn btn-danger pull-right">Cancel</div>
+									<br><br>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 
 
 			<footer class="footer">
@@ -318,7 +309,9 @@
 					</nav>
 					<p class="copyright pull-right">
 						&copy;
-						<script>document.write(new Date().getFullYear())</script>
+						<script>
+								document.write(new Date().getFullYear())
+							</script>
 						<a href="#">TShrestha</a>
 					</p>
 				</div>
@@ -326,8 +319,6 @@
 
 		</div>
 	</div>
-
-
 </body>
 
 <!--   Core JS Files   -->
@@ -337,10 +328,6 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"
 	type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap-checkbox-radio-switch.js"></script>
 
 <!--  Charts Plugin -->
 <script
@@ -357,21 +344,65 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
 
+<!-- ajax utility file -->
+<script
+	src="${pageContext.request.contextPath}/resources/js/ajaxUtil.js" /></script>
+
 <script>
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$('#teachers').hide();
 		$('#students').hide();
-		var user=${userType};
-		if (user==0)
-			{
-				$('#teachers').show();
-			}
-		else
-			{
-				$('#students').show();
-			}
+		var user = ${userType};
+		if (user == 0) {
+			$('#teachers').show();
+		} else {
+			$('#students').show();
+		}
 	});
-	</script>
+
+	$(".showme").click(function(){
+		
+		var studentId = ${userId};
+    	var testTypeId = $("#testTypeListSelectBox").val();
+		
+		if(testTypeId != "none"){
+			$("#after-click").show();
+			$('.showme').addClass('btn-success').removeClass('btn-info').removeClass('btn-danger');
+			document.getElementById("testTypeListSelectBox").disabled = true;
+			$('.showme').hide(1000);
+		
+			var url = "${pageContext.request.contextPath}/dashboard/getmarksAndSubjectName/"+studentId+"/"+testTypeId;
+				callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
+	        		result = JSON.parse(result);
+	        		console.log(result);
+ 	        		var output=[];
+	        		var sn=1
+	        		result.obtainedMarksList.forEach(function(item) {
+	        			var table = document.getElementById("marksList");
+	        			var row = table.insertRow();
+					    var cell1 = row.insertCell(0);
+					    var cell2 = row.insertCell(1);
+					    var cell3 = row.insertCell(2);
+					  
+					    cell1.innerHTML = sn;
+					    cell2.innerHTML = item.subjectName;
+					   
+					    cell3.innerHTML = item.obtanedMarks;
+					    sn=sn+1;
+	        		});   
+	        	});
+	    	}
+	else
+	{
+		$('.showme').addClass('btn-danger').removeClass('btn-info').removeClass('btn-success');
+		$('.showme').fadeOut(100).fadeIn(1500);
+	}
+	});
+	
+	function reload() {
+		 location.reload();
+	}
+</script>
 
 
 
