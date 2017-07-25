@@ -28,9 +28,10 @@
 	href="${pageContext.request.contextPath}/resources/css/inner-style.css"
 	rel="stylesheet" />
 	
-	<!-- Date Time Picker Bootstrap CSS -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/timepicker.css">
-
+<!-- Date Time Picker Bootstrap CSS -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"></link>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.theme.css"></link>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.min.css">
 <!-- Animation library for notifications   -->
 <link
 	href="${pageContext.request.contextPath}/resources/css/animate.min.css"
@@ -295,15 +296,20 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="${pageContext.request.contextPath}/resources/js/demo.js"></script>
-
+<script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
 <!-- Date Time Picker JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/timepicker.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+<style>
+.ui-timepicker-container{ 
+     z-index:1151 !important; 
+}
+</style>
 <script>
 $(document).ready(function(){	
     $('#teachers').hide();
 	$('#students').hide();
-	
+	$('input.datePicker').datepicker();
+	$('input.timePicker').timepicker();
 	var user=${userType};
 	if (user==0)
 		{
@@ -372,16 +378,18 @@ $(document).ready(function(){
 				    var cell5 = row.insertCell(4);
 				    cell1.innerHTML = sn;
 				    cell2.innerHTML = item.subjectName;
-				    cell3.innerHTML = '<input type="date" id="studentid_'+item.studentId+'" name="Examdate" value=" "/>';
+				    cell3.innerHTML = '<input type="text" class="form-control datePicker" name="datedemo" />';
 				    cell3.style.textAlign = "center"; 
-				    cell4.innerHTML = '<input type="text" class="form-control testTime" id="studentid_'+item.studentId+' " name="ExamTime"  value=" "/>';
+				    cell4.innerHTML = '<input type="text" class="form-control timePicker" name="timedemo" />';
 				    cell4.style.textAlign = "center"; 
-				    cell5.innerHTML = '<input type="textbox" id="studentid_'+item.studentId+'" name="roomNo" value=" "/>';
+				    cell5.innerHTML = '<input type="text" class="form-control" id="studentid_'+item.studentId+'" name="roomNo" value=" "/>';
 				    cell5.style.textAlign = "center"; 
 					sn=sn+1;
+					$('input.datePicker').datepicker();
+		        	$('input.timePicker').timepicker();
         		});     		
         	});
-        	
+
     	}
     	}
     	else
@@ -420,8 +428,6 @@ function uploadTestSheet() {
 function reload() {
 	 location.reload();
 }
-
-$('.examTime').timepicker();
 
 </script>
 
