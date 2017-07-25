@@ -30,16 +30,22 @@ public class Test_detailServiceImpl implements Test_DetailService {
 		TestDetailsDto newTestDetailsDto = null;
 		List<TestDetailModel> TestInfoDetailList = test_detailDao.getTestDetailByStudentId(studentId, testType);
 		List<TestDetailsDto> testDetailList = new ArrayList<TestDetailsDto>();
+		List<Integer> uniqueSubjectIdList = new ArrayList<Integer>();
+		
 		for (TestDetailModel testDetailModel : TestInfoDetailList) {
-			newTestDetailsDto = new TestDetailsDto();
-			newTestDetailsDto.setStudentId(testDetailModel.getStudentId());
-			newTestDetailsDto.setSubjectName(subjectDao.getSubjectBySubjectId(testDetailModel.getSubjectId()));
-			newTestDetailsDto.setSubjectId(testDetailModel.getSubjectId());
-			newTestDetailsDto.setTestType(testDetailModel.getTestType());
 			
-			newTestDetailsDto.setExamDateAndTime(testDetailModel.getExamDateAndTime());
-			newTestDetailsDto.setRoomNo(testDetailModel.getRoomNo());
-			testDetailList.add(newTestDetailsDto);
+			if(!uniqueSubjectIdList.contains(testDetailModel.getStudentId())){
+				newTestDetailsDto = new TestDetailsDto();
+				newTestDetailsDto.setStudentId(testDetailModel.getStudentId());
+				newTestDetailsDto.setSubjectName(subjectDao.getSubjectBySubjectId(testDetailModel.getSubjectId()));
+				newTestDetailsDto.setSubjectId(testDetailModel.getSubjectId());
+				newTestDetailsDto.setTestType(testDetailModel.getTestType());
+				
+				newTestDetailsDto.setExamDateAndTime(testDetailModel.getExamDateAndTime());
+				newTestDetailsDto.setRoomNo(testDetailModel.getRoomNo());
+				testDetailList.add(newTestDetailsDto);
+				uniqueSubjectIdList.add(testDetailModel.getSubjectId());
+			}
 		}
 		return testDetailList;
 
