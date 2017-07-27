@@ -305,7 +305,7 @@ $(document).ready(function(){
 
 	/*$('#feedme li:first').addClass('active');
 	$('#feedme li:first').removeClass('active'); */
-	setTimeout($('#feedme li:first').addClass("active").click(), 100);
+	setTimeout($('#feedme li:first a').click(), 100);
 	
 
     
