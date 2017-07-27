@@ -1,6 +1,7 @@
 package com.sakha.thepta.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sakha.thepta.dao.AttendanceDao;
 import com.sakha.thepta.dao.SubjectDao;
 import com.sakha.thepta.dao.Test_detailDao;
 import com.sakha.thepta.dto.TestDetailsDto;
+import com.sakha.thepta.model.AttendanceModel;
 import com.sakha.thepta.model.TestDetailModel;
 import com.sakha.thepta.service.Test_DetailService;
 
@@ -24,6 +27,9 @@ public class Test_detailServiceImpl implements Test_DetailService {
 
 	@Autowired
 	private SubjectDao subjectDao;
+	
+	@Autowired
+	private AttendanceDao attendanceDao;
 
 	@Override
 	@Transactional
@@ -58,39 +64,48 @@ public class Test_detailServiceImpl implements Test_DetailService {
 	@Override
 	@Transactional
 	public int submitTest(HttpServletRequest request, HttpServletResponse response) {
-		int subjectId = Integer.parseInt(request.getParameter("subjectId"));
-		int testType = Integer.parseInt(request.getParameter("testType"));
-		String studentIdAndDate = request.getParameter("studentIdAndDate");
-		String studentIdAndTime = request.getParameter("studentIdAndTime");
-		String studentIdAndRoomNO = request.getParameter("studentIdAndRoomNO");
-/*		ArrayList<String> studentListWithDate = new ArrayList<String>(Arrays.asList(studentIdAndDate.split(",")));
-		ArrayList<String> studentListWithTime = new ArrayList<String>(Arrays.asList(studentIdAndTime.split(",")));
-		ArrayList<String> studentListWithRoom = new ArrayList<String>(Arrays.asList(studentIdAndRoomNO.split(",")));
-		int studentId = 0, examDate = 0, examTime=0, examRoom=0;
-		TestDetailModel newTestDetailModel = null;
-		int result = 0;
 		
-		for(String studentObj : studentListWithDate){
-			
-			if( studentObj.split("_")[0] != null && !"".equals(studentObj.split("_")[0]) &&
-					 studentObj.split("_")[1] != null && !"".equals(studentObj.split("_")[1])){
+		int teacherId = Integer.parseInt(request.getParameter("teacherId"));
+		int classId = Integer.parseInt(request.getParameter("classId"));
+		int sectionId = Integer.parseInt(request.getParameter("sectionId"));
+		int testType = Integer.parseInt(request.getParameter("testType"));
+		String testsDetail = request.getParameter("testsDetail");
 
-				studentId = Integer.parseInt(studentObj.split("_")[0]);
-				obtainedMarks = Integer.parseInt(studentObj.split("_")[1]);
-				if(studentId > 0){
+		TestDetailModel newTestDetailModel = null;
+		int subjectId = 0, result = 0;
+		String testDate = "", testTime = "", roomNo = "";
+		ArrayList<String> subjectListWithDateTimeAndRoomNo = new ArrayList<String>(Arrays.asList(testsDetail.split(",")));
+		List<AttendanceModel> studentList = null;
+		
+		for(String subjectObj : subjectListWithDateTimeAndRoomNo){	//1001_1_02-07-2017_12:30am
+			
+			if( subjectObj.split("_")[0] != null && !"".equals(subjectObj.split("_")[0]) &&
+					 subjectObj.split("_")[1] != null && !"".equals(subjectObj.split("_")[1])&&
+					 subjectObj.split("_")[2] != null && !"".equals(subjectObj.split("_")[2]) &&
+					 subjectObj.split("_")[3] != null && !"".equals(subjectObj.split("_")[3])){
+
+				subjectId = Integer.parseInt(subjectObj.split("_")[0]);
+				roomNo = subjectObj.split("_")[1];
+				testDate = subjectObj.split("_")[2];
+				testTime = subjectObj.split("_")[3];
+				if(subjectId > 0){
 					
-					newTest_marksModel = new Test_marksModel();
-					newTest_marksModel.setTestType(testType);
-					newTest_marksModel.setSubjectId(subjectId);
-					newTest_marksModel.setStudentId(studentId);
-					newTest_marksModel.setObtanedMarks(obtainedMarks);
-					
-					result = test_marksDao.saveTestMarks(newTest_marksModel);
+					studentList = attendanceDao.getStudentIdByClassIdAndSectionId(classId,sectionId,subjectId);
+					for(AttendanceModel attendanceModel : studentList){
+
+						newTestDetailModel = new TestDetailModel();
+						newTestDetailModel.setTestType(testType);
+						newTestDetailModel.setSubjectId(subjectId);
+						newTestDetailModel.setRoomNo(roomNo);
+						newTestDetailModel.setExamDateAndTime(testDate + " " + testTime);
+						newTestDetailModel.setStudentId(attendanceModel.getStudentId());
+						result = test_detailDao.saveTestDetail(newTestDetailModel);
+					}
+
 				}
 			}
-		}*/
-		
-		return 0;
+		}
+		return result;
 	}
 
 }

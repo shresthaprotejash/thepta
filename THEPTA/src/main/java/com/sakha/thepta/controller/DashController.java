@@ -326,11 +326,22 @@ public class DashController {
 		return testMarksService.submitMarks(request, response);
 	}
 
+	@RequestMapping(value = "/getsubjectlistbyteacheridclassidandsectionid/{teacherid}/{classid}/{sectionId}", method = RequestMethod.GET)
+	@ResponseBody
+	public String getSubjectList(@PathVariable("teacherid") int teacherId, @PathVariable("classid") int classId,
+			@PathVariable("sectionId") int sectionId) {
 
-	@RequestMapping(value = "/submitTest", method = RequestMethod.POST)
+		JSONObject mainObj = new JSONObject();
+		List<TeacherSubjectDto> teacherSubjectList = teacherSubjectService
+				.getUniqueSubjectListByTeacherid(teacherId, classId, sectionId);
+		mainObj.put("teacherSubjectSectionList", teacherSubjectList);
+		return mainObj.toString();
+	}
+
+	@RequestMapping(value = "/submittest", method = RequestMethod.POST)
 	@ResponseBody
 	public int submitTest(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
- 
+
 		return testDetailService.submitTest(request, response);
 	}
 	

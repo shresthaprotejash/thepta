@@ -28,4 +28,11 @@ public class Test_detailDaoImpl implements Test_detailDao {
 
 	}
 
+	@Override
+	public int saveTestDetail(TestDetailModel newTestDetailModel) {
+
+		int result = (Integer) sessionFactory.getCurrentSession().save(newTestDetailModel);
+		return result;
+	}
+
 }

@@ -40,4 +40,15 @@ public class Teacher_subjectDaoImpl implements Teacher_subjectDao{
 		return criteria.list();
 	}
 
+	@Override
+	public List<TeacherSubjectModel> getSubjectListByTeacherIdClassIdSectionId(int teacherId, int classId,
+			int sectionId) {
+		
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TeacherSubjectModel.class);
+		criteria.add(Restrictions.eq("teacherId", teacherId));
+		criteria.add(Restrictions.eq("classId", classId));
+		criteria.add(Restrictions.eq("sectionId", sectionId));
+		return criteria.list();
+	}
+
 }

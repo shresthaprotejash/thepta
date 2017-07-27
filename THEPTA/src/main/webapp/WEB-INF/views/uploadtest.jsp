@@ -361,7 +361,7 @@ $(document).ready(function(){
             document.getElementById("testTypeListSelectBox").disabled = true;
             $('.showme').hide(1000);
             
-            var url = "${pageContext.request.contextPath}/dashboard/getsectionlistbyteacheridandclassid/"+teacherId+"/"+classId;alert(url);
+            var url = "${pageContext.request.contextPath}/dashboard/getsubjectlistbyteacheridclassidandsectionid/"+teacherId+"/"+classId+"/"+sectionId;
             if (teacherId!="none" && classId!="none"){
         	callAjaxGetReqest("${pageContext.request.contextPath}", url, function(result){
         		result = JSON.parse(result);
@@ -371,6 +371,7 @@ $(document).ready(function(){
 				var table = document.getElementById("uploadTestTable");
         		result.teacherSubjectSectionList.forEach(function(item) {
         			var row = table.insertRow();
+        			row.className = 'testrow';
 				    var cell1 = row.insertCell(0);
 				    var cell2 = row.insertCell(1);
 				    var cell3 = row.insertCell(2);
@@ -382,10 +383,10 @@ $(document).ready(function(){
 				    cell3.style.textAlign = "center"; 
 				    cell4.innerHTML = '<input type="text" class="form-control timePicker" name="timedemo" />';
 				    cell4.style.textAlign = "center"; 
-				    cell5.innerHTML = '<input type="text" class="form-control" id="studentid_'+item.studentId+'" name="roomNo" value=" "/>';
+				    cell5.innerHTML = '<input type="text" class="form-control roomno" id="subjectId_'+item.subjectId+'" name="roomNo" />';
 				    cell5.style.textAlign = "center"; 
 					sn=sn+1;
-					$('input.datePicker').datepicker();
+					$('input.datePicker').datepicker({ dateFormat: 'dd-mm-yy' });
 		        	$('input.timePicker').timepicker();
         		});     		
         	});
@@ -404,9 +405,7 @@ $(document).ready(function(){
 
 function uploadTestSheet() {
 	
-	var studentIdAndDate= new Array();
-	var studentIdAndTime= new Array();
-	var studentIdAndRoomNO= new Array();
+	var testRowDetail = new Array();
 	var formdata = new FormData();
 	
 	var teacherId = ${userId};
@@ -418,11 +417,31 @@ function uploadTestSheet() {
 	formdata.append("classId", classId);
     formdata.append("sectionId", sectionId);
 	formdata.append("testType", testType);
-    console.log(teacherId);
-    console.log(classId);
-    console.log(sectionId);
-    console.log(testType);
 
+	var subjectId = 0, testDate = "", testTime = "", roomNo = 0;
+	
+	$("tr.testrow").each(function() {
+		$this = $(this);
+		subjectId = $this.find("input.roomno").attr('id').split('_')[1].replace(/^\s*/, "").replace(/\s*$/, "");
+		testDate = $this.find("input.datePicker").val(); 
+		testTime = $this.find("input.timePicker").val(); 
+		roomNo = $this.find("input.roomno").val().replace(/^\s*/, "").replace(/\s*$/, "");
+		  
+		testRowDetail.push(subjectId + "_" + roomNo + "_" + testDate + "_" + testTime);			  
+	});
+	formdata.append("testsDetail", testRowDetail);
+
+ 	var url = "${pageContext.request.contextPath}/dashboard/submittest";
+	callAjaxPostReqest("${pageContext.request.contextPath}", url, formdata, function(result){
+		if (result > 0) {
+			alert("Records updated sucessfully!!!");
+			location.reload();
+		}
+		else {
+			alert("Opps!Error encountered. Please try again");
+		}
+			
+	});
 }
 
 function reload() {

@@ -730,8 +730,7 @@ CREATE TABLE `testdetails` (
   `testType` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
-  `examdate` date NOT NULL,
-  `examtime` varchar(20) NOT NULL,
+  `examDateAndTime` varchar(64) NOT NULL,
   `roomNo` varchar(20) NOT NULL,
    PRIMARY KEY (`viewTestId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -740,8 +739,8 @@ CREATE TABLE `testdetails` (
 -- Dumping data for table `testdetails`
 --
 
-INSERT INTO `testdetails` (`viewTestId`, `testType`, `subjectId`, `studentId`, `examdate`, `examtime`, `roomNo`) VALUES
-(1, 1, 3001, 5, '2017-07-10', '20:10am', '243');
+INSERT INTO `testdetails` (`viewTestId`, `testType`, `subjectId`, `studentId`, `examDateAndTime`, `roomNo`) VALUES
+(1, 1, 3001, 5, '02-07-2017 12:30am', '243');
 
 
 

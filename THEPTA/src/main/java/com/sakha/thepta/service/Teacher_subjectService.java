@@ -10,7 +10,7 @@ public interface Teacher_subjectService {
 	public TeacherSubjectModel getSubjectByTeacherIdandClassId(String teacherId,String classesId);
 	public List<TeacherSubjectDto> getTeacherSubjectListByTeacherId(int teacherId);
 	public List<TeacherSubjectDto> getSectionListByTeacheridAndClassid(int teacherId, int classId);
-	public List<TeacherSubjectDto> getSubjectListByTeacherid(int teacherId);
+	public List<TeacherSubjectDto> getUniqueSubjectListByTeacherid(int teacherId, int classId, int sectionId);
 	
 
 }

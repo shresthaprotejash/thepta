@@ -14,7 +14,6 @@ import com.sakha.thepta.dao.Teacher_subjectDao;
 import com.sakha.thepta.dao.UserDao;
 import com.sakha.thepta.dto.TeacherSubjectDto;
 import com.sakha.thepta.model.TeacherSubjectModel;
-import com.sakha.thepta.model.UserModel;
 import com.sakha.thepta.service.Teacher_subjectService;
 import com.sakha.thepta.util.Util;
 
@@ -103,11 +102,11 @@ public class Teacher_subjectServiceImpl implements Teacher_subjectService{
 	
 	@Override
 	@Transactional
-	public List<TeacherSubjectDto> getSubjectListByTeacherid(int teacherId) {
+	public List<TeacherSubjectDto> getUniqueSubjectListByTeacherid(int teacherId, int classId, int sectionId) {
 
 		TeacherSubjectDto newTeacherSubjectDto = null;
 		List<TeacherSubjectDto> teacherSujectDtoList = new ArrayList<TeacherSubjectDto>();
-		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getTeacherSubjectListByTeacherId(teacherId);
+		List<TeacherSubjectModel> teacherSubjectModelList = teacher_subjectDao.getSubjectListByTeacherIdClassIdSectionId(teacherId, classId, sectionId);
 		List<Integer> uniqueSubjectIdList = new ArrayList<Integer>();
 		
 		for(TeacherSubjectModel teacherModel : teacherSubjectModelList){
