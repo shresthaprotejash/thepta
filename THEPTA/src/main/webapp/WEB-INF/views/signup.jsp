@@ -63,13 +63,17 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<label for="gender">Gender: </label> 
-							<input type="radio" value="M"  name="gender">Male<br> 
-							<input type="radio" value="F" name="gender">Female
+							<div class="ml_10">
+								<input type="radio" value="M"  name="gender">Male<br> 
+								<input type="radio" value="F" name="gender">Female
+							</div>
 					</div>
 					<div class="col-sm-6">
 						<label for="gender">User Type: </label>
-							<input type="radio" class="teacherORstudent" value="T" name="usertype">Teacher<br> 
-							<input type="radio" class="teacherORstudent" value="S" name="usertype">Student
+							<div class="ml_10">
+								<input type="radio" class="teacherORstudent" value="T" name="usertype">Teacher<br> 
+								<input type="radio" class="teacherORstudent" value="S" name="usertype">Student
+							</div>
 					</div>
 				</div>
 				<div class="row">
