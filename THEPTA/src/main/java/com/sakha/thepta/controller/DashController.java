@@ -52,8 +52,6 @@ public class DashController {
 
 	@Autowired
 	private Test_DetailService testDetailService;
-	
-
 
 	@RequestMapping("/uploadattendance")
 	public ModelAndView uploadAttendance(HttpSession session) {

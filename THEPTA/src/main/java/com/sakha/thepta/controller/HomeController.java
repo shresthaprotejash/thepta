@@ -34,6 +34,23 @@ public class HomeController {
 		return mv;		
 	}
 
+	@RequestMapping("/signup")
+	public ModelAndView getSignUpPage(HttpSession session) {
+
+		ModelAndView mv = new ModelAndView("signup");
+		return mv;
+	}	
+
+	@RequestMapping(value = "/dosignup", method = RequestMethod.POST)
+	public String doSignUp(ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+ 
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		System.out.println("firstName : " + firstName);
+		System.out.println("lastName : " + lastName);
+		return "redirect:/signup";
+	}
+	
 	@RequestMapping(value = "/validatelogin", method = RequestMethod.POST)
 	public String validateLoginCredential(ModelMap model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
  

@@ -35,7 +35,8 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		response.setCharacterEncoding("UTF-8");
 		
 		if(requestUrl.contains("/login") || requestUrl.contains("/resources")
-				 || requestUrl.contains("/validatelogin")){
+				 || requestUrl.contains("/validatelogin") || requestUrl.contains("/signup") 
+				 || requestUrl.contains("/dosignup")){
 			filterChain.doFilter(request, response);
 		}else if(session != null && session.getAttribute("userId") != null 
 				&& Integer.parseInt(session.getAttribute("userId").toString()) > 0) {
